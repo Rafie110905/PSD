@@ -1,0 +1,33 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: Crawling & Analisis Data Polutan Udara Kabupaten Bangkalan
+author: Moh Rafie Nazar J (240411100003)
+logo: logo.png
+
+# Jangan jalankan ulang notebook saat build - pakai output yang sudah ada
+# (notebook ini butuh koneksi/login openEO ke Copernicus, tidak bisa
+# dijalankan otomatis tanpa interaksi saat proses build)
+execute:
+  execute_notebooks: "off"
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/Rafie110905/PSD
+  path_to_book: PSD
+  branch: main
+
+# Add GitHub buttons to your book
+html:
+  use_issues_button: true
+  use_repository_button: true
+  html_static_path: ['_static']

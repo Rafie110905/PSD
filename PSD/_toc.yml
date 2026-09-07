@@ -1,0 +1,8 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: Crawling_Polutan_Bangkalan
+- file: Crawling_Analisis_Data_Polutan_Udara_di_Kecamatan_Bangkalan
