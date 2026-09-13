@@ -62,6 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Crawling_Polutan_Bangkalan';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Crawling &amp; Analisis Data Polutan Udara di Kecamatan Bangkalan" href="Crawling_Analisis_Data_Polutan_Udara_di_Kecamatan_Bangkalan.html" />
     <link rel="prev" title="🌐 Selamat Datang di Web Catatan Saya" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -182,6 +183,9 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Crawling &amp; Analisis Data Polutan Udara di Kabupaten Bangkalan</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Crawling_Analisis_Data_Polutan_Udara_di_Kecamatan_Bangkalan.html">Crawling &amp; Analisis Data Polutan Udara di Kecamatan Bangkalan</a></li>
+
 
 </ul>
 
@@ -560,7 +564,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Berkas aoi_lamongan.geojson berhasil disimpan.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Berkas aoi_bangkalan.geojson berhasil disimpan.
 </pre></div>
 </div>
 </div>
@@ -587,8 +591,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bounding box wilayah kajian (Lamongan):
-{'west': 112.1808803, 'south': -7.3045942, 'east': 112.4367917, 'north': -6.8651238}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bounding box wilayah kajian (Bangkalan):
+{'west': 112.674103, 'south': -7.217445, 'east': 113.147072, 'north': -6.87881}
 </pre></div>
 </div>
 </div>
@@ -614,7 +618,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">Visit <a href="https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=ZQII-ZLIT" title="Authenticate at https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=ZQII-ZLIT" target="_blank" rel="noopener noreferrer">https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=ZQII-ZLIT</a> <a href="#" onclick="navigator.clipboard.writeText('https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=ZQII-ZLIT');return false;" title="Copy authentication URL to clipboard">&#128203;</a> to authenticate.</div><div class="output text_html">✅ Authorized successfully</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Authenticated using device code flow.
+<div class="output text_html">Visit <a href="https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=EPTG-OEGR" title="Authenticate at https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=EPTG-OEGR" target="_blank" rel="noopener noreferrer">https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=EPTG-OEGR</a> <a href="#" onclick="navigator.clipboard.writeText('https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=EPTG-OEGR');return false;" title="Copy authentication URL to clipboard">&#128203;</a> to authenticate.</div><div class="output text_html">✅ Authorized successfully</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Authenticated using device code flow.
 </pre></div>
 </div>
 </div>
@@ -645,88 +649,90 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job 'j-2608251205154f2cb9251c371cd9cc76': send 'start'
-0:00:04 Job 'j-2608251205154f2cb9251c371cd9cc76': queued (progress 0%)
-0:00:09 Job 'j-2608251205154f2cb9251c371cd9cc76': queued (progress 0%)
-0:00:16 Job 'j-2608251205154f2cb9251c371cd9cc76': queued (progress 0%)
-0:00:24 Job 'j-2608251205154f2cb9251c371cd9cc76': queued (progress 0%)
-0:00:34 Job 'j-2608251205154f2cb9251c371cd9cc76': queued (progress 0%)
-0:00:47 Job 'j-2608251205154f2cb9251c371cd9cc76': queued (progress 0%)
-0:01:03 Job 'j-2608251205154f2cb9251c371cd9cc76': running (progress N/A)
-0:01:22 Job 'j-2608251205154f2cb9251c371cd9cc76': running (progress N/A)
-0:01:46 Job 'j-2608251205154f2cb9251c371cd9cc76': running (progress N/A)
-0:02:16 Job 'j-2608251205154f2cb9251c371cd9cc76': running (progress N/A)
-0:02:54 Job 'j-2608251205154f2cb9251c371cd9cc76': running (progress N/A)
-0:03:41 Job 'j-2608251205154f2cb9251c371cd9cc76': finished (progress 100%)
-Selesai mengunduh data CO -&gt; CO_Lamongan.nc
-0:00:00 Job 'j-2608251209064e249b26f59c76863d17': send 'start'
-0:00:03 Job 'j-2608251209064e249b26f59c76863d17': queued (progress 0%)
-0:00:08 Job 'j-2608251209064e249b26f59c76863d17': queued (progress 0%)
-0:00:14 Job 'j-2608251209064e249b26f59c76863d17': queued (progress 0%)
-0:00:23 Job 'j-2608251209064e249b26f59c76863d17': queued (progress 0%)
-0:00:33 Job 'j-2608251209064e249b26f59c76863d17': running (progress N/A)
-0:00:45 Job 'j-2608251209064e249b26f59c76863d17': running (progress N/A)
-0:01:01 Job 'j-2608251209064e249b26f59c76863d17': running (progress N/A)
-0:01:20 Job 'j-2608251209064e249b26f59c76863d17': running (progress N/A)
-0:01:45 Job 'j-2608251209064e249b26f59c76863d17': running (progress N/A)
-0:02:15 Job 'j-2608251209064e249b26f59c76863d17': running (progress N/A)
-0:02:52 Job 'j-2608251209064e249b26f59c76863d17': finished (progress 100%)
-Selesai mengunduh data NO2 -&gt; NO2_Lamongan.nc
-0:00:00 Job 'j-2608251212094ba8b2ffa491c579ebd8': send 'start'
-0:00:03 Job 'j-2608251212094ba8b2ffa491c579ebd8': queued (progress 0%)
-0:00:08 Job 'j-2608251212094ba8b2ffa491c579ebd8': queued (progress 0%)
-0:00:15 Job 'j-2608251212094ba8b2ffa491c579ebd8': queued (progress 0%)
-0:00:23 Job 'j-2608251212094ba8b2ffa491c579ebd8': queued (progress 0%)
-0:00:33 Job 'j-2608251212094ba8b2ffa491c579ebd8': queued (progress 0%)
-0:00:46 Job 'j-2608251212094ba8b2ffa491c579ebd8': queued (progress 0%)
-0:01:02 Job 'j-2608251212094ba8b2ffa491c579ebd8': queued (progress 0%)
-0:01:21 Job 'j-2608251212094ba8b2ffa491c579ebd8': queued (progress 0%)
-0:01:45 Job 'j-2608251212094ba8b2ffa491c579ebd8': running (progress N/A)
-0:02:15 Job 'j-2608251212094ba8b2ffa491c579ebd8': running (progress N/A)
-0:02:53 Job 'j-2608251212094ba8b2ffa491c579ebd8': running (progress N/A)
-0:03:40 Job 'j-2608251212094ba8b2ffa491c579ebd8': finished (progress 100%)
-Selesai mengunduh data HCHO -&gt; HCHO_Lamongan.nc
-0:00:00 Job 'j-26082512160042acb4f4f0db0d95d120': send 'start'
-0:00:03 Job 'j-26082512160042acb4f4f0db0d95d120': queued (progress 0%)
-0:00:08 Job 'j-26082512160042acb4f4f0db0d95d120': queued (progress 0%)
-0:00:15 Job 'j-26082512160042acb4f4f0db0d95d120': queued (progress 0%)
-0:00:23 Job 'j-26082512160042acb4f4f0db0d95d120': queued (progress 0%)
-0:00:33 Job 'j-26082512160042acb4f4f0db0d95d120': queued (progress 0%)
-0:00:45 Job 'j-26082512160042acb4f4f0db0d95d120': running (progress N/A)
-0:01:01 Job 'j-26082512160042acb4f4f0db0d95d120': running (progress N/A)
-0:01:21 Job 'j-26082512160042acb4f4f0db0d95d120': running (progress N/A)
-0:01:45 Job 'j-26082512160042acb4f4f0db0d95d120': running (progress N/A)
-0:02:15 Job 'j-26082512160042acb4f4f0db0d95d120': running (progress N/A)
-0:02:53 Job 'j-26082512160042acb4f4f0db0d95d120': finished (progress 100%)
-Selesai mengunduh data O3 -&gt; O3_Lamongan.nc
-0:00:00 Job 'j-26082512190342cbbd09ec1c0f86d929': send 'start'
-0:00:03 Job 'j-26082512190342cbbd09ec1c0f86d929': queued (progress 0%)
-0:00:08 Job 'j-26082512190342cbbd09ec1c0f86d929': queued (progress 0%)
-0:00:14 Job 'j-26082512190342cbbd09ec1c0f86d929': queued (progress 0%)
-0:00:23 Job 'j-26082512190342cbbd09ec1c0f86d929': queued (progress 0%)
-0:00:33 Job 'j-26082512190342cbbd09ec1c0f86d929': running (progress N/A)
-0:00:45 Job 'j-26082512190342cbbd09ec1c0f86d929': running (progress N/A)
-0:01:01 Job 'j-26082512190342cbbd09ec1c0f86d929': running (progress N/A)
-0:01:20 Job 'j-26082512190342cbbd09ec1c0f86d929': running (progress N/A)
-0:01:45 Job 'j-26082512190342cbbd09ec1c0f86d929': running (progress N/A)
-0:02:15 Job 'j-26082512190342cbbd09ec1c0f86d929': running (progress N/A)
-0:02:52 Job 'j-26082512190342cbbd09ec1c0f86d929': running (progress N/A)
-0:03:39 Job 'j-26082512190342cbbd09ec1c0f86d929': finished (progress 100%)
-Selesai mengunduh data SO2 -&gt; SO2_Lamongan.nc
-0:00:00 Job 'j-2608251222534c9697e34e71a8130a43': send 'start'
-0:00:02 Job 'j-2608251222534c9697e34e71a8130a43': queued (progress 0%)
-0:00:08 Job 'j-2608251222534c9697e34e71a8130a43': queued (progress 0%)
-0:00:15 Job 'j-2608251222534c9697e34e71a8130a43': queued (progress 0%)
-0:00:23 Job 'j-2608251222534c9697e34e71a8130a43': queued (progress 0%)
-0:00:33 Job 'j-2608251222534c9697e34e71a8130a43': queued (progress 0%)
-0:00:46 Job 'j-2608251222534c9697e34e71a8130a43': queued (progress 0%)
-0:01:01 Job 'j-2608251222534c9697e34e71a8130a43': queued (progress 0%)
-0:01:21 Job 'j-2608251222534c9697e34e71a8130a43': running (progress N/A)
-0:01:45 Job 'j-2608251222534c9697e34e71a8130a43': running (progress N/A)
-0:02:15 Job 'j-2608251222534c9697e34e71a8130a43': running (progress N/A)
-0:02:52 Job 'j-2608251222534c9697e34e71a8130a43': running (progress N/A)
-0:03:40 Job 'j-2608251222534c9697e34e71a8130a43': finished (progress 100%)
-Selesai mengunduh data CH4 -&gt; CH4_Lamongan.nc
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job 'j-26090700170642c98522b5e700f8bb2c': send 'start'
+0:00:04 Job 'j-26090700170642c98522b5e700f8bb2c': queued (progress 0%)
+0:00:09 Job 'j-26090700170642c98522b5e700f8bb2c': queued (progress 0%)
+0:00:16 Job 'j-26090700170642c98522b5e700f8bb2c': queued (progress 0%)
+0:00:24 Job 'j-26090700170642c98522b5e700f8bb2c': queued (progress 0%)
+0:00:34 Job 'j-26090700170642c98522b5e700f8bb2c': queued (progress 0%)
+0:00:47 Job 'j-26090700170642c98522b5e700f8bb2c': queued (progress 0%)
+0:01:02 Job 'j-26090700170642c98522b5e700f8bb2c': queued (progress 0%)
+0:01:22 Job 'j-26090700170642c98522b5e700f8bb2c': running (progress N/A)
+0:01:46 Job 'j-26090700170642c98522b5e700f8bb2c': running (progress N/A)
+0:02:16 Job 'j-26090700170642c98522b5e700f8bb2c': running (progress N/A)
+0:02:54 Job 'j-26090700170642c98522b5e700f8bb2c': running (progress N/A)
+0:03:41 Job 'j-26090700170642c98522b5e700f8bb2c': finished (progress 100%)
+Selesai mengunduh data CO -&gt; CO_Bangkalan.nc
+0:00:00 Job 'j-2609070020574319b83e9405dc6ac2d5': send 'start'
+0:00:02 Job 'j-2609070020574319b83e9405dc6ac2d5': queued (progress 0%)
+0:00:08 Job 'j-2609070020574319b83e9405dc6ac2d5': queued (progress 0%)
+0:00:14 Job 'j-2609070020574319b83e9405dc6ac2d5': queued (progress 0%)
+0:00:22 Job 'j-2609070020574319b83e9405dc6ac2d5': queued (progress 0%)
+0:00:32 Job 'j-2609070020574319b83e9405dc6ac2d5': queued (progress 0%)
+0:00:45 Job 'j-2609070020574319b83e9405dc6ac2d5': queued (progress 0%)
+0:01:00 Job 'j-2609070020574319b83e9405dc6ac2d5': queued (progress 0%)
+0:01:20 Job 'j-2609070020574319b83e9405dc6ac2d5': running (progress N/A)
+0:01:44 Job 'j-2609070020574319b83e9405dc6ac2d5': running (progress N/A)
+0:02:14 Job 'j-2609070020574319b83e9405dc6ac2d5': running (progress N/A)
+0:02:52 Job 'j-2609070020574319b83e9405dc6ac2d5': running (progress N/A)
+0:03:39 Job 'j-2609070020574319b83e9405dc6ac2d5': finished (progress 100%)
+Selesai mengunduh data NO2 -&gt; NO2_Bangkalan.nc
+0:00:00 Job 'j-26090700244748feb12628eeb5df8249': send 'start'
+0:00:02 Job 'j-26090700244748feb12628eeb5df8249': queued (progress 0%)
+0:00:08 Job 'j-26090700244748feb12628eeb5df8249': queued (progress 0%)
+0:00:14 Job 'j-26090700244748feb12628eeb5df8249': queued (progress 0%)
+0:00:23 Job 'j-26090700244748feb12628eeb5df8249': queued (progress 0%)
+0:00:33 Job 'j-26090700244748feb12628eeb5df8249': running (progress N/A)
+0:00:45 Job 'j-26090700244748feb12628eeb5df8249': running (progress N/A)
+0:01:01 Job 'j-26090700244748feb12628eeb5df8249': running (progress N/A)
+0:01:20 Job 'j-26090700244748feb12628eeb5df8249': running (progress N/A)
+0:01:44 Job 'j-26090700244748feb12628eeb5df8249': running (progress N/A)
+0:02:14 Job 'j-26090700244748feb12628eeb5df8249': running (progress N/A)
+0:02:52 Job 'j-26090700244748feb12628eeb5df8249': running (progress N/A)
+0:03:39 Job 'j-26090700244748feb12628eeb5df8249': finished (progress 100%)
+Selesai mengunduh data HCHO -&gt; HCHO_Bangkalan.nc
+0:00:00 Job 'j-26090700283547089813c7679ffae7ac': send 'start'
+0:00:03 Job 'j-26090700283547089813c7679ffae7ac': queued (progress 0%)
+0:00:08 Job 'j-26090700283547089813c7679ffae7ac': queued (progress 0%)
+0:00:15 Job 'j-26090700283547089813c7679ffae7ac': queued (progress 0%)
+0:00:23 Job 'j-26090700283547089813c7679ffae7ac': queued (progress 0%)
+0:00:33 Job 'j-26090700283547089813c7679ffae7ac': queued (progress 0%)
+0:00:45 Job 'j-26090700283547089813c7679ffae7ac': queued (progress 0%)
+0:01:01 Job 'j-26090700283547089813c7679ffae7ac': running (progress N/A)
+0:01:20 Job 'j-26090700283547089813c7679ffae7ac': running (progress N/A)
+0:01:45 Job 'j-26090700283547089813c7679ffae7ac': running (progress N/A)
+0:02:15 Job 'j-26090700283547089813c7679ffae7ac': running (progress N/A)
+0:02:53 Job 'j-26090700283547089813c7679ffae7ac': running (progress N/A)
+0:03:40 Job 'j-26090700283547089813c7679ffae7ac': finished (progress 100%)
+Selesai mengunduh data O3 -&gt; O3_Bangkalan.nc
+0:00:00 Job 'j-2609070032264a2ca99125ccb75af08a': send 'start'
+0:00:03 Job 'j-2609070032264a2ca99125ccb75af08a': queued (progress 0%)
+0:00:08 Job 'j-2609070032264a2ca99125ccb75af08a': queued (progress 0%)
+0:00:15 Job 'j-2609070032264a2ca99125ccb75af08a': queued (progress 0%)
+0:00:23 Job 'j-2609070032264a2ca99125ccb75af08a': queued (progress 0%)
+0:00:33 Job 'j-2609070032264a2ca99125ccb75af08a': queued (progress 0%)
+0:00:46 Job 'j-2609070032264a2ca99125ccb75af08a': queued (progress 0%)
+0:01:02 Job 'j-2609070032264a2ca99125ccb75af08a': queued (progress 0%)
+0:01:21 Job 'j-2609070032264a2ca99125ccb75af08a': running (progress N/A)
+0:01:45 Job 'j-2609070032264a2ca99125ccb75af08a': running (progress N/A)
+0:02:16 Job 'j-2609070032264a2ca99125ccb75af08a': running (progress N/A)
+0:02:53 Job 'j-2609070032264a2ca99125ccb75af08a': running (progress N/A)
+0:03:40 Job 'j-2609070032264a2ca99125ccb75af08a': finished (progress 100%)
+Selesai mengunduh data SO2 -&gt; SO2_Bangkalan.nc
+0:00:00 Job 'j-26090700361645f4a3f38b15bf5241c8': send 'start'
+0:00:03 Job 'j-26090700361645f4a3f38b15bf5241c8': created (progress 0%)
+0:00:08 Job 'j-26090700361645f4a3f38b15bf5241c8': queued (progress 0%)
+0:00:14 Job 'j-26090700361645f4a3f38b15bf5241c8': queued (progress 0%)
+0:00:23 Job 'j-26090700361645f4a3f38b15bf5241c8': queued (progress 0%)
+0:00:33 Job 'j-26090700361645f4a3f38b15bf5241c8': queued (progress 0%)
+0:00:45 Job 'j-26090700361645f4a3f38b15bf5241c8': queued (progress 0%)
+0:01:01 Job 'j-26090700361645f4a3f38b15bf5241c8': queued (progress 0%)
+0:01:20 Job 'j-26090700361645f4a3f38b15bf5241c8': running (progress N/A)
+0:01:44 Job 'j-26090700361645f4a3f38b15bf5241c8': running (progress N/A)
+0:02:15 Job 'j-26090700361645f4a3f38b15bf5241c8': running (progress N/A)
+0:02:52 Job 'j-26090700361645f4a3f38b15bf5241c8': running (progress N/A)
+0:03:39 Job 'j-26090700361645f4a3f38b15bf5241c8': finished (progress 100%)
+Selesai mengunduh data CH4 -&gt; CH4_Bangkalan.nc
 </pre></div>
 </div>
 </div>
@@ -856,21 +862,21 @@ Selesai mengunduh data CH4 -&gt; CH4_Lamongan.nc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CO: 366 baris data berhasil dibaca
-NO2: 364 baris data berhasil dibaca
-HCHO: 362 baris data berhasil dibaca
-O3: 362 baris data berhasil dibaca
-SO2: 362 baris data berhasil dibaca
-CH4: 219 baris data berhasil dibaca
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CO: 367 baris data berhasil dibaca
+NO2: 365 baris data berhasil dibaca
+HCHO: 353 baris data berhasil dibaca
+O3: 363 baris data berhasil dibaca
+SO2: 353 baris data berhasil dibaca
+CH4: 217 baris data berhasil dibaca
 
 Data berhasil disimpan!
-Nama file: all_polutan_Lamongan_timeseries.csv
-Jumlah baris: 366
+Nama file: all_polutan_Bangkalan_timeseries.csv
+Jumlah baris: 367
 Kolom: ['date', 'CO', 'NO2', 'HCHO', 'O3', 'SO2', 'CH4']
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-1b784efd-cdbd-49ab-b7b0-f0cb0db65477" class="colab-df-container">
+  <div id="df-27fbb92b-89db-4e6d-9c57-9e8a529700d4" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -901,53 +907,53 @@ Kolom: ['date', 'CO', 'NO2', 'HCHO', 'O3', 'SO2', 'CH4']
   <tbody>
     <tr>
       <th>0</th>
-      <td>2025-08-25</td>
-      <td>0.031745</td>
-      <td>0.000031</td>
-      <td>0.000163</td>
-      <td>0.117002</td>
-      <td>0.000349</td>
-      <td>NaN</td>
+      <td>2025-08-29</td>
+      <td>0.026103</td>
+      <td>0.000026</td>
+      <td>0.000143</td>
+      <td>0.113214</td>
+      <td>8.791764e-05</td>
+      <td>1843.975260</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2025-08-26</td>
-      <td>0.034966</td>
-      <td>0.000065</td>
-      <td>0.000159</td>
-      <td>0.115598</td>
-      <td>-0.000009</td>
+      <td>2025-08-30</td>
+      <td>0.025363</td>
+      <td>0.000020</td>
+      <td>0.000077</td>
+      <td>0.115004</td>
+      <td>8.026050e-07</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2025-08-27</td>
-      <td>0.028168</td>
-      <td>0.000029</td>
-      <td>0.000150</td>
-      <td>0.116313</td>
-      <td>0.000113</td>
+      <td>2025-08-31</td>
+      <td>0.025741</td>
+      <td>0.000013</td>
+      <td>0.000124</td>
+      <td>0.115688</td>
+      <td>6.201892e-06</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2025-08-28</td>
-      <td>0.028285</td>
-      <td>NaN</td>
-      <td>0.000117</td>
-      <td>0.116150</td>
-      <td>NaN</td>
+      <td>2025-09-01</td>
+      <td>0.026722</td>
+      <td>0.000017</td>
+      <td>0.000082</td>
+      <td>0.115264</td>
+      <td>3.424412e-05</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2025-08-29</td>
-      <td>0.030444</td>
-      <td>0.000052</td>
-      <td>0.000162</td>
-      <td>0.113017</td>
-      <td>0.000027</td>
-      <td>NaN</td>
+      <td>2025-09-02</td>
+      <td>0.024523</td>
+      <td>0.000012</td>
+      <td>0.000047</td>
+      <td>0.113861</td>
+      <td>-2.543385e-05</td>
+      <td>1837.764526</td>
     </tr>
   </tbody>
 </table>
@@ -955,7 +961,7 @@ Kolom: ['date', 'CO', 'NO2', 'HCHO', 'O3', 'SO2', 'CH4']
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-1b784efd-cdbd-49ab-b7b0-f0cb0db65477')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-27fbb92b-89db-4e6d-9c57-9e8a529700d4')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -1007,12 +1013,12 @@ Kolom: ['date', 'CO', 'NO2', 'HCHO', 'O3', 'SO2', 'CH4']
 
     <script>
       const buttonEl =
-        document.querySelector('#df-1b784efd-cdbd-49ab-b7b0-f0cb0db65477 button.colab-df-convert');
+        document.querySelector('#df-27fbb92b-89db-4e6d-9c57-9e8a529700d4 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-1b784efd-cdbd-49ab-b7b0-f0cb0db65477');
+        const element = document.querySelector('#df-27fbb92b-89db-4e6d-9c57-9e8a529700d4');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1061,24 +1067,24 @@ Kolom: ['date', 'CO', 'NO2', 'HCHO', 'O3', 'SO2', 'CH4']
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Struktur Data Polutan Lamongan ===
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Struktur Data Polutan Bangkalan ===
 &lt;class 'pandas.core.frame.DataFrame'&gt;
-RangeIndex: 366 entries, 0 to 365
+RangeIndex: 367 entries, 0 to 366
 Data columns (total 7 columns):
  #   Column  Non-Null Count  Dtype         
 ---  ------  --------------  -----         
- 0   date    366 non-null    datetime64[ns]
- 1   CO      294 non-null    float64       
- 2   NO2     294 non-null    float64       
- 3   HCHO    334 non-null    float64       
- 4   O3      362 non-null    float64       
- 5   SO2     326 non-null    float64       
- 6   CH4     47 non-null     float64       
+ 0   date    367 non-null    datetime64[ns]
+ 1   CO      279 non-null    float64       
+ 2   NO2     293 non-null    float64       
+ 3   HCHO    323 non-null    float64       
+ 4   O3      363 non-null    float64       
+ 5   SO2     314 non-null    float64       
+ 6   CH4     85 non-null     float64       
 dtypes: datetime64[ns](1), float64(6)
-memory usage: 20.1 KB
+memory usage: 20.2 KB
 
 === Ukuran Dataset ===
-Jumlah baris : 366
+Jumlah baris : 367
 Jumlah kolom : 7
 
 === Nama Kolom ===
@@ -1088,7 +1094,7 @@ Jumlah kolom : 7
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-b871d5be-eb54-4a65-865d-52ac0cfe5110" class="colab-df-container">
+  <div id="df-0ba5a429-9d9d-4b2b-b8b6-0e0dcf2ee2aa" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1119,53 +1125,53 @@ Jumlah kolom : 7
   <tbody>
     <tr>
       <th>0</th>
-      <td>2025-08-25</td>
-      <td>0.031745</td>
-      <td>0.000031</td>
-      <td>0.000163</td>
-      <td>0.117002</td>
-      <td>0.000349</td>
-      <td>NaN</td>
+      <td>2025-08-29</td>
+      <td>0.026103</td>
+      <td>0.000026</td>
+      <td>0.000143</td>
+      <td>0.113214</td>
+      <td>8.791764e-05</td>
+      <td>1843.975260</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2025-08-26</td>
-      <td>0.034966</td>
-      <td>0.000065</td>
-      <td>0.000159</td>
-      <td>0.115598</td>
-      <td>-0.000009</td>
+      <td>2025-08-30</td>
+      <td>0.025363</td>
+      <td>0.000020</td>
+      <td>0.000077</td>
+      <td>0.115004</td>
+      <td>8.026050e-07</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2025-08-27</td>
-      <td>0.028168</td>
-      <td>0.000029</td>
-      <td>0.000150</td>
-      <td>0.116313</td>
-      <td>0.000113</td>
+      <td>2025-08-31</td>
+      <td>0.025741</td>
+      <td>0.000013</td>
+      <td>0.000124</td>
+      <td>0.115688</td>
+      <td>6.201892e-06</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2025-08-28</td>
-      <td>0.028285</td>
-      <td>NaN</td>
-      <td>0.000117</td>
-      <td>0.116150</td>
-      <td>NaN</td>
+      <td>2025-09-01</td>
+      <td>0.026722</td>
+      <td>0.000017</td>
+      <td>0.000082</td>
+      <td>0.115264</td>
+      <td>3.424412e-05</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2025-08-29</td>
-      <td>0.030444</td>
-      <td>0.000052</td>
-      <td>0.000162</td>
-      <td>0.113017</td>
-      <td>0.000027</td>
-      <td>NaN</td>
+      <td>2025-09-02</td>
+      <td>0.024523</td>
+      <td>0.000012</td>
+      <td>0.000047</td>
+      <td>0.113861</td>
+      <td>-2.543385e-05</td>
+      <td>1837.764526</td>
     </tr>
   </tbody>
 </table>
@@ -1173,7 +1179,7 @@ Jumlah kolom : 7
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-b871d5be-eb54-4a65-865d-52ac0cfe5110')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-0ba5a429-9d9d-4b2b-b8b6-0e0dcf2ee2aa')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -1225,12 +1231,12 @@ Jumlah kolom : 7
 
     <script>
       const buttonEl =
-        document.querySelector('#df-b871d5be-eb54-4a65-865d-52ac0cfe5110 button.colab-df-convert');
+        document.querySelector('#df-0ba5a429-9d9d-4b2b-b8b6-0e0dcf2ee2aa button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-b871d5be-eb54-4a65-865d-52ac0cfe5110');
+        const element = document.querySelector('#df-0ba5a429-9d9d-4b2b-b8b6-0e0dcf2ee2aa');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1256,7 +1262,7 @@ Jumlah kolom : 7
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-5b4536d8-192f-4ff8-810f-e42b2425ee34" class="colab-df-container">
+  <div id="df-2711d639-ecd8-401d-94fc-480e0504970b" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1286,54 +1292,54 @@ Jumlah kolom : 7
   </thead>
   <tbody>
     <tr>
-      <th>361</th>
-      <td>2026-08-21</td>
-      <td>0.027828</td>
-      <td>0.000044</td>
-      <td>0.000109</td>
-      <td>0.122303</td>
-      <td>0.000090</td>
-      <td>1896.705444</td>
-    </tr>
-    <tr>
       <th>362</th>
-      <td>2026-08-22</td>
-      <td>0.030738</td>
-      <td>0.000045</td>
-      <td>0.000195</td>
-      <td>0.121145</td>
-      <td>-0.000021</td>
-      <td>NaN</td>
+      <td>2026-08-26</td>
+      <td>0.030068</td>
+      <td>0.000023</td>
+      <td>0.000172</td>
+      <td>0.119329</td>
+      <td>0.000160</td>
+      <td>1895.771369</td>
     </tr>
     <tr>
       <th>363</th>
-      <td>2026-08-23</td>
-      <td>0.033989</td>
-      <td>0.000049</td>
-      <td>0.000250</td>
-      <td>0.120597</td>
-      <td>-0.000110</td>
-      <td>NaN</td>
+      <td>2026-08-27</td>
+      <td>0.029916</td>
+      <td>0.000029</td>
+      <td>0.000146</td>
+      <td>0.117706</td>
+      <td>0.000044</td>
+      <td>1892.712891</td>
     </tr>
     <tr>
       <th>364</th>
-      <td>2026-08-24</td>
-      <td>0.030894</td>
-      <td>0.000050</td>
-      <td>0.000131</td>
-      <td>0.120291</td>
-      <td>0.000058</td>
-      <td>1859.697266</td>
+      <td>2026-08-28</td>
+      <td>0.036505</td>
+      <td>0.000025</td>
+      <td>0.000180</td>
+      <td>0.117117</td>
+      <td>-0.000030</td>
+      <td>1868.974918</td>
     </tr>
     <tr>
       <th>365</th>
-      <td>2026-08-25</td>
-      <td>0.032329</td>
-      <td>0.000039</td>
-      <td>0.000213</td>
-      <td>0.119633</td>
-      <td>0.000006</td>
-      <td>1887.234766</td>
+      <td>2026-08-29</td>
+      <td>0.037011</td>
+      <td>0.000018</td>
+      <td>0.000115</td>
+      <td>0.116052</td>
+      <td>0.000041</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>366</th>
+      <td>2026-08-30</td>
+      <td>0.034216</td>
+      <td>0.000019</td>
+      <td>0.000088</td>
+      <td>0.114673</td>
+      <td>-0.000062</td>
+      <td>1910.137044</td>
     </tr>
   </tbody>
 </table>
@@ -1341,7 +1347,7 @@ Jumlah kolom : 7
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-5b4536d8-192f-4ff8-810f-e42b2425ee34')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-2711d639-ecd8-401d-94fc-480e0504970b')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -1393,12 +1399,12 @@ Jumlah kolom : 7
 
     <script>
       const buttonEl =
-        document.querySelector('#df-5b4536d8-192f-4ff8-810f-e42b2425ee34 button.colab-df-convert');
+        document.querySelector('#df-2711d639-ecd8-401d-94fc-480e0504970b button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-5b4536d8-192f-4ff8-810f-e42b2425ee34');
+        const element = document.querySelector('#df-2711d639-ecd8-401d-94fc-480e0504970b');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1440,12 +1446,12 @@ Jumlah kolom : 7
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Polutan Jumlah Baris   Missing Value  Persentase
-CO      366            72             19.67%
-NO2     366            72             19.67%
-HCHO    366            32             8.74%
-O3      366            4              1.09%
-SO2     366            40             10.93%
-CH4     366            319            87.16%
+CO      367            88             23.98%
+NO2     367            74             20.16%
+HCHO    367            44             11.99%
+O3      367            4              1.09%
+SO2     367            53             14.44%
+CH4     367            282            76.84%
 </pre></div>
 </div>
 </div>
@@ -1502,7 +1508,7 @@ CH4     366            319            87.16%
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-d49947aa-4e39-49e5-9997-69c7f1a27586" class="colab-df-container">
+  <div id="df-14628837-6480-4273-9ec7-84db9a112405" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1538,86 +1544,86 @@ CH4     366            319            87.16%
     <tr>
       <th>0</th>
       <td>CO</td>
-      <td>0.022632</td>
-      <td>0.043725</td>
-      <td>0.029684</td>
-      <td>0.003117</td>
-      <td>0.027433</td>
-      <td>0.031583</td>
-      <td>0.004150</td>
-      <td>0.021208</td>
-      <td>0.037808</td>
-      <td>2</td>
+      <td>0.020487</td>
+      <td>0.043208</td>
+      <td>0.028658</td>
+      <td>0.002864</td>
+      <td>0.026678</td>
+      <td>0.030174</td>
+      <td>0.003496</td>
+      <td>0.021433</td>
+      <td>0.035419</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>1</th>
       <td>NO2</td>
-      <td>0.000009</td>
-      <td>0.000075</td>
-      <td>0.000037</td>
-      <td>0.000013</td>
-      <td>0.000027</td>
-      <td>0.000046</td>
+      <td>0.000004</td>
+      <td>0.000109</td>
+      <td>0.000025</td>
+      <td>0.000011</td>
       <td>0.000019</td>
-      <td>-0.000002</td>
-      <td>0.000074</td>
-      <td>1</td>
+      <td>0.000030</td>
+      <td>0.000011</td>
+      <td>0.000003</td>
+      <td>0.000046</td>
+      <td>8</td>
     </tr>
     <tr>
       <th>2</th>
       <td>HCHO</td>
-      <td>-0.000197</td>
-      <td>0.000424</td>
-      <td>0.000171</td>
-      <td>0.000065</td>
-      <td>0.000132</td>
-      <td>0.000206</td>
-      <td>0.000074</td>
-      <td>0.000022</td>
-      <td>0.000316</td>
-      <td>12</td>
+      <td>-0.000181</td>
+      <td>0.000622</td>
+      <td>0.000164</td>
+      <td>0.000084</td>
+      <td>0.000121</td>
+      <td>0.000197</td>
+      <td>0.000075</td>
+      <td>0.000008</td>
+      <td>0.000310</td>
+      <td>23</td>
     </tr>
     <tr>
       <th>3</th>
       <td>O3</td>
-      <td>0.110193</td>
-      <td>0.122715</td>
-      <td>0.115819</td>
-      <td>0.002392</td>
-      <td>0.113902</td>
-      <td>0.117361</td>
-      <td>0.003459</td>
-      <td>0.108714</td>
-      <td>0.122549</td>
-      <td>1</td>
+      <td>0.110552</td>
+      <td>0.122840</td>
+      <td>0.115805</td>
+      <td>0.002286</td>
+      <td>0.114112</td>
+      <td>0.117300</td>
+      <td>0.003188</td>
+      <td>0.109330</td>
+      <td>0.122082</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>4</th>
       <td>SO2</td>
-      <td>-0.000415</td>
-      <td>0.000637</td>
-      <td>0.000064</td>
-      <td>0.000129</td>
-      <td>0.000002</td>
-      <td>0.000119</td>
-      <td>0.000117</td>
-      <td>-0.000174</td>
-      <td>0.000294</td>
-      <td>23</td>
+      <td>-0.000862</td>
+      <td>0.000381</td>
+      <td>0.000037</td>
+      <td>0.000125</td>
+      <td>-0.000014</td>
+      <td>0.000097</td>
+      <td>0.000111</td>
+      <td>-0.000180</td>
+      <td>0.000264</td>
+      <td>25</td>
     </tr>
     <tr>
       <th>5</th>
       <td>CH4</td>
-      <td>1809.648600</td>
-      <td>1921.356934</td>
-      <td>1885.908595</td>
-      <td>23.334532</td>
-      <td>1869.924984</td>
-      <td>1900.781834</td>
-      <td>30.856850</td>
-      <td>1823.639708</td>
-      <td>1947.067110</td>
-      <td>1</td>
+      <td>1674.215576</td>
+      <td>1938.674194</td>
+      <td>1868.118059</td>
+      <td>40.573524</td>
+      <td>1846.357422</td>
+      <td>1896.616211</td>
+      <td>50.258789</td>
+      <td>1770.969238</td>
+      <td>1972.004395</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
@@ -1625,7 +1631,7 @@ CH4     366            319            87.16%
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-d49947aa-4e39-49e5-9997-69c7f1a27586')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-14628837-6480-4273-9ec7-84db9a112405')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -1677,12 +1683,12 @@ CH4     366            319            87.16%
 
     <script>
       const buttonEl =
-        document.querySelector('#df-d49947aa-4e39-49e5-9997-69c7f1a27586 button.colab-df-convert');
+        document.querySelector('#df-14628837-6480-4273-9ec7-84db9a112405 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-d49947aa-4e39-49e5-9997-69c7f1a27586');
+        const element = document.querySelector('#df-14628837-6480-4273-9ec7-84db9a112405');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1702,7 +1708,7 @@ CH4     366            319            87.16%
   </div>
 
 
-  <div id="id_96e8ced7-d9be-4756-bffd-e0b0cd2c8ea5">
+  <div id="id_53d8c607-25c5-4965-bbc9-4d0b7cdea2e3">
     <style>
       .colab-df-generate {
         background-color: #E8F0FE;
@@ -1746,7 +1752,7 @@ CH4     366            319            87.16%
     <script>
       (() => {
       const buttonEl =
-        document.querySelector('#id_96e8ced7-d9be-4756-bffd-e0b0cd2c8ea5 button.colab-df-generate');
+        document.querySelector('#id_53d8c607-25c5-4965-bbc9-4d0b7cdea2e3 button.colab-df-generate');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
@@ -1783,7 +1789,7 @@ CH4     366            319            87.16%
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1c4430c241c752d9ce515414db5b84064a3a3703efcd41c3e62392f13562cbea.png" src="_images/1c4430c241c752d9ce515414db5b84064a3a3703efcd41c3e62392f13562cbea.png" />
+<img alt="_images/370f5737fb7d7b4f7eb34ec838ddb31e199bba3a77469a44cac0d2fac0a15626.png" src="_images/370f5737fb7d7b4f7eb34ec838ddb31e199bba3a77469a44cac0d2fac0a15626.png" />
 </div>
 </div>
 </section>
@@ -1829,7 +1835,7 @@ CH4     366            319            87.16%
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c2ed51ff0d7dbfe4bfc9e5be890ce531c2c6f71408c2b63698b3dc3f4222c460.png" src="_images/c2ed51ff0d7dbfe4bfc9e5be890ce531c2c6f71408c2b63698b3dc3f4222c460.png" />
+<img alt="_images/d898f0f08f9840a2573274765b9fc7c3cc94ced05f4691f688cfabaa6ed79527.png" src="_images/d898f0f08f9840a2573274765b9fc7c3cc94ced05f4691f688cfabaa6ed79527.png" />
 </div>
 </div>
 </section>
@@ -1837,6 +1843,11 @@ CH4     366            319            87.16%
 <h2>6. Unduh Dataset<a class="headerlink" href="#unduh-dataset" title="Link to this heading">#</a></h2>
 <p>Dataset hasil crawling polutan udara di Kabupaten Bangkalan tersedia untuk diunduh dalam format CSV. Klik tombol di bawah untuk mengunduh berkas secara langsung.</p>
 <div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CSV disalin ke _static/
+</pre></div>
+</div>
+</div>
 </div>
 <div style="margin:20px 0;padding:20px;
 background:linear-gradient(135deg,#f0f4ff,#e8f0fe);
@@ -1876,8 +1887,7 @@ Format CSV &nbsp;|&nbsp; Polutan: CO, NO2, HCHO, O3, SO2, CH4
 <p>Seluruh kredensial koneksi (host, port, username, dan password) tidak dituliskan secara eksplisit di dalam kode, melainkan diambil melalui fitur Colab Secrets. Pendekatan ini diterapkan untuk mencegah kredensial tersebut ikut terekspos apabila notebook ini dibagikan atau diunggah ke repositori publik.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># membaca ulang CSV all_polutan_Bangkalan_timeseries.csv, lalu mengunggahnya ke basis data PostgreSQL (Aiven)</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">userdata</span>
 
@@ -1896,6 +1906,24 @@ Format CSV &nbsp;|&nbsp; Polutan: CO, NO2, HCHO, O3, SO2, CH4
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Berhasil! </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_baru</span><span class="p">)</span><span class="si">}</span><span class="s2"> baris terupload ke Aiven."</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">'SELECT * FROM "polutan_bangkalan" LIMIT 5'</span><span class="p">,</span> <span class="n">engine</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Berhasil! 367 baris terupload ke Aiven.
+         date        CO       NO2      HCHO        O3           SO2  \
+0  2025-08-29  0.026103  0.000026  0.000143  0.113214  8.791764e-05   
+1  2025-08-30  0.025363  0.000020  0.000077  0.115004  8.026050e-07   
+2  2025-08-31  0.025741  0.000013  0.000124  0.115688  6.201892e-06   
+3  2025-09-01  0.026722  0.000017  0.000082  0.115264  3.424412e-05   
+4  2025-09-02  0.024523  0.000012  0.000047  0.113861 -2.543385e-05   
+
+           CH4  
+0  1843.975260  
+1          NaN  
+2          NaN  
+3          NaN  
+4  1837.764526  
 </pre></div>
 </div>
 </div>
@@ -2178,6 +2206,15 @@ Format CSV &nbsp;|&nbsp; Polutan: CO, NO2, HCHO, O3, SO2, CH4
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">🌐 Selamat Datang di Web Catatan Saya</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="Crawling_Analisis_Data_Polutan_Udara_di_Kecamatan_Bangkalan.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Crawling &amp; Analisis Data Polutan Udara di Kecamatan Bangkalan</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
