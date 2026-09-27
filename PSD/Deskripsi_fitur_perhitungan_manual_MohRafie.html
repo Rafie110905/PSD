@@ -1,0 +1,744 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Deskripsi Fitur &amp; Perhitungan Manual &#8212; Crawling &amp; Analisis Data Polutan Udara Kabupaten Bangkalan</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Deskripsi_fitur_perhitungan_manual_MohRafie';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="2. Alur Kerja (Workflow) Clustering KNIME" href="K_Means_Clustering_Knime.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Crawling & Analisis Data Polutan Udara Kabupaten Bangkalan - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Crawling & Analisis Data Polutan Udara Kabupaten Bangkalan - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    🌐 Selamat Datang di Web Catatan Saya
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Crawling_Polutan_Bangkalan.html">Crawling &amp; Analisis Data Polutan Udara di Kabupaten Bangkalan</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Crawling_Analisis_Data_Polutan_Udara_di_Kecamatan_Bangkalan.html">Crawling &amp; Analisis Data Polutan Udara di Kecamatan Bangkalan</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="K_Means_Clustering_Code.html">K-Means Clustering Polutan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="K_Means_Clustering_Knime.html">2. Alur Kerja (Workflow) Clustering KNIME</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Deskripsi Fitur &amp; Perhitungan Manual</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Rafie110905/PSD" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Rafie110905/PSD/issues/new?title=Issue%20on%20page%20%2FDeskripsi_fitur_perhitungan_manual_MohRafie.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Deskripsi_fitur_perhitungan_manual_MohRafie.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Deskripsi Fitur & Perhitungan Manual</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitur-1-kurtosis-signal">Fitur 1: <code class="docutils literal notranslate"><span class="pre">kurtosis(signal)</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitur-2-lpcc-signal-n-coeff">Fitur 2: <code class="docutils literal notranslate"><span class="pre">lpcc(signal[,</span> <span class="pre">n_coeff])</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan">Ringkasan</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="deskripsi-fitur-perhitungan-manual">
+<h1>Deskripsi Fitur &amp; Perhitungan Manual<a class="headerlink" href="#deskripsi-fitur-perhitungan-manual" title="Link to this heading">#</a></h1>
+<p>Sesuai pembagian tugas kelas (lihat kolom <strong>Pembagian Fitur</strong>), bagian ini mencakup <strong>2 fitur</strong> milik <strong>Moh Rafie Nazar J</strong>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Fitur</p></th>
+<th class="head"><p>Nama Fungsi TSFEL</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Fitur 1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">kurtosis(signal)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Fitur 2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">lpcc(signal[,</span> <span class="pre">n_coeff])</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Sinyal contoh yang dipakai (ilustrasi):</strong>
+<code class="docutils literal notranslate"><span class="pre">signal</span> <span class="pre">=</span> <span class="pre">[2,</span> <span class="pre">4,</span> <span class="pre">3,</span> <span class="pre">6,</span> <span class="pre">5,</span> <span class="pre">7,</span> <span class="pre">4,</span> <span class="pre">8]</span></code>, <code class="docutils literal notranslate"><span class="pre">fs</span> <span class="pre">=</span> <span class="pre">1</span></code> (1 sampel/hari)</p>
+<blockquote>
+<div><p>Catatan: sinyal ilustrasi ini sama persis dengan yang dipakai pada perhitungan <code class="docutils literal notranslate"><span class="pre">calc_centroid</span></code> dan <code class="docutils literal notranslate"><span class="pre">calc_max</span></code> sebelumnya, agar konsisten satu kelas. Semua hasil manual di bawah <strong>sudah diverifikasi langsung</strong> memakai fungsi TSFEL asli (<code class="docutils literal notranslate"><span class="pre">tsfel.feature_extraction.features</span></code>) pada sinyal yang sama — dijalankan nyata di Python, bukan diperkirakan.</p>
+</div></blockquote>
+<hr class="docutils" />
+<section id="fitur-1-kurtosis-signal">
+<h2>Fitur 1: <code class="docutils literal notranslate"><span class="pre">kurtosis(signal)</span></code><a class="headerlink" href="#fitur-1-kurtosis-signal" title="Link to this heading">#</a></h2>
+<p><strong>Deskripsi:</strong>
+<code class="docutils literal notranslate"><span class="pre">kurtosis</span></code> mengukur <strong>keruncingan (peakedness) dan ketebalan ekor (tailedness)</strong> distribusi nilai sinyal dibanding distribusi normal. TSFEL memanggil langsung <code class="docutils literal notranslate"><span class="pre">scipy.stats.kurtosis(signal)</span></code>, yaitu <strong>excess kurtosis</strong> (kurtosis Fisher, sudah dikurangi 3) dengan estimator populasi (dibagi <span class="math notranslate nohighlight">\(n\)</span>, bukan <span class="math notranslate nohighlight">\(n-1\)</span>). Untuk data kualitas udara, fitur ini menunjukkan apakah konsentrasi polutan cenderung <strong>stabil di sekitar rata-rata</strong> (kurtosis rendah/negatif, ekor tipis) atau sering muncul <strong>nilai ekstrem/outlier</strong> (kurtosis tinggi, ekor tebal).</p>
+<p><strong>Rumus:</strong></p>
+<div class="math notranslate nohighlight">
+\[\text{kurtosis}(x) = \frac{m_4}{m_2^2} - 3, \qquad m_2 = \frac{1}{n}\sum_i (x_i-\bar{x})^2, \quad m_4 = \frac{1}{n}\sum_i (x_i-\bar{x})^4\]</div>
+<p>di mana <span class="math notranslate nohighlight">\(\bar{x}\)</span> adalah rata-rata sinyal, <span class="math notranslate nohighlight">\(m_2\)</span> adalah varians populasi (biased), dan <span class="math notranslate nohighlight">\(m_4\)</span> adalah momen keempat populasi.</p>
+<p><strong>Perhitungan manual:</strong></p>
+<p>Sinyal: <code class="docutils literal notranslate"><span class="pre">signal</span> <span class="pre">=</span> <span class="pre">[2,</span> <span class="pre">4,</span> <span class="pre">3,</span> <span class="pre">6,</span> <span class="pre">5,</span> <span class="pre">7,</span> <span class="pre">4,</span> <span class="pre">8]</span></code> → <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">8</span></code></p>
+<ol class="arabic">
+<li><p>Hitung rata-rata:</p>
+<div class="math notranslate nohighlight">
+\[\bar{x} = \frac{2+4+3+6+5+7+4+8}{8} = \frac{39}{8} = 4.875\]</div>
+</li>
+<li><p>Hitung deviasi <span class="math notranslate nohighlight">\((x_i - \bar{x})\)</span> dan pangkatnya:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>i</p></th>
+<th class="head"><p>0</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+<th class="head"><p>6</p></th>
+<th class="head"><p>7</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(x_i\)</span></p></td>
+<td><p>2</p></td>
+<td><p>4</p></td>
+<td><p>3</p></td>
+<td><p>6</p></td>
+<td><p>5</p></td>
+<td><p>7</p></td>
+<td><p>4</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(x_i-\bar{x}\)</span></p></td>
+<td><p>-2.875</p></td>
+<td><p>-0.875</p></td>
+<td><p>-1.875</p></td>
+<td><p>1.125</p></td>
+<td><p>0.125</p></td>
+<td><p>2.125</p></td>
+<td><p>-0.875</p></td>
+<td><p>3.125</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\((x_i-\bar{x})^2\)</span></p></td>
+<td><p>8.265625</p></td>
+<td><p>0.765625</p></td>
+<td><p>3.515625</p></td>
+<td><p>1.265625</p></td>
+<td><p>0.015625</p></td>
+<td><p>4.515625</p></td>
+<td><p>0.765625</p></td>
+<td><p>9.765625</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\((x_i-\bar{x})^4\)</span></p></td>
+<td><p>68.320557</p></td>
+<td><p>0.586182</p></td>
+<td><p>12.359619</p></td>
+<td><p>1.601807</p></td>
+<td><p>0.000244</p></td>
+<td><p>20.390869</p></td>
+<td><p>0.586182</p></td>
+<td><p>95.367432</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li><p>Jumlahkan lalu bagi <span class="math notranslate nohighlight">\(n=8\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[m_2 = \frac{28.875}{8} = 3.609375\]</div>
+<div class="math notranslate nohighlight">
+\[m_4 = \frac{199.212891}{8} = 24.901611\]</div>
+</li>
+<li><p>Masukkan ke rumus:</p>
+<div class="math notranslate nohighlight">
+\[\text{kurtosis} = \frac{24.901611}{3.609375^2} - 3 = \frac{24.901611}{13.027588} - 3 = 1.911452 - 3 = -1.088548\]</div>
+</li>
+</ol>
+<p><strong>Verifikasi dengan TSFEL:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tsfel.feature_extraction.features</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+<span class="n">signal</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="n">F</span><span class="o">.</span><span class="n">kurtosis</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>   <span class="c1"># -&gt; -1.0885478158205430</span>
+</pre></div>
+</div>
+<p>Hasil manual (<strong>-1.088548</strong>) <strong>cocok</strong> dengan hasil fungsi TSFEL asli (dijalankan langsung, output: <code class="docutils literal notranslate"><span class="pre">-1.0885478158205430</span></code>). ✅</p>
+<p>Nilai negatif ini berarti distribusi sinyal ilustrasi sedikit lebih <em>platykurtic</em> (lebih datar / ekor lebih tipis) dibanding distribusi normal.</p>
+<p><strong>Nilai aktual pada dataset:</strong></p>
+<blockquote>
+<div><p>⚠️ Sama seperti dua fitur sebelumnya, data time series harian asli untuk lokasi/orang yang menjadi tanggung jawab Moh Rafie tidak tersedia di percakapan ini — hanya sinyal ilustrasi di atas yang bisa dihitung manual. Untuk mengisi nilai aktual <code class="docutils literal notranslate"><span class="pre">kurtosis</span></code> hasil ekstraksi sungguhan (dari <code class="docutils literal notranslate"><span class="pre">ekstraksi_fitur_no2.csv</span></code>), silakan cek kolom <code class="docutils literal notranslate"><span class="pre">kurtosis</span></code> pada baris id yang sesuai, lalu isi di tabel ringkasan di bagian akhir dokumen ini. Kalau file CSV-nya diunggah ke percakapan ini, saya bisa ambilkan angkanya langsung.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="fitur-2-lpcc-signal-n-coeff">
+<h2>Fitur 2: <code class="docutils literal notranslate"><span class="pre">lpcc(signal[,</span> <span class="pre">n_coeff])</span></code><a class="headerlink" href="#fitur-2-lpcc-signal-n-coeff" title="Link to this heading">#</a></h2>
+<p><strong>Deskripsi:</strong>
+<code class="docutils literal notranslate"><span class="pre">lpcc</span></code> (<strong>Linear Prediction Cepstral Coefficients</strong>) adalah fitur domain spektral yang awalnya dipakai di pengolahan suara, namun berguna juga untuk deret waktu lain karena menangkap <strong>karakteristik “bentuk spektral”</strong> sinyal secara ringkas dalam beberapa koefisien. Prosesnya 2 tahap:</p>
+<ol class="arabic simple">
+<li><p>Hitung <strong>koefisien prediksi linier (LPC)</strong> dari sinyal — koefisien yang jika dipakai memprediksi <span class="math notranslate nohighlight">\(x_i\)</span> dari kombinasi linier nilai-nilai sebelumnya, akan meminimalkan error prediksi (metode <strong>Yule-Walker</strong>, via autokorelasi).</p></li>
+<li><p>Ubah koefisien LPC tersebut menjadi <strong>koefisien cepstral</strong> lewat spektrum daya → log → invers FFT.</p></li>
+</ol>
+<p>Karena TSFEL memakai default <code class="docutils literal notranslate"><span class="pre">n_coeff</span> <span class="pre">=</span> <span class="pre">12</span></code> (butuh panjang sinyal ≥ 12), sedangkan sinyal ilustrasi kelas hanya berisi <strong>8 titik</strong>, perhitungan manual di bawah memakai <code class="docutils literal notranslate"><span class="pre">n_coeff</span> <span class="pre">=</span> <span class="pre">4</span></code> (order = 3) agar bisa ditelusuri tangan sekaligus tetap valid dipanggil TSFEL pada sinyal 8 titik ini. Metodenya identik — hanya jumlah koefisien keluaran yang lebih sedikit.</p>
+<p><strong>Rumus / Alur:</strong></p>
+<div class="math notranslate nohighlight">
+\[r_k = \sum_{i=0}^{n-1-k} x_i\, x_{i+k}, \quad k = 0,1,\dots,\text{order}\]</div>
+<div class="math notranslate nohighlight">
+\[R\,\mathbf{a} = -\mathbf{r}_{1:}, \qquad R_{ij} = r_{|i-j|} \;\; (\text{matriks Toeplitz/otokorelasi})\]</div>
+<div class="math notranslate nohighlight">
+\[\text{lpc} = [\,1,\ a_1,\ a_2,\ a_3\,]\]</div>
+<div class="math notranslate nohighlight">
+\[P_k = \bigl|\text{FFT}(\text{lpc})_k\bigr|^2, \qquad \text{lpcc}_n = \Bigl|\ \text{IFFT}\bigl(\ln P\bigr)_n\ \Bigr|\]</div>
+<p><strong>Perhitungan manual:</strong></p>
+<p>Sinyal: <code class="docutils literal notranslate"><span class="pre">signal</span> <span class="pre">=</span> <span class="pre">[2,</span> <span class="pre">4,</span> <span class="pre">3,</span> <span class="pre">6,</span> <span class="pre">5,</span> <span class="pre">7,</span> <span class="pre">4,</span> <span class="pre">8]</span></code>, <code class="docutils literal notranslate"><span class="pre">n_coeff</span> <span class="pre">=</span> <span class="pre">4</span></code> → <code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">=</span> <span class="pre">3</span></code></p>
+<p><strong>Langkah 1 — Autokorelasi (lag 0 s/d 3):</strong></p>
+<div class="math notranslate nohighlight">
+\[r_0=\sum x_i^2 = 219\]</div>
+<div class="math notranslate nohighlight">
+\[r_1 = 2{\cdot}4+4{\cdot}3+3{\cdot}6+6{\cdot}5+5{\cdot}7+7{\cdot}4+4{\cdot}8 = 8+12+18+30+35+28+32 = 163\]</div>
+<div class="math notranslate nohighlight">
+\[r_2 = 2{\cdot}3+4{\cdot}6+3{\cdot}5+6{\cdot}7+5{\cdot}4+7{\cdot}8 = 6+24+15+42+20+56 = 163\]</div>
+<div class="math notranslate nohighlight">
+\[r_3 = 2{\cdot}6+4{\cdot}5+3{\cdot}7+6{\cdot}4+5{\cdot}8 = 12+20+21+24+40 = 117\]</div>
+<p>Jadi <span class="math notranslate nohighlight">\(\mathbf{r} = [219,\ 163,\ 163,\ 117]\)</span>.</p>
+<p><strong>Langkah 2 — Susun matriks Toeplitz (dari <span class="math notranslate nohighlight">\(r_0,r_1,r_2\)</span>) dan selesaikan sistem persamaan Yule-Walker</strong> <span class="math notranslate nohighlight">\(R\mathbf{a}=-[r_1,r_2,r_3]\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}219&amp;163&amp;163\\163&amp;219&amp;163\\163&amp;163&amp;219\end{bmatrix}\begin{bmatrix}a_1\\a_2\\a_3\end{bmatrix}=\begin{bmatrix}-163\\-163\\-117\end{bmatrix}\end{split}\]</div>
+<p>Kurangkan baris 1 dengan baris 2 → <span class="math notranslate nohighlight">\(56a_1-56a_2=0 \Rightarrow a_1=a_2\)</span> (karena <span class="math notranslate nohighlight">\(r_1=r_2\)</span>, sistemnya simetris).</p>
+<p>Substitusi <span class="math notranslate nohighlight">\(a_1=a_2=a\)</span> ke baris 1 dan baris 3:</p>
+<div class="math notranslate nohighlight">
+\[382a+163a_3=-163 \qquad(\text{I})\]</div>
+<div class="math notranslate nohighlight">
+\[326a+219a_3=-117 \qquad(\text{III})\]</div>
+<p>Eliminasi <span class="math notranslate nohighlight">\(a_3\)</span> (kalikan (I) dengan 219, (III) dengan 163, lalu kurangkan):</p>
+<div class="math notranslate nohighlight">
+\[30520\,a = -16626 \;\Rightarrow\; a = a_1=a_2 = -0.544758\]</div>
+<p>Masukkan ke (I): <span class="math notranslate nohighlight">\(163a_3 = -163-382(-0.544758)=45.097 \Rightarrow a_3 = 0.276671\)</span></p>
+<p><strong>Koefisien LPC:</strong> <span class="math notranslate nohighlight">\(\text{lpc} = [1,\ -0.544758,\ -0.544758,\ 0.276671]\)</span></p>
+<p><strong>Langkah 3 — Spektrum daya (FFT 4 titik dari vektor LPC):</strong></p>
+<div class="math notranslate nohighlight">
+\[X_0 = 1-0.544758-0.544758+0.276671 = 0.187156\]</div>
+<div class="math notranslate nohighlight">
+\[X_1 = (X_{0,\text{re}}-X_2)+i(a_3-a_1) = (1-(-0.544758)) + i(0.276671-(-0.544758)) = 1.544758+0.821429i\]</div>
+<div class="math notranslate nohighlight">
+\[X_2 = 1-(-0.544758)+(-0.544758)-0.276671 = 0.723329\]</div>
+<div class="math notranslate nohighlight">
+\[X_3 = \overline{X_1} = 1.544758-0.821429i\]</div>
+<div class="math notranslate nohighlight">
+\[P = |X|^2 = [\,0.035027,\ 3.061021,\ 0.523205,\ 3.061021\,]\]</div>
+<p><strong>Langkah 4 — Log spektrum, lalu IFFT (invers FFT), lalu nilai mutlak:</strong></p>
+<div class="math notranslate nohighlight">
+\[\ln P = [\,-3.351626,\ 1.118748,\ -0.647782,\ 1.118748\,]\]</div>
+<div class="math notranslate nohighlight">
+\[y_0=\tfrac14\sum\ln P = -0.440478,\quad y_1=\tfrac14(\ln P_0-\ln P_2)= -0.675961\]</div>
+<div class="math notranslate nohighlight">
+\[y_2=\tfrac14(\ln P_0-\ln P_1+\ln P_2-\ln P_3) = -1.559226,\quad y_3=y_1=-0.675961\]</div>
+<div class="math notranslate nohighlight">
+\[\text{lpcc} = |y| = [\,0.440478,\ 0.675961,\ 1.559226,\ 0.675961\,]\]</div>
+<p><strong>Verifikasi dengan TSFEL:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tsfel.feature_extraction.features</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+<span class="n">signal</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="n">F</span><span class="o">.</span><span class="n">lpcc</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">n_coeff</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># -&gt; (0.44047785284782226, 0.6759609102699858,</span>
+<span class="c1">#     1.559226289370152, 0.6759609102699858)</span>
+</pre></div>
+</div>
+<p>Hasil manual (<strong>0.440478, 0.675961, 1.559226, 0.675961</strong>) <strong>cocok persis</strong> dengan hasil fungsi TSFEL asli. ✅</p>
+<p><strong>Nilai aktual pada dataset:</strong></p>
+<blockquote>
+<div><p>⚠️ Sama seperti fitur 1, nilai aktual <code class="docutils literal notranslate"><span class="pre">Lpcc_1</span></code>, <code class="docutils literal notranslate"><span class="pre">Lpcc_2</span></code>, dst. hasil ekstraksi TSFEL sungguhan untuk lokasi/orang milik Moh Rafie ada di file <code class="docutils literal notranslate"><span class="pre">ekstraksi_fitur_no2.csv</span></code> (dengan <code class="docutils literal notranslate"><span class="pre">n_coeff</span></code> sesuai yang dipakai pipeline aslinya, umumnya default 12 → menghasilkan kolom <code class="docutils literal notranslate"><span class="pre">Lpcc_1</span></code> s/d <code class="docutils literal notranslate"><span class="pre">Lpcc_12</span></code>). Silakan isi angkanya di tabel ringkasan bila filenya sudah tersedia — perhitungan manual di atas hanya membuktikan metodenya (autokorelasi → Yule-Walker → LPC → cepstral) sudah diterapkan dengan benar, bukan untuk mereproduksi angka asli tersebut karena data time series mentahnya tidak kita miliki.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="ringkasan">
+<h2>Ringkasan<a class="headerlink" href="#ringkasan" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Fitur</p></th>
+<th class="head"><p>Rumus Singkat</p></th>
+<th class="head"><p>Hasil (sinyal ilustrasi)</p></th>
+<th class="head"><p>Nilai aktual di dataset</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">kurtosis(signal)</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(m_4/m_2^2 - 3\)</span></p></td>
+<td><p>-1.088548</p></td>
+<td><p><em>0.1075986222265736</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">lpcc(signal,</span> <span class="pre">n_coeff=4)</span></code></p></td>
+<td><p>IFFT(ln|FFT(lpc)|²)</p></td>
+<td><p>0.440478, 0.675961, 1.559226, 0.675961</p></td>
+<td><p><em>0.7109413464283354</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="K_Means_Clustering_Knime.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">2. Alur Kerja (Workflow) Clustering KNIME</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitur-1-kurtosis-signal">Fitur 1: <code class="docutils literal notranslate"><span class="pre">kurtosis(signal)</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitur-2-lpcc-signal-n-coeff">Fitur 2: <code class="docutils literal notranslate"><span class="pre">lpcc(signal[,</span> <span class="pre">n_coeff])</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan">Ringkasan</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Moh Rafie Nazar J (240411100003)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
