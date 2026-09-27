@@ -6,4 +6,6 @@ root: intro
 chapters:
 - file: Crawling_Polutan_Bangkalan
 - file: Crawling_Analisis_Data_Polutan_Udara_di_Kecamatan_Bangkalan
-- file: analisis_clustering
+- file: K_Means_Clustering_Code
+- file: K_Means_Clustering_Knime
+- file: Deskripsi_fitur_perhitungan_manual_MohRafie
