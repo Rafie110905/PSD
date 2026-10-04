@@ -1,0 +1,1157 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>K-Means Clustering Data Polutan Udara &#8212; Crawling &amp; Analisis Data Polutan Udara Kabupaten Bangkalan</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=d2032c04" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/bootstrap.css?v=b4a3e8ba" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/theme.css?v=a243ae73" />
+    <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.5.2/css/all.min.css?v=f4fbef65" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'kmeans_clustering_polutan_udara';</script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/copybutton_funcs.js?v=776a791e"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/language_data.js?v=d4673a71"></script>
+    <script src="_static/searchtools.js?v=63a53a7d"></script>
+    <script src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="_static/scripts/bootstrap.js?v=7583a70d"></script>
+    <script src="_static/scripts/pydata-sphinx-theme.js?v=4bc35cb3"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?v=4e4fcec4"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Crawling & Analisis Data Polutan Udara Kabupaten Bangkalan - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Crawling & Analisis Data Polutan Udara Kabupaten Bangkalan - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    🌐 Selamat Datang di Web Catatan Saya
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Crawling_Polutan_Bangkalan.html">Crawling &amp; Analisis Data Polutan Udara di Kabupaten Bangkalan</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Crawling_Analisis_Data_Polutan_Udara_di_Kecamatan_Bangkalan.html">Crawling &amp; Analisis Data Polutan Udara di Kecamatan Bangkalan</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="K_Means_Clustering_Code.html">K-Means Clustering Polutan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="K_Means_Clustering_Knime.html">2. Alur Kerja (Workflow) Clustering KNIME</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Deskripsi_fitur_perhitungan_manual_MohRafie.html">Deskripsi Fitur &amp; Perhitungan Manual</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Rafie110905/PSD" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Rafie110905/PSD/issues/new?title=Issue%20on%20page%20%2Fkmeans_clustering_polutan_udara.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/kmeans_clustering_polutan_udara.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>K-Means Clustering Data Polutan Udara</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">K-Means Clustering Data Polutan Udara</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daftar-isi">Daftar isi</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python">1. Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#library-dan-koneksi-database">1.1 Library dan Koneksi Database</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-data-dua-skenario-interpolasi">1.2 Memuat Data Dua Skenario Interpolasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemisahan-kolom-identitas-dan-kolom-fitur">1.3 Pemisahan Kolom Identitas dan Kolom Fitur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-evaluasi-k-means-silhouette-dan-elbow">1.4 Fungsi Evaluasi K-Means, Silhouette, dan Elbow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduksi-dimensi-203-74-dan-37-fitur">1.5 Reduksi Dimensi 203, 74, dan 37 Fitur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksperimen-tanpa-reduksi-dan-dengan-reduksi-dimensi">1.6 Eksperimen Tanpa Reduksi dan Dengan Reduksi Dimensi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penentuan-k-terbaik">1.7 Penentuan K Terbaik</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grafik-silhouette-dan-elbow">1.7.1 Grafik Silhouette dan Elbow</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-k-terbaik">1.8 Perbandingan K Terbaik</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-anggota-cluster">1.9 Distribusi Anggota Cluster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-klustering-untuk-seluruh-delapan-kombinasi">1.10 Hasil Klustering untuk Seluruh Delapan Kombinasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-koordinat-tiap-daerah">1.11 Mengambil Koordinat Tiap Daerah</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-hasil-klustering-pada-peta-satelit-seluruh-delapan-kombinasi">1.12 Visualisasi Hasil Klustering pada Peta Satelit, Seluruh Delapan Kombinasi</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#knime">2. KNIME</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alur-pengolahan-data">2.1 Alur Pengolahan Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-linear-2-k-means-k-2">2.2 Workflow Linear (2 k-Means, K = 2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-polynomial-3-k-means-k-2-dan-k-3">2.3 Workflow Polynomial (3 k-Means, K = 2 dan K = 3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konfigurasi-node-python-script-reduksi-dimensi">2.4 Konfigurasi Node Python Script (Reduksi Dimensi)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-implementasi">2.5 Hasil Implementasi</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="k-means-clustering-data-polutan-udara">
+<h1>K-Means Clustering Data Polutan Udara<a class="headerlink" href="#k-means-clustering-data-polutan-udara" title="Link to this heading">#</a></h1>
+<section id="daftar-isi">
+<h2>Daftar isi<a class="headerlink" href="#daftar-isi" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Python</p></li>
+<li><p>KNIME</p></li>
+</ol>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="python">
+<h1>1. Python<a class="headerlink" href="#python" title="Link to this heading">#</a></h1>
+<p>Alur pengolahan data pada bagian Python:</p>
+<ol class="arabic simple">
+<li><p><strong>Ambil data.</strong> Dua tabel fitur TSFEL (skenario interpolasi linear dan polinomial) dibaca dari database MySQL.</p></li>
+<li><p><strong>Pisahkan fitur.</strong> Kolom <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">nama</span></code>, dan <code class="docutils literal notranslate"><span class="pre">daerah</span></code> dipisahkan dari 204 kolom fitur numerik.</p></li>
+<li><p><strong>Standardisasi.</strong> Fitur distandardisasi dengan <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> (Z-Score) agar tiap fitur memiliki skala yang sebanding.</p></li>
+<li><p><strong>Reduksi dimensi.</strong> Dibuat empat kondisi: 204 fitur asli, lalu 203, 74, dan 37 fitur memakai <code class="docutils literal notranslate"><span class="pre">FeatureAgglomeration</span></code> (metode Ward).</p></li>
+<li><p><strong>K-Means.</strong> Untuk tiap kondisi, K-Means diuji pada K = 2 sampai 10, dengan Silhouette Score dan inertia (Elbow) sebagai pembanding.</p></li>
+<li><p><strong>Hasil.</strong> K final mengikuti Silhouette Score, lalu anggota tiap cluster ditampilkan dalam tabel dan dipetakan berdasarkan koordinat daerah.</p></li>
+</ol>
+<p>Seluruh proses dijalankan untuk dua skenario dan empat kondisi dimensi, sehingga menghasilkan <strong>delapan kombinasi</strong> hasil.</p>
+<section id="library-dan-koneksi-database">
+<h2>1.1 Library dan Koneksi Database<a class="headerlink" href="#library-dan-koneksi-database" title="Link to this heading">#</a></h2>
+<p>Bagian ini menyiapkan seluruh pustaka dan membuka koneksi ke database MySQL tempat dua tabel fitur (skenario linear dan polinomial) disimpan. Koneksi dipakai ulang di seluruh sel berikutnya, jadi cukup dijalankan sekali di awal.</p>
+<blockquote>
+<div><p><strong>Password database tidak ditulis di notebook.</strong> Simpan sebagai Colab Secret bernama <code class="docutils literal notranslate"><span class="pre">DB_PASS</span></code> (atau variabel lingkungan <code class="docutils literal notranslate"><span class="pre">DB_PASS</span></code>). Bila tidak ada, notebook meminta input saat dijalankan. Bila database tidak bisa dijangkau, notebook memakai berkas CSV <code class="docutils literal notranslate"><span class="pre">ekstraksi_fitur_linear.csv</span></code> dan <code class="docutils literal notranslate"><span class="pre">ekstraksi_fitur_polynomial.csv</span></code> di folder kerja (ekspor tabelnya).</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span>
+<span class="k">for</span> <span class="n">mod</span><span class="p">,</span> <span class="n">pkg</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">"pymysql"</span><span class="p">,</span> <span class="s2">"pymysql"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"sqlalchemy"</span><span class="p">,</span> <span class="s2">"sqlalchemy"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"geopy"</span><span class="p">,</span> <span class="s2">"geopy"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"folium"</span><span class="p">,</span> <span class="s2">"folium"</span><span class="p">)]:</span>
+    <span class="k">try</span><span class="p">:</span> <span class="nb">__import__</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">([</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="s2">"-m"</span><span class="p">,</span> <span class="s2">"pip"</span><span class="p">,</span> <span class="s2">"install"</span><span class="p">,</span> <span class="s2">"-q"</span><span class="p">,</span> <span class="n">pkg</span><span class="p">])</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">quote_plus</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">text</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">silhouette_score</span>
+
+<span class="n">DB_HOST</span> <span class="o">=</span> <span class="s2">"basisdata2-c.my.id"</span>
+<span class="n">DB_PORT</span> <span class="o">=</span> <span class="mi">3306</span>
+<span class="n">DB_NAME</span> <span class="o">=</span> <span class="s2">"basisda1_PSD-A-Interpolasi"</span>
+<span class="n">DB_USER</span> <span class="o">=</span> <span class="s2">"basisda1_PSD-User"</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ambil_password</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">userdata</span>
+        <span class="k">return</span> <span class="n">userdata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"DB_PASS"</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="n">pw</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"DB_PASS"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">pw</span><span class="p">:</span> <span class="k">return</span> <span class="n">pw</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">getpass</span><span class="w"> </span><span class="kn">import</span> <span class="n">getpass</span>
+    <span class="k">return</span> <span class="n">getpass</span><span class="p">(</span><span class="s2">"Password database (kosongkan untuk memakai CSV): "</span><span class="p">)</span>
+
+<span class="n">BASE_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">pw</span> <span class="o">=</span> <span class="n">ambil_password</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">pw</span><span class="p">:</span>
+        <span class="c1"># Password mengandung karakter "#", sehingga perlu di-encode dengan quote_plus</span>
+        <span class="c1"># sebelum disisipkan ke URL koneksi.</span>
+        <span class="n">db_url</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s2">"mysql+pymysql://</span><span class="si">{</span><span class="n">quote_plus</span><span class="p">(</span><span class="n">DB_USER</span><span class="p">)</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">quote_plus</span><span class="p">(</span><span class="n">pw</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+                  <span class="sa">f</span><span class="s2">"@</span><span class="si">{</span><span class="n">DB_HOST</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">DB_PORT</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">DB_NAME</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">db_url</span><span class="p">,</span> <span class="n">connect_args</span><span class="o">=</span><span class="p">{</span><span class="s2">"connect_timeout"</span><span class="p">:</span> <span class="mi">15</span><span class="p">})</span>
+        <span class="k">with</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+            <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="s2">"SELECT 1"</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Koneksi database berhasil."</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Koneksi database gagal -&gt; memakai berkas CSV bila ada.</span><span class="se">\n</span><span class="s2">  "</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)[:</span><span class="mi">150</span><span class="p">])</span>
+
+<span class="c1"># K-Means diuji untuk k = 2 sampai 10.</span>
+<span class="n">K_RANGE</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">RANDOM_STATE</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">N_INIT</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">MAX_ITER</span> <span class="o">=</span> <span class="mi">300</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Penjelasan kode:</strong></p>
+<ol class="arabic simple">
+<li><p>Koneksi dibuat dengan SQLAlchemy dan driver <code class="docutils literal notranslate"><span class="pre">pymysql</span></code>, karena database bertipe MySQL.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">quote_plus()</span></code> dipakai pada password supaya karakter <code class="docutils literal notranslate"><span class="pre">#</span></code> di dalamnya tidak mengacaukan struktur URL koneksi.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">K_RANGE</span></code> menetapkan rentang jumlah cluster yang diuji di sepanjang notebook, yaitu 2 sampai 10.</p></li>
+</ol>
+</section>
+<section id="memuat-data-dua-skenario-interpolasi">
+<h2>1.2 Memuat Data Dua Skenario Interpolasi<a class="headerlink" href="#memuat-data-dua-skenario-interpolasi" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">TABEL</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"linear"</span><span class="p">:</span> <span class="s2">"ekstraksi_fitur_linear"</span><span class="p">,</span>
+    <span class="s2">"polynomial"</span><span class="p">:</span> <span class="s2">"ekstraksi_fitur_polynomial"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">muat_tabel</span><span class="p">(</span><span class="n">nama_tabel</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">engine</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"SELECT * FROM `</span><span class="si">{</span><span class="n">nama_tabel</span><span class="si">}</span><span class="s2">` ORDER BY id;"</span><span class="p">),</span> <span class="n">conn</span><span class="p">)</span>
+    <span class="n">csv</span> <span class="o">=</span> <span class="n">BASE_DIR</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">nama_tabel</span><span class="si">}</span><span class="s2">.csv"</span>
+    <span class="k">if</span> <span class="n">csv</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">csv</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"id"</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tidak bisa membaca '</span><span class="si">{</span><span class="n">nama_tabel</span><span class="si">}</span><span class="s2">': database tidak terhubung dan </span><span class="si">{</span><span class="n">csv</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> tidak ada di </span><span class="si">{</span><span class="n">BASE_DIR</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
+
+<span class="n">data_mentah</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">skenario</span><span class="p">,</span> <span class="n">nama_tabel</span> <span class="ow">in</span> <span class="n">TABEL</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">muat_tabel</span><span class="p">(</span><span class="n">nama_tabel</span><span class="p">)</span>
+    <span class="n">data_mentah</span><span class="p">[</span><span class="n">skenario</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Skenario </span><span class="si">{</span><span class="n">skenario</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> baris, </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> kolom"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Nilai kosong: </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Penjelasan kode:</strong> kedua tabel dimuat ke dalam satu dictionary <code class="docutils literal notranslate"><span class="pre">data_mentah</span></code> dengan kunci nama skenarionya, supaya proses selanjutnya bisa diulang dengan cara yang sama untuk kedua skenario tanpa menulis kode dua kali.</p>
+</section>
+<section id="pemisahan-kolom-identitas-dan-kolom-fitur">
+<h2>1.3 Pemisahan Kolom Identitas dan Kolom Fitur<a class="headerlink" href="#pemisahan-kolom-identitas-dan-kolom-fitur" title="Link to this heading">#</a></h2>
+<p>Tiap tabel punya tiga kolom identitas, yaitu <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">nama</span></code>, dan <code class="docutils literal notranslate"><span class="pre">daerah</span></code>, yang bukan bagian dari fitur polutan dan tidak diikutsertakan dalam perhitungan jarak antar data saat klustering. Sisanya (204 kolom) adalah fitur numerik hasil ekstraksi TSFEL untuk tiga polutan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">KOLOM_IDENTITAS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"id"</span><span class="p">,</span> <span class="s2">"nama"</span><span class="p">,</span> <span class="s2">"daerah"</span><span class="p">]</span>
+<span class="n">info_skenario</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">skenario</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">data_mentah</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">kolom_fitur</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">KOLOM_IDENTITAS</span><span class="p">]</span>
+    <span class="n">X_mentah</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">kolom_fitur</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">"coerce"</span><span class="p">)</span>
+    <span class="n">info_skenario</span><span class="p">[</span><span class="n">skenario</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"df"</span><span class="p">:</span> <span class="n">df</span><span class="p">,</span> <span class="s2">"kolom_fitur"</span><span class="p">:</span> <span class="n">kolom_fitur</span><span class="p">,</span> <span class="s2">"X_mentah"</span><span class="p">:</span> <span class="n">X_mentah</span><span class="p">}</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Skenario </span><span class="si">{</span><span class="n">skenario</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">kolom_fitur</span><span class="p">)</span><span class="si">}</span><span class="s2"> kolom fitur, "</span>
+          <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">X_mentah</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2"> nilai kosong terdeteksi"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Penjelasan kode:</strong> <code class="docutils literal notranslate"><span class="pre">pd.to_numeric(errors=&quot;coerce&quot;)</span></code> memaksa setiap kolom fitur menjadi angka dan mengubah nilai yang tidak terbaca menjadi kosong (<code class="docutils literal notranslate"><span class="pre">NaN</span></code>), supaya ketahuan lebih dulu kalau ada kolom bermasalah sebelum masuk ke tahap standardisasi.</p>
+</section>
+<section id="fungsi-evaluasi-k-means-silhouette-dan-elbow">
+<h2>1.4 Fungsi Evaluasi K-Means, Silhouette, dan Elbow<a class="headerlink" href="#fungsi-evaluasi-k-means-silhouette-dan-elbow" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">evaluasi_kmeans</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">k_range</span><span class="o">=</span><span class="n">K_RANGE</span><span class="p">):</span>
+    <span class="n">hasil</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">k_range</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">RANDOM_STATE</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="n">N_INIT</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="n">MAX_ITER</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">hasil</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"k"</span><span class="p">:</span> <span class="n">k</span><span class="p">,</span> <span class="s2">"silhouette"</span><span class="p">:</span> <span class="n">silhouette_score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">label</span><span class="p">),</span> <span class="s2">"inertia"</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">inertia_</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">hasil</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">k_terbaik_silhouette</span><span class="p">(</span><span class="n">tabel_k</span><span class="p">):</span>
+    <span class="n">baris</span> <span class="o">=</span> <span class="n">tabel_k</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">tabel_k</span><span class="p">[</span><span class="s2">"silhouette"</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">baris</span><span class="p">[</span><span class="s2">"k"</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">baris</span><span class="p">[</span><span class="s2">"silhouette"</span><span class="p">])</span>
+
+<span class="c1"># Dari grafik Elbow pada data ini, titik elbow dibaca (secara visual) pada K = 4.</span>
+<span class="c1"># Nilai inertia tetap dihitung dan grafik tetap ditampilkan agar keputusan dapat diperiksa.</span>
+<span class="c1"># Ubah K_ELBOW bila data berubah dan titik siku pada grafik bergeser.</span>
+<span class="n">K_ELBOW</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">k_terbaik_elbow</span><span class="p">(</span><span class="n">tabel_k</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">K_ELBOW</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Penjelasan kode:</strong> <code class="docutils literal notranslate"><span class="pre">evaluasi_kmeans()</span></code> mencoba setiap k dari 2 sampai 10, menjalankan K-Means untuk tiap k, lalu menghitung silhouette score dan inertia-nya. Semakin tinggi silhouette, semakin jelas pemisahan antar cluster. <code class="docutils literal notranslate"><span class="pre">k_terbaik_silhouette()</span></code> mengambil baris dengan silhouette tertinggi. Titik elbow tidak dihitung otomatis, melainkan dibaca dari grafik dan ditetapkan lewat <code class="docutils literal notranslate"><span class="pre">K_ELBOW</span></code>.</p>
+</section>
+<section id="reduksi-dimensi-203-74-dan-37-fitur">
+<h2>1.5 Reduksi Dimensi 203, 74, dan 37 Fitur<a class="headerlink" href="#reduksi-dimensi-203-74-dan-37-fitur" title="Link to this heading">#</a></h2>
+<p>Tahap analisis menggunakan empat kondisi: tanpa reduksi (204 fitur asli), lalu reduksi ke 203, 74, dan 37 fitur.</p>
+<p>PCA, cara reduksi dimensi yang paling umum, punya batas matematis: jumlah komponen tidak boleh melebihi <code class="docutils literal notranslate"><span class="pre">min(jumlah_sampel,</span> <span class="pre">jumlah_fitur)</span></code>. Karena jumlah daerah di database masih di bawah 203, PCA gagal untuk target 203 maupun 74. Karena itu dipakai <strong><code class="docutils literal notranslate"><span class="pre">FeatureAgglomeration</span></code></strong> sebagai gantinya untuk ketiga tahap reduksi.</p>
+<p><strong>Konsep <code class="docutils literal notranslate"><span class="pre">FeatureAgglomeration</span></code> dibanding PCA</strong></p>
+<p>PCA mencari kombinasi dari seluruh kolom yang menangkap variasi antar baris, sehingga jumlah komponennya dibatasi jumlah baris. <code class="docutils literal notranslate"><span class="pre">FeatureAgglomeration</span></code> justru mengelompokkan <strong>kolom (fitur)</strong>, bukan baris, dengan cara seperti hierarchical clustering:</p>
+<ol class="arabic simple">
+<li><p>Dihitung seberapa mirip tiap pasang kolom (jarak Euclidean antar kolom; tiap kolom dianggap satu titik di ruang berdimensi jumlah baris).</p></li>
+<li><p>Dimulai dari 204 kolom terpisah, dua kolom paling mirip digabung menjadi satu kelompok.</p></li>
+<li><p>Langkah ini diulang, menggabung dua kelompok paling mirip, sampai jumlah kelompok sesuai target (mis. 37).</p></li>
+<li><p>Tiap kelompok diwakili satu nilai: rata-rata dari semua kolom anggotanya.</p></li>
+</ol>
+<p>Karena yang dikelompokkan adalah kolom, jumlah kelompok yang diminta tidak dibatasi jumlah baris data, sehingga target 203, 74, dan 37 selalu bisa dicapai persis.</p>
+<p>Konsekuensinya, kolom hasil adalah gabungan beberapa fitur asli (tidak bisa lagi disebut satu per satu), dan tidak ada ukuran “persentase variasi yang terjaga” sejelas <code class="docutils literal notranslate"><span class="pre">explained_variance_ratio_</span></code> pada PCA.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureAgglomeration</span>
+
+<span class="n">TAHAP_REDUKSI</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">203</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">37</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">reduksi_dimensi</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">n_target</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n_target</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">X_scaled</span><span class="p">,</span> <span class="n">X_scaled</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="kc">None</span>
+    <span class="n">reducer</span> <span class="o">=</span> <span class="n">FeatureAgglomeration</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">n_target</span><span class="p">,</span> <span class="n">linkage</span><span class="o">=</span><span class="s2">"ward"</span><span class="p">)</span>
+    <span class="n">X_reduksi</span> <span class="o">=</span> <span class="n">reducer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X_reduksi</span><span class="p">,</span> <span class="n">X_reduksi</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reducer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Penjelasan kode:</strong> <code class="docutils literal notranslate"><span class="pre">linkage=&quot;ward&quot;</span></code> menentukan aturan menilai “seberapa mirip dua kelompok kolom” setiap kali digabung. Metode Ward dipilih karena cenderung menghasilkan kelompok berukuran seimbang. <code class="docutils literal notranslate"><span class="pre">n_clusters=n_target</span></code> memastikan jumlah kolom akhir tepat sesuai target (203, 74, atau 37). Kondisi tanpa reduksi memakai 204 fitur asli dan tidak melewati <code class="docutils literal notranslate"><span class="pre">FeatureAgglomeration</span></code>.</p>
+</section>
+<section id="eksperimen-tanpa-reduksi-dan-dengan-reduksi-dimensi">
+<h2>1.6 Eksperimen Tanpa Reduksi dan Dengan Reduksi Dimensi<a class="headerlink" href="#eksperimen-tanpa-reduksi-dan-dengan-reduksi-dimensi" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hasil_eksperimen</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">ringkasan_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">skenario</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">info_skenario</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="s2">"df"</span><span class="p">]</span>
+    <span class="n">X_mentah</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="s2">"X_mentah"</span><span class="p">]</span>
+
+    <span class="n">baris_valid</span> <span class="o">=</span> <span class="n">X_mentah</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">df_valid</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">baris_valid</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">X_valid</span> <span class="o">=</span> <span class="n">X_mentah</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">baris_valid</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+    <span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_valid</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">dimensi_diminta</span> <span class="ow">in</span> <span class="n">TAHAP_REDUKSI</span><span class="p">:</span>
+        <span class="n">dimensi</span> <span class="o">=</span> <span class="n">X_scaled</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">dimensi_diminta</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dimensi_diminta</span>
+        <span class="n">X_tahap</span><span class="p">,</span> <span class="n">dimensi_efektif</span><span class="p">,</span> <span class="n">reducer</span> <span class="o">=</span> <span class="n">reduksi_dimensi</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">dimensi_diminta</span><span class="p">)</span>
+
+        <span class="n">tabel_k</span> <span class="o">=</span> <span class="n">evaluasi_kmeans</span><span class="p">(</span><span class="n">X_tahap</span><span class="p">)</span>
+        <span class="n">k_silhouette</span><span class="p">,</span> <span class="n">silhouette_terbaik</span> <span class="o">=</span> <span class="n">k_terbaik_silhouette</span><span class="p">(</span><span class="n">tabel_k</span><span class="p">)</span>
+        <span class="n">k_elbow</span> <span class="o">=</span> <span class="n">k_terbaik_elbow</span><span class="p">(</span><span class="n">tabel_k</span><span class="p">)</span>
+
+        <span class="c1"># K final mengikuti Silhouette Score.</span>
+        <span class="n">model_final</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k_silhouette</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">RANDOM_STATE</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="n">N_INIT</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="n">MAX_ITER</span><span class="p">)</span>
+        <span class="n">label_cluster</span> <span class="o">=</span> <span class="n">model_final</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X_tahap</span><span class="p">)</span>
+
+        <span class="n">df_hasil</span> <span class="o">=</span> <span class="n">df_valid</span><span class="p">[[</span><span class="s2">"nama"</span><span class="p">,</span> <span class="s2">"daerah"</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">df_hasil</span><span class="p">[</span><span class="s2">"cluster"</span><span class="p">]</span> <span class="o">=</span> <span class="n">label_cluster</span>
+
+        <span class="n">kunci</span> <span class="o">=</span> <span class="p">(</span><span class="n">skenario</span><span class="p">,</span> <span class="n">dimensi</span><span class="p">)</span>
+        <span class="n">hasil_eksperimen</span><span class="p">[</span><span class="n">kunci</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"dimensi_efektif"</span><span class="p">:</span> <span class="n">dimensi_efektif</span><span class="p">,</span> <span class="s2">"tabel_k"</span><span class="p">:</span> <span class="n">tabel_k</span><span class="p">,</span>
+            <span class="s2">"k_silhouette"</span><span class="p">:</span> <span class="n">k_silhouette</span><span class="p">,</span> <span class="s2">"k_elbow"</span><span class="p">:</span> <span class="n">k_elbow</span><span class="p">,</span> <span class="s2">"k_terbaik"</span><span class="p">:</span> <span class="n">k_silhouette</span><span class="p">,</span>
+            <span class="s2">"silhouette_terbaik"</span><span class="p">:</span> <span class="n">silhouette_terbaik</span><span class="p">,</span> <span class="s2">"df_hasil"</span><span class="p">:</span> <span class="n">df_hasil</span><span class="p">,</span>
+            <span class="s2">"X_tahap"</span><span class="p">:</span> <span class="n">X_tahap</span><span class="p">,</span> <span class="s2">"model_final"</span><span class="p">:</span> <span class="n">model_final</span><span class="p">,</span> <span class="s2">"reducer"</span><span class="p">:</span> <span class="n">reducer</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">ringkasan_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s2">"skenario"</span><span class="p">:</span> <span class="n">skenario</span><span class="p">,</span> <span class="s2">"dimensi"</span><span class="p">:</span> <span class="n">dimensi</span><span class="p">,</span> <span class="s2">"dimensi_efektif"</span><span class="p">:</span> <span class="n">dimensi_efektif</span><span class="p">,</span>
+            <span class="s2">"k_silhouette"</span><span class="p">:</span> <span class="n">k_silhouette</span><span class="p">,</span> <span class="s2">"k_elbow"</span><span class="p">:</span> <span class="n">k_elbow</span><span class="p">,</span> <span class="s2">"k_terbaik"</span><span class="p">:</span> <span class="n">k_silhouette</span><span class="p">,</span>
+            <span class="s2">"silhouette_terbaik"</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">silhouette_terbaik</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+            <span class="s2">"inertia_k_terbaik"</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">model_final</span><span class="o">.</span><span class="n">inertia_</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+        <span class="p">})</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">skenario</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">dimensi</span><span class="si">}</span><span class="s2"> fitur | K Silhouette=</span><span class="si">{</span><span class="n">k_silhouette</span><span class="si">}</span><span class="s2"> | K Elbow=</span><span class="si">{</span><span class="n">k_elbow</span><span class="si">}</span><span class="s2"> | "</span>
+              <span class="sa">f</span><span class="s2">"K final=</span><span class="si">{</span><span class="n">k_silhouette</span><span class="si">}</span><span class="s2"> | Silhouette=</span><span class="si">{</span><span class="n">silhouette_terbaik</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Penjelasan kode:</strong> setiap skenario diuji pada empat kondisi (204, 203, 74, dan 37 fitur). Untuk tiap kondisi, K-Means diuji pada K = 2 sampai 10. Silhouette Score dipakai untuk mencari K tertinggi, dan inertia dipakai untuk grafik Elbow. <strong>K final mengikuti hasil Silhouette.</strong></p>
+</section>
+<section id="penentuan-k-terbaik">
+<h2>1.7 Penentuan K Terbaik<a class="headerlink" href="#penentuan-k-terbaik" title="Link to this heading">#</a></h2>
+<p>Merangkum hasil bagian 1.6 ke satu tabel: K yang dipilih lewat Silhouette Score dan K yang dibaca lewat Elbow untuk tiap kombinasi skenario dan dimensi.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ringkasan</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ringkasan_list</span><span class="p">)</span>
+<span class="n">ringkasan_terurut</span> <span class="o">=</span> <span class="n">ringkasan</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"silhouette_terbaik"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">ringkasan_terurut</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="grafik-silhouette-dan-elbow">
+<h3>1.7.1 Grafik Silhouette dan Elbow<a class="headerlink" href="#grafik-silhouette-dan-elbow" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">skenario</span> <span class="ow">in</span> <span class="n">TABEL</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">dimensi_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">204</span><span class="p">,</span> <span class="mi">203</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">37</span><span class="p">]</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">18</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">dimensi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dimensi_list</span><span class="p">):</span>
+        <span class="n">hasil</span> <span class="o">=</span> <span class="n">hasil_eksperimen</span><span class="p">[(</span><span class="n">skenario</span><span class="p">,</span> <span class="n">dimensi</span><span class="p">)]</span>
+        <span class="n">tabel_k</span> <span class="o">=</span> <span class="n">hasil</span><span class="p">[</span><span class="s2">"tabel_k"</span><span class="p">]</span>
+
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tabel_k</span><span class="p">[</span><span class="s2">"k"</span><span class="p">],</span> <span class="n">tabel_k</span><span class="p">[</span><span class="s2">"silhouette"</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">hasil</span><span class="p">[</span><span class="s2">"k_silhouette"</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"K terbaik = </span><span class="si">{</span><span class="n">hasil</span><span class="p">[</span><span class="s1">'k_silhouette'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">skenario</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">dimensi</span><span class="si">}</span><span class="s2"> fitur | Silhouette"</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Jumlah Cluster (K)"</span><span class="p">);</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Silhouette Score"</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">K_RANGE</span><span class="p">));</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tabel_k</span><span class="p">[</span><span class="s2">"k"</span><span class="p">],</span> <span class="n">tabel_k</span><span class="p">[</span><span class="s2">"inertia"</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">hasil</span><span class="p">[</span><span class="s2">"k_elbow"</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"K elbow = </span><span class="si">{</span><span class="n">hasil</span><span class="p">[</span><span class="s1">'k_elbow'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">skenario</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">dimensi</span><span class="si">}</span><span class="s2"> fitur | Elbow Method"</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Jumlah Cluster (K)"</span><span class="p">);</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Inertia"</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">K_RANGE</span><span class="p">));</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Penjelasan kode:</strong> grafik kiri menunjukkan Silhouette Score untuk K = 2 sampai 10; nilai tertinggi menjadi K terbaik menurut Silhouette. Grafik kanan menunjukkan inertia; titik elbow dibaca dari grafik (di sini K = 4, sesuai <code class="docutils literal notranslate"><span class="pre">K_ELBOW</span></code>).</p>
+</section>
+</section>
+<section id="perbandingan-k-terbaik">
+<h2>1.8 Perbandingan K Terbaik<a class="headerlink" href="#perbandingan-k-terbaik" title="Link to this heading">#</a></h2>
+<p>Tabel ringkasan bagian 1.7 ditampilkan terpisah per skenario, supaya perubahan K dan silhouette antar tahap dimensi (204, 203, 74, 37) lebih mudah dibaca berurutan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">skenario</span> <span class="ow">in</span> <span class="n">TABEL</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">subset</span> <span class="o">=</span> <span class="n">ringkasan</span><span class="p">[</span><span class="n">ringkasan</span><span class="p">[</span><span class="s2">"skenario"</span><span class="p">]</span> <span class="o">==</span> <span class="n">skenario</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"dimensi"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">subset</span><span class="p">[[</span><span class="s2">"skenario"</span><span class="p">,</span> <span class="s2">"dimensi"</span><span class="p">,</span> <span class="s2">"dimensi_efektif"</span><span class="p">,</span> <span class="s2">"k_silhouette"</span><span class="p">,</span> <span class="s2">"k_elbow"</span><span class="p">,</span> <span class="s2">"k_terbaik"</span><span class="p">,</span> <span class="s2">"silhouette_terbaik"</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Penjelasan kode:</strong> <code class="docutils literal notranslate"><span class="pre">dimensi</span></code> adalah target reduksi yang diminta dan <code class="docutils literal notranslate"><span class="pre">dimensi_efektif</span></code> adalah jumlah kolom yang benar-benar dipakai. Karena memakai <code class="docutils literal notranslate"><span class="pre">FeatureAgglomeration</span></code>, keduanya sama; reduksi ke 203 dari 204 hanya menggabung satu pasang fitur sehingga hasilnya hampir identik dengan 204.</p>
+</section>
+<section id="distribusi-anggota-cluster">
+<h2>1.9 Distribusi Anggota Cluster<a class="headerlink" href="#distribusi-anggota-cluster" title="Link to this heading">#</a></h2>
+<p>Sebelum memilih hasil akhir, dicek apakah pembagian cluster masuk akal dengan melihat berapa daerah di tiap cluster. Cluster yang anggotanya hanya satu atau dua daerah perlu dicurigai sebagai outlier, bukan pengelompokan bermakna.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">skenario</span><span class="p">,</span> <span class="n">dimensi</span><span class="p">),</span> <span class="n">hasil</span> <span class="ow">in</span> <span class="n">hasil_eksperimen</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Skenario </span><span class="si">{</span><span class="n">skenario</span><span class="si">}</span><span class="s2">, dimensi </span><span class="si">{</span><span class="n">dimensi</span><span class="si">}</span><span class="s2"> (K final=</span><span class="si">{</span><span class="n">hasil</span><span class="p">[</span><span class="s1">'k_terbaik'</span><span class="p">]</span><span class="si">}</span><span class="s2">, "</span>
+          <span class="sa">f</span><span class="s2">"K silhouette=</span><span class="si">{</span><span class="n">hasil</span><span class="p">[</span><span class="s1">'k_silhouette'</span><span class="p">]</span><span class="si">}</span><span class="s2">, K elbow=</span><span class="si">{</span><span class="n">hasil</span><span class="p">[</span><span class="s1">'k_elbow'</span><span class="p">]</span><span class="si">}</span><span class="s2">, "</span>
+          <span class="sa">f</span><span class="s2">"silhouette=</span><span class="si">{</span><span class="n">hasil</span><span class="p">[</span><span class="s1">'silhouette_terbaik'</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+    <span class="n">distribusi</span> <span class="o">=</span> <span class="n">hasil</span><span class="p">[</span><span class="s2">"df_hasil"</span><span class="p">][</span><span class="s2">"cluster"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">distribusi</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">"jumlah_anggota"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Penjelasan kode:</strong> untuk tiap kombinasi, kolom <code class="docutils literal notranslate"><span class="pre">cluster</span></code> dihitung dengan <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> sehingga terlihat berapa daerah masuk ke tiap cluster. Cluster berisi satu atau dua daerah ditandai sebagai kandidat outlier.</p>
+<p><em>Pada run di laporan asli, hasilnya konsisten: satu cluster besar (34–35 daerah) dan satu cluster kecil (2–3 daerah), kecuali Polynomial 37 fitur dengan K = 3 (35, 1, dan 1 daerah).</em></p>
+</section>
+<section id="hasil-klustering-untuk-seluruh-delapan-kombinasi">
+<h2>1.10 Hasil Klustering untuk Seluruh Delapan Kombinasi<a class="headerlink" href="#hasil-klustering-untuk-seluruh-delapan-kombinasi" title="Link to this heading">#</a></h2>
+<p>Ada delapan kombinasi (dua skenario × empat tahap dimensi). Bagian ini menampilkan hasil kedelapannya satu per satu, bukan hanya satu yang dianggap “terbaik”, supaya semuanya bisa dibandingkan dan dilaporkan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DIMENSI_URUT</span> <span class="o">=</span> <span class="p">[</span><span class="mi">204</span><span class="p">,</span> <span class="mi">203</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">37</span><span class="p">]</span>
+<span class="n">hasil_per_kombinasi</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">skenario</span> <span class="ow">in</span> <span class="n">TABEL</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">dimensi</span> <span class="ow">in</span> <span class="n">DIMENSI_URUT</span><span class="p">:</span>
+        <span class="n">hasil</span> <span class="o">=</span> <span class="n">hasil_eksperimen</span><span class="p">[(</span><span class="n">skenario</span><span class="p">,</span> <span class="n">dimensi</span><span class="p">)]</span>
+        <span class="n">hasil_per_kombinasi</span><span class="p">[(</span><span class="n">skenario</span><span class="p">,</span> <span class="n">dimensi</span><span class="p">)]</span> <span class="o">=</span> <span class="n">hasil</span><span class="p">[</span><span class="s2">"df_hasil"</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"=== Skenario: </span><span class="si">{</span><span class="n">skenario</span><span class="si">}</span><span class="s2"> | Dimensi diminta: </span><span class="si">{</span><span class="n">dimensi</span><span class="si">}</span><span class="s2"> | Dimensi efektif: </span><span class="si">{</span><span class="n">hasil</span><span class="p">[</span><span class="s1">'dimensi_efektif'</span><span class="p">]</span><span class="si">}</span><span class="s2"> ==="</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"K Silhouette = </span><span class="si">{</span><span class="n">hasil</span><span class="p">[</span><span class="s1">'k_silhouette'</span><span class="p">]</span><span class="si">}</span><span class="s2"> | K Elbow = </span><span class="si">{</span><span class="n">hasil</span><span class="p">[</span><span class="s1">'k_elbow'</span><span class="p">]</span><span class="si">}</span><span class="s2"> | "</span>
+              <span class="sa">f</span><span class="s2">"K final dipakai = </span><span class="si">{</span><span class="n">hasil</span><span class="p">[</span><span class="s1">'k_terbaik'</span><span class="p">]</span><span class="si">}</span><span class="s2"> | Silhouette = </span><span class="si">{</span><span class="n">hasil</span><span class="p">[</span><span class="s1">'silhouette_terbaik'</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">hasil</span><span class="p">[</span><span class="s2">"df_hasil"</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Penjelasan kode:</strong> hasil klustering tiap kombinasi disalin ke dictionary <code class="docutils literal notranslate"><span class="pre">hasil_per_kombinasi</span></code> dengan kunci <code class="docutils literal notranslate"><span class="pre">(skenario,</span> <span class="pre">dimensi)</span></code>, lalu ditampilkan bersama K Silhouette, K Elbow, K final, dan nilai Silhouette. Dictionary ini dipakai ulang pada pemetaan (1.12).</p>
+<p>Label cluster (0, 1, 2) hanya penanda dan tidak punya arti urutan. Karena itu, hasil antar kombinasi dibandingkan lewat <strong>siapa saja anggota tiap cluster</strong>, bukan angka labelnya. Contohnya, pada Linear 74 fitur cluster kecil berlabel 0, sedangkan pada dimensi lain berlabel 1, padahal anggotanya sama.</p>
+</section>
+<section id="mengambil-koordinat-tiap-daerah">
+<h2>1.11 Mengambil Koordinat Tiap Daerah<a class="headerlink" href="#mengambil-koordinat-tiap-daerah" title="Link to this heading">#</a></h2>
+<p>Nama daerah yang sama muncul di kedelapan kombinasi (hanya pengelompokan clusternya yang beda), jadi koordinat tiap daerah cukup dicari sekali di sini lalu dipakai ulang di 1.12. Hasil pencarian disimpan di <code class="docutils literal notranslate"><span class="pre">koordinat_daerah.csv</span></code> sebagai cache; hapus berkas itu bila ingin mencari ulang.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geopy.geocoders</span><span class="w"> </span><span class="kn">import</span> <span class="n">Nominatim</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">geopy.extra.rate_limiter</span><span class="w"> </span><span class="kn">import</span> <span class="n">RateLimiter</span>
+
+<span class="n">CACHE_KOORDINAT</span> <span class="o">=</span> <span class="n">BASE_DIR</span> <span class="o">/</span> <span class="s2">"koordinat_daerah.csv"</span>
+
+<span class="n">KOREKSI_DAERAH</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"Bandung - Jogoroto, Jombang"</span><span class="p">:</span> <span class="s2">"Jogoroto, Jombang"</span><span class="p">,</span>
+    <span class="s2">"Banyu Ajuh, Perumnas, Kamal"</span><span class="p">:</span> <span class="s2">"Kamal, Bangkalan"</span><span class="p">,</span>
+    <span class="s2">"Kec. Kalianget, Sumenep"</span><span class="p">:</span> <span class="s2">"Kalianget, Sumenep"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">semua_daerah</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">df_hasil</span> <span class="ow">in</span> <span class="n">hasil_per_kombinasi</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="n">semua_daerah</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">df_hasil</span><span class="p">[</span><span class="s2">"daerah"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+<span class="n">koordinat</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">if</span> <span class="n">CACHE_KOORDINAT</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="n">cache</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">CACHE_KOORDINAT</span><span class="p">)</span>
+    <span class="n">koordinat</span> <span class="o">=</span> <span class="p">{</span><span class="n">r</span><span class="o">.</span><span class="n">daerah</span><span class="p">:</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">lon</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">cache</span><span class="o">.</span><span class="n">itertuples</span><span class="p">()</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">lat</span><span class="p">)}</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Cache koordinat dimuat: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">koordinat</span><span class="p">)</span><span class="si">}</span><span class="s2"> daerah"</span><span class="p">)</span>
+
+<span class="n">geolocator</span> <span class="o">=</span> <span class="n">Nominatim</span><span class="p">(</span><span class="n">user_agent</span><span class="o">=</span><span class="s2">"klustering_polutan_indonesia"</span><span class="p">)</span>
+<span class="n">geocode</span> <span class="o">=</span> <span class="n">RateLimiter</span><span class="p">(</span><span class="n">geolocator</span><span class="o">.</span><span class="n">geocode</span><span class="p">,</span> <span class="n">min_delay_seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">cari_koordinat</span><span class="p">(</span><span class="n">nama_daerah</span><span class="p">):</span>
+    <span class="n">nama</span> <span class="o">=</span> <span class="n">KOREKSI_DAERAH</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">nama_daerah</span><span class="p">,</span> <span class="n">nama_daerah</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">hasil</span> <span class="o">=</span> <span class="n">geocode</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">nama</span><span class="si">}</span><span class="s2">, Indonesia"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">hasil</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">hasil</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">hasil</span><span class="o">.</span><span class="n">longitude</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://photon.komoot.io/api/"</span><span class="p">,</span>
+                         <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">"q"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">nama</span><span class="si">}</span><span class="s2">, Indonesia"</span><span class="p">,</span> <span class="s2">"limit"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">fitur</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"features"</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">if</span> <span class="n">fitur</span><span class="p">:</span>
+            <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span> <span class="o">=</span> <span class="n">fitur</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"geometry"</span><span class="p">][</span><span class="s2">"coordinates"</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+
+<span class="n">daerah_gagal</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">nama_daerah</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">semua_daerah</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">nama_daerah</span> <span class="ow">in</span> <span class="n">koordinat</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="o">=</span> <span class="n">cari_koordinat</span><span class="p">(</span><span class="n">nama_daerah</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">lat</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">daerah_gagal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nama_daerah</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span> <span class="n">koordinat</span><span class="p">[</span><span class="n">nama_daerah</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">)</span>
+
+<span class="n">koordinat_daerah</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([{</span><span class="s2">"daerah"</span><span class="p">:</span> <span class="n">d</span><span class="p">,</span> <span class="s2">"lat"</span><span class="p">:</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">"lon"</span><span class="p">:</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">koordinat</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+<span class="n">koordinat_daerah</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">CACHE_KOORDINAT</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Berhasil dapat koordinat: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">semua_daerah</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">daerah_gagal</span><span class="p">)</span><span class="si">}</span><span class="s2"> dari </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">semua_daerah</span><span class="p">)</span><span class="si">}</span><span class="s2"> daerah"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">daerah_gagal</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Daerah yang masih gagal:"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">daerah_gagal</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">" -"</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Penjelasan kode:</strong> <code class="docutils literal notranslate"><span class="pre">cari_koordinat()</span></code> mencari latitude dan longitude tiap daerah. Pencarian pertama memakai Nominatim (OpenStreetMap) dengan jeda satu detik per permintaan sesuai aturan layanannya; bila tidak ditemukan dipakai layanan cadangan <code class="docutils literal notranslate"><span class="pre">photon.komoot.io</span></code>. Kamus <code class="docutils literal notranslate"><span class="pre">KOREKSI_DAERAH</span></code> memperbaiki penulisan daerah yang tidak baku (mis. “Banyu Ajuh, Perumnas, Kamal” menjadi “Kamal, Bangkalan”) sebelum dicari. Nama daerah dikumpulkan dalam <code class="docutils literal notranslate"><span class="pre">set</span></code> agar tiap nama hanya dicari sekali.</p>
+</section>
+<section id="visualisasi-hasil-klustering-pada-peta-satelit-seluruh-delapan-kombinasi">
+<h2>1.12 Visualisasi Hasil Klustering pada Peta Satelit, Seluruh Delapan Kombinasi<a class="headerlink" href="#visualisasi-hasil-klustering-pada-peta-satelit-seluruh-delapan-kombinasi" title="Link to this heading">#</a></h2>
+<p>Delapan peta ditampilkan berurutan sesuai <code class="docutils literal notranslate"><span class="pre">DIMENSI_URUT</span></code>, satu peta untuk tiap kombinasi skenario dan dimensi, supaya pola pengelompokan bisa dibandingkan langsung, termasuk melihat apakah pengelompokan berubah banyak saat dimensi direduksi.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span> <span class="k">as</span> <span class="n">tampilkan</span>
+
+<span class="n">WARNA</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">,</span> <span class="s2">"purple"</span><span class="p">,</span> <span class="s2">"orange"</span><span class="p">,</span> <span class="s2">"darkred"</span><span class="p">,</span> <span class="s2">"cadetblue"</span><span class="p">,</span> <span class="s2">"darkgreen"</span><span class="p">,</span> <span class="s2">"pink"</span><span class="p">,</span> <span class="s2">"black"</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">skenario</span> <span class="ow">in</span> <span class="n">TABEL</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">dimensi</span> <span class="ow">in</span> <span class="n">DIMENSI_URUT</span><span class="p">:</span>
+        <span class="n">hasil</span> <span class="o">=</span> <span class="n">hasil_eksperimen</span><span class="p">[(</span><span class="n">skenario</span><span class="p">,</span> <span class="n">dimensi</span><span class="p">)]</span>
+        <span class="n">df_hasil</span> <span class="o">=</span> <span class="n">hasil_per_kombinasi</span><span class="p">[(</span><span class="n">skenario</span><span class="p">,</span> <span class="n">dimensi</span><span class="p">)]</span>
+
+        <span class="n">data_peta</span> <span class="o">=</span> <span class="n">df_hasil</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">koordinat_daerah</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">"daerah"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)</span>
+        <span class="n">data_peta</span> <span class="o">=</span> <span class="n">data_peta</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">"lat"</span><span class="p">,</span> <span class="s2">"lon"</span><span class="p">])</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"=== Skenario: </span><span class="si">{</span><span class="n">skenario</span><span class="si">}</span><span class="s2"> | Dimensi: </span><span class="si">{</span><span class="n">dimensi</span><span class="si">}</span><span class="s2"> | K final = </span><span class="si">{</span><span class="n">hasil</span><span class="p">[</span><span class="s1">'k_terbaik'</span><span class="p">]</span><span class="si">}</span><span class="s2"> | "</span>
+              <span class="sa">f</span><span class="s2">"Silhouette = </span><span class="si">{</span><span class="n">hasil</span><span class="p">[</span><span class="s1">'silhouette_terbaik'</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> ==="</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_peta</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Tidak ada koordinat yang berhasil ditemukan untuk kombinasi ini."</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="n">peta</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
+            <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">data_peta</span><span class="p">[</span><span class="s2">"lat"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">data_peta</span><span class="p">[</span><span class="s2">"lon"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()],</span>
+            <span class="n">zoom_start</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+            <span class="n">tiles</span><span class="o">=</span><span class="s2">"https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/</span><span class="si">{z}</span><span class="s2">/</span><span class="si">{y}</span><span class="s2">/</span><span class="si">{x}</span><span class="s2">"</span><span class="p">,</span>
+            <span class="n">attr</span><span class="o">=</span><span class="s2">"Esri World Imagery"</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">warna_cluster</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">WARNA</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">WARNA</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">data_peta</span><span class="p">[</span><span class="s2">"cluster"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))}</span>
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">baris</span> <span class="ow">in</span> <span class="n">data_peta</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="n">folium</span><span class="o">.</span><span class="n">CircleMarker</span><span class="p">(</span>
+                <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">baris</span><span class="p">[</span><span class="s2">"lat"</span><span class="p">],</span> <span class="n">baris</span><span class="p">[</span><span class="s2">"lon"</span><span class="p">]],</span> <span class="n">radius</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">warna_cluster</span><span class="p">[</span><span class="n">baris</span><span class="p">[</span><span class="s2">"cluster"</span><span class="p">]],</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">fill_color</span><span class="o">=</span><span class="n">warna_cluster</span><span class="p">[</span><span class="n">baris</span><span class="p">[</span><span class="s2">"cluster"</span><span class="p">]],</span> <span class="n">fill_opacity</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span>
+                <span class="n">popup</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">baris</span><span class="p">[</span><span class="s1">'daerah'</span><span class="p">]</span><span class="si">}</span><span class="s2"> (cluster </span><span class="si">{</span><span class="n">baris</span><span class="p">[</span><span class="s1">'cluster'</span><span class="p">]</span><span class="si">}</span><span class="s2">)"</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">peta</span><span class="p">)</span>
+        <span class="n">tampilkan</span><span class="p">(</span><span class="n">peta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Penjelasan kode:</strong> untuk tiap kombinasi, tabel hasil klustering digabung dengan koordinat daerah (<code class="docutils literal notranslate"><span class="pre">merge</span></code>), lalu tiap daerah digambar sebagai titik di peta satelit Esri memakai <code class="docutils literal notranslate"><span class="pre">folium.CircleMarker</span></code>. Warna titik menunjukkan cluster, dan popup menampilkan nama daerah serta label cluster. Pusat peta diambil dari rata-rata koordinat titik yang berhasil ditemukan.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="knime">
+<h1>2. KNIME<a class="headerlink" href="#knime" title="Link to this heading">#</a></h1>
+<p>Implementasi clustering di KNIME mengikuti alur yang sama dengan bagian Python. Bedanya, di KNIME tiap skenario hanya memakai beberapa konfigurasi K-Means yang dipilih:</p>
+<ul class="simple">
+<li><p><strong>Linear:</strong> 2 node <code class="docutils literal notranslate"><span class="pre">k-Means</span></code>, keduanya dengan K = 2. Satu tanpa reduksi dimensi (204 fitur), satu dengan reduksi dimensi (203, 74, atau 37 fitur).</p></li>
+<li><p><strong>Polynomial:</strong> 3 node <code class="docutils literal notranslate"><span class="pre">k-Means</span></code>. Satu tanpa reduksi dengan K = 2, satu dengan reduksi 203 atau 74 fitur dengan K = 2, dan satu dengan reduksi 37 fitur dengan K = 3.</p></li>
+</ul>
+<section id="alur-pengolahan-data">
+<h2>2.1 Alur Pengolahan Data<a class="headerlink" href="#alur-pengolahan-data" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Pembacaan data.</strong> Data fitur TSFEL tiap skenario dibaca dari database lewat node <code class="docutils literal notranslate"><span class="pre">DB</span> <span class="pre">Reader</span></code> (atau pembaca tabel lain). Linear memakai tabel <code class="docutils literal notranslate"><span class="pre">ekstraksi_fitur_linear</span></code>, Polynomial memakai <code class="docutils literal notranslate"><span class="pre">ekstraksi_fitur_polynomial</span></code>.</p></li>
+<li><p><strong>Tanpa reduksi dimensi.</strong> Data langsung diteruskan ke node <code class="docutils literal notranslate"><span class="pre">k-Means</span></code>, sehingga seluruh 204 fitur dipakai. Kolom identitas (<code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">nama</span></code>, <code class="docutils literal notranslate"><span class="pre">daerah</span></code>) tidak dipakai sebagai fitur.</p></li>
+<li><p><strong>Dengan reduksi dimensi.</strong> Data diteruskan ke node <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">Script</span></code> yang menjalankan <code class="docutils literal notranslate"><span class="pre">FeatureAgglomeration</span></code> (Ward) dengan target 203, 74, atau 37 fitur, sama seperti bagian Python. Hasilnya diteruskan ke <code class="docutils literal notranslate"><span class="pre">k-Means</span></code>.</p></li>
+<li><p><strong>K-Means.</strong> Tiap node <code class="docutils literal notranslate"><span class="pre">k-Means</span></code> dijalankan dengan jumlah cluster yang ditetapkan untuk skenarionya (lihat 2.2 dan 2.3).</p></li>
+<li><p><strong>Evaluasi dan visualisasi.</strong> Node <code class="docutils literal notranslate"><span class="pre">Silhouette</span> <span class="pre">Coefficient</span></code> menghitung skor tiap hasil, dan node <code class="docutils literal notranslate"><span class="pre">Scatter</span> <span class="pre">Plot</span></code> menampilkan persebaran data beserta cluster-nya.</p></li>
+</ol>
+<p>Workflow KNIME ini <strong>tidak memakai node <code class="docutils literal notranslate"><span class="pre">Normalizer</span></code></strong>, sehingga data diproses langsung tanpa tahap normalisasi terpisah.</p>
+<blockquote>
+<div><p>Catatan: karena tanpa normalisasi, hasil K-Means di KNIME tidak selalu sama dengan bagian Python (yang memakai <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>). Fitur berskala besar akan mendominasi jarak.</p>
+</div></blockquote>
+</section>
+<section id="workflow-linear-2-k-means-k-2">
+<h2>2.2 Workflow Linear (2 k-Means, K = 2)<a class="headerlink" href="#workflow-linear-2-k-means-k-2" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                  ┌→ k-Means (K=2) ───────────────────────→ Scatter Plot (204 fitur)
+DB Reader (Linear)┤
+                  └→ Python Script → k-Means (K=2) → Scatter Plot (203/74/37 fitur)
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p><strong>k-Means tanpa reduksi dimensi.</strong> Data langsung masuk ke <code class="docutils literal notranslate"><span class="pre">k-Means</span></code> (K = 2) dengan 204 fitur.</p></li>
+<li><p><strong>k-Means dengan reduksi dimensi.</strong> Data melewati <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">Script</span></code> (reduksi ke 203, 74, atau 37 fitur), lalu masuk ke <code class="docutils literal notranslate"><span class="pre">k-Means</span></code> (K = 2). Jumlah fitur target diganti pada node <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">Script</span></code> untuk tiap kondisi.</p></li>
+</ol>
+</section>
+<section id="workflow-polynomial-3-k-means-k-2-dan-k-3">
+<h2>2.3 Workflow Polynomial (3 k-Means, K = 2 dan K = 3)<a class="headerlink" href="#workflow-polynomial-3-k-means-k-2-dan-k-3" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                      ┌→ k-Means (K=2) ───────────────────────→ Scatter Plot (204 fitur)
+DB Reader (Polynomial)┤
+                      └→ Python Script ─┬→ k-Means (K=2) → Scatter Plot (203/74 fitur)
+                                        └→ k-Means (K=3) → Scatter Plot (37 fitur)
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p><strong>k-Means tanpa reduksi dimensi, K = 2.</strong> Data langsung masuk ke <code class="docutils literal notranslate"><span class="pre">k-Means</span></code> dengan 204 fitur.</p></li>
+<li><p><strong>k-Means dengan reduksi dimensi 203 dan 74 fitur, K = 2.</strong> Data melewati <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">Script</span></code> dengan target 203, lalu 74 fitur, kemudian masuk ke <code class="docutils literal notranslate"><span class="pre">k-Means</span></code> (K = 2).</p></li>
+<li><p><strong>k-Means dengan reduksi dimensi 37 fitur, K = 3.</strong> Data melewati <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">Script</span></code> dengan target 37 fitur, lalu masuk ke <code class="docutils literal notranslate"><span class="pre">k-Means</span></code> (K = 3).</p></li>
+</ol>
+</section>
+<section id="konfigurasi-node-python-script-reduksi-dimensi">
+<h2>2.4 Konfigurasi Node Python Script (Reduksi Dimensi)<a class="headerlink" href="#konfigurasi-node-python-script-reduksi-dimensi" title="Link to this heading">#</a></h2>
+<p>Reduksi dimensi memakai <code class="docutils literal notranslate"><span class="pre">FeatureAgglomeration</span></code> dengan <code class="docutils literal notranslate"><span class="pre">linkage=&quot;ward&quot;</span></code>, sama dengan bagian Python. Node ini mengelompokkan kolom fitur yang mirip, lalu mengganti tiap kelompok dengan rata-rata anggotanya, sehingga jumlah kolom akhir tepat sesuai target (203, 74, atau 37). Kolom teks (<code class="docutils literal notranslate"><span class="pre">nama</span></code>, <code class="docutils literal notranslate"><span class="pre">daerah</span></code>) dibiarkan dan ikut ke output.</p>
+<p>Kode berikut dijalankan <strong>di dalam node Python Script KNIME</strong>, bukan di notebook ini (modul <code class="docutils literal notranslate"><span class="pre">knime.scripting.io</span></code> hanya ada di KNIME):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">knime.scripting.io</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">knio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">FeatureAgglomeration</span>
+
+<span class="n">N_FITUR</span> <span class="o">=</span> <span class="mi">37</span>   <span class="c1"># ganti: 203, 74, atau 37</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">knio</span><span class="o">.</span><span class="n">input_tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+
+<span class="c1"># pisahkan kolom teks (nama, daerah) dari kolom fitur numerik</span>
+<span class="n">kolom_teks</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="s2">"number"</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">kolom_fitur</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">"number"</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">kolom_fitur</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">reducer</span> <span class="o">=</span> <span class="n">FeatureAgglomeration</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">N_FITUR</span><span class="p">,</span> <span class="n">linkage</span><span class="o">=</span><span class="s2">"ward"</span><span class="p">)</span>
+<span class="n">X_reduksi</span> <span class="o">=</span> <span class="n">reducer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">df_fitur</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">X_reduksi</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">"fitur_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_FITUR</span><span class="p">)],</span>
+<span class="p">)</span>
+
+<span class="n">hasil</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="n">kolom_teks</span><span class="p">],</span> <span class="n">df_fitur</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">knio</span><span class="o">.</span><span class="n">output_tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">knio</span><span class="o">.</span><span class="n">Table</span><span class="o">.</span><span class="n">from_pandas</span><span class="p">(</span><span class="n">hasil</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Penjelasan kode:</strong></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">knime.scripting.io</span></code> adalah modul KNIME untuk membaca tabel masukan dan menulis tabel keluaran. <code class="docutils literal notranslate"><span class="pre">N_FITUR</span></code> menentukan jumlah kolom akhir dan diganti untuk tiap kondisi.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">knio.input_tables[0].to_pandas()</span></code> mengambil tabel dari port masukan node sebagai DataFrame.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">select_dtypes(exclude=&quot;number&quot;)</span></code> mengambil kolom teks (<code class="docutils literal notranslate"><span class="pre">nama</span></code>, <code class="docutils literal notranslate"><span class="pre">daerah</span></code>), sedangkan <code class="docutils literal notranslate"><span class="pre">select_dtypes(include=&quot;number&quot;)</span></code> mengambil kolom fitur numerik. <strong>Kolom <code class="docutils literal notranslate"><span class="pre">id</span></code> harus dikeluarkan sebelum node ini</strong>, kalau tidak <code class="docutils literal notranslate"><span class="pre">id</span></code> dianggap fitur.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FeatureAgglomeration(...).fit_transform(X)</span></code> mengelompokkan kolom menjadi <code class="docutils literal notranslate"><span class="pre">N_FITUR</span></code> kelompok dan mengganti tiap kelompok dengan rata-ratanya.</p></li>
+<li><p>Matriks hasil diubah menjadi DataFrame berkolom <code class="docutils literal notranslate"><span class="pre">fitur_1</span></code> sampai <code class="docutils literal notranslate"><span class="pre">fitur_N</span></code>, lalu digabung ke samping dengan kolom teks.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">knio.output_tables[0]</span> <span class="pre">=</span> <span class="pre">...</span></code> mengirim tabel hasil ke port keluaran node, lalu diteruskan ke <code class="docutils literal notranslate"><span class="pre">k-Means</span></code>.</p></li>
+</ol>
+</section>
+<section id="hasil-implementasi">
+<h2>2.5 Hasil Implementasi<a class="headerlink" href="#hasil-implementasi" title="Link to this heading">#</a></h2>
+<p>Skenario <strong>Linear</strong> menghasilkan empat hasil clustering (204, 203, 74, dan 37 fitur) dengan K = 2. Skenario <strong>Polynomial</strong> menghasilkan empat hasil dengan K = 2 untuk 204, 203, dan 74 fitur, serta K = 3 untuk 37 fitur. Hasil Scatter Plot digunakan sebagai visualisasi pendukung untuk melihat persebaran data dan pembentukan cluster.</p>
+<p>Sebagai pembanding, pada bagian Python dengan K = 2, cluster kecil Linear berisi tiga daerah (Jabon dan Wonoayu di Sidoarjo, serta Tanah Merah di Bangkalan), sedangkan cluster kecil Polynomial berisi dua daerah (Jabon dan Wonoayu). Pada Polynomial 37 fitur dengan K = 3, Kamal (Muhammad Zaidan Nabil Rafi) dan Jabon masing-masing membentuk cluster sendiri.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">K-Means Clustering Data Polutan Udara</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daftar-isi">Daftar isi</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#python">1. Python</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#library-dan-koneksi-database">1.1 Library dan Koneksi Database</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-data-dua-skenario-interpolasi">1.2 Memuat Data Dua Skenario Interpolasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemisahan-kolom-identitas-dan-kolom-fitur">1.3 Pemisahan Kolom Identitas dan Kolom Fitur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fungsi-evaluasi-k-means-silhouette-dan-elbow">1.4 Fungsi Evaluasi K-Means, Silhouette, dan Elbow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduksi-dimensi-203-74-dan-37-fitur">1.5 Reduksi Dimensi 203, 74, dan 37 Fitur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksperimen-tanpa-reduksi-dan-dengan-reduksi-dimensi">1.6 Eksperimen Tanpa Reduksi dan Dengan Reduksi Dimensi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penentuan-k-terbaik">1.7 Penentuan K Terbaik</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grafik-silhouette-dan-elbow">1.7.1 Grafik Silhouette dan Elbow</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-k-terbaik">1.8 Perbandingan K Terbaik</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-anggota-cluster">1.9 Distribusi Anggota Cluster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-klustering-untuk-seluruh-delapan-kombinasi">1.10 Hasil Klustering untuk Seluruh Delapan Kombinasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-koordinat-tiap-daerah">1.11 Mengambil Koordinat Tiap Daerah</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-hasil-klustering-pada-peta-satelit-seluruh-delapan-kombinasi">1.12 Visualisasi Hasil Klustering pada Peta Satelit, Seluruh Delapan Kombinasi</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#knime">2. KNIME</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alur-pengolahan-data">2.1 Alur Pengolahan Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-linear-2-k-means-k-2">2.2 Workflow Linear (2 k-Means, K = 2)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-polynomial-3-k-means-k-2-dan-k-3">2.3 Workflow Polynomial (3 k-Means, K = 2 dan K = 3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konfigurasi-node-python-script-reduksi-dimensi">2.4 Konfigurasi Node Python Script (Reduksi Dimensi)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-implementasi">2.5 Hasil Implementasi</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Moh Rafie Nazar J (240411100003)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
