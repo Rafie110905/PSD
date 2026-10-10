@@ -1,8 +1,10 @@
-# Bab 5 — Evaluation
+<a id="bab-5"></a>
 
-![Perbandingan CV Macro-F1 sepuluh kombinasi model](../_static/uts-model-scores.svg)
+## Bab 5 — Evaluation
 
-## 5.1 Jumlah kelas dan data
+![Confusion matrix model terbaik pada data test](../_static/uts-ref-test-confusion.png)
+
+### 5.1 Jumlah kelas dan data
 
 Ada **6 kelas**. Eksperimen referensi memilih 256 poligon dan membaginya
 menjadi 204 training dan 52 testing. Angka adalah jumlah poligon, bukan piksel.
@@ -20,7 +22,7 @@ menjadi 204 training dan 52 testing. Angka adalah jumlah poligon, bukan piksel.
 Distribusi test merujuk pada split eksperimen referensi. Dashboard UTS sendiri
 baru menampilkan jumlah aktual setelah input eksperimen diunggah.
 
-## 5.2 Metrik yang dilaporkan
+### 5.2 Metrik yang dilaporkan
 
 - **Accuracy**: proporsi seluruh prediksi benar.
 - **Balanced accuracy**: rerata recall tiap kelas, agar kelas kecil tetap
@@ -53,7 +55,9 @@ model terbaik untuk evaluasi dan model pembuat peta bukan selalu sama.
 Sumber tabel:
 [`test_vs_cv.csv`](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/tables/test_vs_cv.csv).
 
-## 5.3 Validitas dan ketidakpastian
+![Perbandingan CV Macro-F1 sepuluh kombinasi model](../_static/uts-ref-cv-scores.png)
+
+### 5.3 Validitas dan ketidakpastian
 
 Holdout berdasarkan FID dan CV dengan group poligon mencegah satu poligon
 masuk ke kedua subset/fold. Metrik tetap mengukur kesesuaian dengan sampel

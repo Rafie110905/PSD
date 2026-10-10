@@ -1,8 +1,10 @@
-# Bab 2 — Data Understanding
+<a id="bab-2"></a>
+
+## Bab 2 — Data Understanding
 
 ![Alur data dan pemrosesan](../_static/uts-workflow.svg)
 
-## 2.1 Inventaris dan status data
+### 2.1 Inventaris dan status data
 
 | Dataset | Fungsi | Data eksperimen referensi |
 |---|---|---|
@@ -28,7 +30,7 @@ dan Danau, serta 6 poligon Laut.
 Jumlah poligon sumber bukan jumlah training/testing; hanya sampel terpilih
 yang masuk ke eksperimen.
 
-## 2.2 Pengumpulan data
+### 2.2 Pengumpulan data
 
 Gunakan produk Sentinel-2 Level-2A (*Bottom-of-Atmosphere surface reflectance*)
 dengan tanggal komposit yang dicatat. Komposit multi-temporal yang telah
@@ -94,7 +96,7 @@ Export.image.toDrive({
 });
 ```
 
-## 2.3 Band Sentinel-2A
+### 2.3 Band Sentinel-2A
 
 Instrumen MSI Sentinel-2 mengukur 13 band pada resolusi asli 10 m, 20 m, atau
 60 m. Eksperimen referensi memakai B02, B03, B04, B08, B11, dan B12. Dashboard
@@ -117,17 +119,18 @@ Streamlit terpisah di repository UTS menerima sepuluh band. Resampling band
 | B11 | SWIR 1 | 1.610 | 20 m | Kelembapan dan lahan terbangun |
 | B12 | SWIR 2 | 2.190 | 20 m | Kelembapan, tanah, kebakaran |
 
-## 2.4 Kualitas dan keterbatasan referensi
+### 2.4 Kualitas dan keterbatasan referensi
 
 Label berasal dari beberapa sumber sekunder dengan skema berbeda, sehingga
 definisi kelas perlu dibaca bersama atribut sumbernya. Piksel campuran,
 awan/bayangan, beda waktu citra dan sumber poligon, serta ketidakseimbangan
 jumlah poligon dapat memengaruhi evaluasi.
 
-### Profil spektral hasil run referensi
+#### Profil spektral hasil run referensi
 
-Lihat [profil spektral per kelas](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/profil_spektral.png)
-dan [batas Jawa Timur](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/boundary_jatim.png)
+![Profil spektral per kelas pada eksperimen referensi](../_static/uts-ref-spectral-profile.png)
+
+Lihat juga [batas Jawa Timur](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/boundary_jatim.png)
 di repository sumber.
 
 Gambar dan jumlah poligon pada bab ini bersumber dari keluaran eksperimen

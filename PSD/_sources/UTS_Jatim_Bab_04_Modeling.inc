@@ -1,8 +1,10 @@
-# Bab 4 — Modeling
+<a id="bab-4"></a>
 
-![Perbandingan CV Macro-F1 sepuluh kombinasi model](../_static/uts-model-scores.svg)
+## Bab 4 — Modeling
 
-## 4.1 Target dan rancangan model
+![Perbandingan CV Macro-F1 sepuluh kombinasi model](../_static/uts-ref-cv-scores.png)
+
+### 4.1 Target dan rancangan model
 
 Target terdiri atas enam kelas: Sawah, Bangunan/Permukiman, Mangrove, Lahan
 hijau, Laut, dan Danau. Setiap sampel memiliki sembilan fitur Sentinel-2 dari
@@ -43,7 +45,7 @@ Variabel `estimator`, `X_train`, `y_train`, dan `fid_train` diisi dari tahap
 preprocessing notebook. Kode tersebut menghasilkan skor per fold; nilai
 ringkas eksperimen tersimpan pada tabel Bab 5.
 
-## 4.2 Training dan inferensi
+### 4.2 Training dan inferensi
 
 1. Bentuk fitur pixel dan ringkasan rata-rata fitur per poligon.
 2. Pilih 256 poligon dengan distribusi kelas yang dicatat di Bab 2.
@@ -56,7 +58,7 @@ ringkas eksperimen tersimpan pada tabel Bab 5.
 SVM dan Logistic Regression memerlukan standardisasi fitur. Seluruh langkah
 preprocessing model harus di-fit pada data training saja.
 
-## 4.3 Batas klaim
+### 4.3 Batas klaim
 
 Split berdasarkan FID mengurangi kebocoran antar piksel dalam poligon yang
 sama, tetapi tidak menjadikan sumber label independen atau menggantikan
@@ -68,5 +70,4 @@ Dashboard UTS di repository ini masih membandingkan empat model pada fitur
 berbeda dan split blok piksel. Tabel pada Bab 5 berasal dari hasil run
 referensi; jangan menyebutnya sebagai metrik dashboard UTS.
 
-Grafik validasi silang dan pentingnya fitur lengkap tersedia pada [hasil CV](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/cv_f1_bars.png)
-dan [grafik feature importance](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/feat_importance.png).
+![Pentingnya fitur pada model referensi](../_static/uts-ref-feature-importance.png)

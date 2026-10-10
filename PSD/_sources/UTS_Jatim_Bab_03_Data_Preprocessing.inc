@@ -1,8 +1,10 @@
-# Bab 3 — Data Preprocessing
+<a id="bab-3"></a>
+
+## Bab 3 — Data Preprocessing
 
 ![Alur pra-pemrosesan dan pembentukan fitur](../_static/uts-workflow.svg)
 
-## 3.1 Pemeriksaan dan penyelarasan
+### 3.1 Pemeriksaan dan penyelarasan
 
 Sebelum eksperimen, periksa jumlah band, CRS, transform, resolusi, rentang
 nilai, NoData, dan cakupan tumpang-susun. GeoTIFF referensi berisi enam band
@@ -11,14 +13,14 @@ diselaraskan dengan CRS raster; komposit citra sudah difilter awan sebelum
 ekspor. Profil raster sumber mencatat 59.412 × 41.323 piksel. Raster inferensi
 tersedia sebagai GeoTIFF 44 MB pada folder output referensi.
 
-## 3.2 Crosswalk label
+### 3.2 Crosswalk label
 
 Label sampel diseragamkan menjadi enam ID kelas: 1 Sawah, 2
 Bangunan/Permukiman, 3 Mangrove, 4 Lahan hijau, 5 Laut, dan 6 Danau. Kelas
 asal dipertahankan pada atribut sumber; misalnya Sawah berasal dari Kementan,
 vegetasi dan permukiman dari BIG, dan Laut dari Natural Earth.
 
-## 3.3 Fitur model
+### 3.3 Fitur model
 
 Eksperimen referensi memakai enam band reflektansi dan tiga indeks, total
 sembilan fitur. Berikut deskripsi fitur yang cocok dengan metadata eksperimen:
@@ -69,7 +71,7 @@ Eksperimen referensi memakai sembilan fitur tersebut. Dashboard interaktif
 terpisah di repository UTS saat ini memiliki pipeline 18 fitur; skor di Bab 5
 adalah hasil notebook referensi, bukan output dashboard tersebut.
 
-## 3.4 Sampel dan pembagian spasial
+### 3.4 Sampel dan pembagian spasial
 
 Split referensi yang tersimpan berisi 204 poligon training dan 52 testing dari
 256 poligon. Pembagian dilakukan per poligon/FID, distratifikasi dengan ID
@@ -97,6 +99,4 @@ Contoh di atas menjelaskan pemisahan berdasarkan poligon; file split aktual dapa
 Dashboard UTS sendiri memakai sampling dan pembagian spasial yang berbeda;
 hasilnya tidak sama dengan split referensi.
 
-Histogram distribusi piksel dan profil spektral dari run referensi dapat dilihat
-pada [histogram](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/hist_distribusi_pixel.png)
-dan [profil spektral](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/profil_spektral.png).
+![Distribusi nilai piksel pada eksperimen referensi](../_static/uts-ref-pixel-distribution.png)

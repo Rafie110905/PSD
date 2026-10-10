@@ -1,8 +1,10 @@
-# Bab 6 — WebGIS & Deployment
+<a id="bab-6"></a>
+
+## Bab 6 — WebGIS & Deployment
 
 ![Luas hasil klasifikasi per kelas](../_static/uts-class-areas.svg)
 
-## 6.1 Tampilan WebGIS
+### 6.1 Tampilan WebGIS
 
 Dashboard Streamlit menyediakan tujuh halaman:
 
@@ -29,7 +31,7 @@ Folium, raster GeoTIFF 44 MB, tabel luas, dan grafik evaluasi tersedia di
 Halaman statis menampilkan hasil yang sudah tersimpan; halaman ini tidak
 menjalankan ulang model saat dibuka.
 
-## 6.2 Menjalankan aplikasi
+### 6.2 Menjalankan aplikasi
 
 Source aplikasi dan petunjuk terbaru:
 
@@ -51,7 +53,7 @@ eksperimen referensi (enam band dan poligon Kementan/BIG/Natural Earth).
 Keluaran dashboard baru dihitung setelah inputnya tersedia; gambar dan skor
 statis di bab ini tetap diberi label sebagai hasil run referensi.
 
-## 6.3 Deployment dan web statis
+### 6.3 Deployment dan web statis
 
 GitHub Pages menampilkan laporan enam bab. Aplikasi interaktif berjalan
 terpisah di Streamlit Community Cloud. Pemilik repository perlu membuat app
@@ -59,7 +61,7 @@ dari branch `main` dengan main file `PSD/gis_uts/app.py`, kemudian mengunggah
 input data melalui aplikasi. Belum ada URL Streamlit sampai deployment
 dijalankan dan berhasil.
 
-## 6.4 Implikasi kebijakan dan referensi
+### 6.4 Implikasi kebijakan dan referensi
 
 Gunakan peta sebagai bahan pemilihan lokasi pemeriksaan RTRW/RDTR, bukan
 sebagai penetapan zonasi atau bukti status lahan. Periksa legenda dan skala
@@ -72,12 +74,16 @@ nasional sebelum menyatakan pemetaan sesuai standar.
 3. [Kementerian Pertanian — sumber sampel sawah yang dicatat pada metadata proyek referensi](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/tree/main/data).
 4. [Repository sumber, notebook, output tabel dan gambar](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan).
 
-### Gambar hasil dan peta interaktif
+#### Gambar hasil dan peta interaktif
 
-Lihat [komposit RGB dan peta klasifikasi](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/rgb_vs_klasifikasi.png)
-serta [overlay klasifikasi](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/klasifikasi_overlay.png)
-di halaman output proyek sumber.
+![Komposit RGB dan hasil klasifikasi](../_static/uts-ref-rgb-vs-classification.png)
 
-- [Peta Folium interaktif (HTML)](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/folium_polygon_map.html)
+![Overlay klasifikasi pada batas Jawa Timur](../_static/uts-ref-classification-overlay.png)
+
+Peta hasil dapat dieksplorasi langsung pada halaman ini. Basemap tile
+memerlukan koneksi internet.
+
+<iframe title="Peta Folium klasifikasi poligon Jawa Timur" src="../_static/uts-ref-folium-map.html" width="100%" height="620" loading="lazy"></iframe>
+
 - [Raster klasifikasi GeoTIFF](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/raster/klasifikasi_jawa_timur.tif)
 - [Dashboard kode sumber](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/app.py)

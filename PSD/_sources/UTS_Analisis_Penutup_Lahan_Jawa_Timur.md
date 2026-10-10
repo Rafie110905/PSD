@@ -41,31 +41,35 @@ Angka, tabel, dan peta di atas adalah keluaran eksperimen referensi. Jangan
 mengutipnya sebagai hasil pengukuran baru tanpa menjalankan ulang notebook
 menggunakan raster sumber yang sesuai.
 
-## Enam bab
+## Navigasi bab
 
-1. [Business Understanding — tujuan dan pertanyaan analisis](https://rafie110905.github.io/PSD/UTS_Jatim_Bab_01_Business_Understanding.html)
-2. [Data Understanding — data, band Sentinel-2A, dan label](https://rafie110905.github.io/PSD/UTS_Jatim_Bab_02_Data_Understanding.html)
-3. [Data Preprocessing — penyelarasan, fitur, dan sampel](https://rafie110905.github.io/PSD/UTS_Jatim_Bab_03_Data_Preprocessing.html)
-4. [Modeling — perbandingan model klasifikasi](https://rafie110905.github.io/PSD/UTS_Jatim_Bab_04_Modeling.html)
-5. [Evaluation — pembagian training/testing dan evaluasi](https://rafie110905.github.io/PSD/UTS_Jatim_Bab_05_Evaluation.html)
-6. [WebGIS & Deployment — peta, dashboard, dan kebijakan](https://rafie110905.github.io/PSD/UTS_Jatim_Bab_06_WebGIS_Deployment.html)
+Pilih bab untuk melompat ke bagian yang diperlukan. Semua bab berada di
+halaman yang sama; daftar isi di sisi halaman juga menyediakan navigasi
+bercabang ke subbagian.
 
-## Aplikasi dan data
+<ol>
+<li><a href="#bab-1">UTS SIG — Bab 1: Business Understanding</a></li>
+<li><a href="#bab-2">UTS SIG — Bab 2: Data Understanding</a></li>
+<li><a href="#bab-3">UTS SIG — Bab 3: Data Preprocessing</a></li>
+<li><a href="#bab-4">UTS SIG — Bab 4: Modeling</a></li>
+<li><a href="#bab-5">UTS SIG — Bab 5: Evaluation</a></li>
+<li><a href="#bab-6">UTS SIG — Bab 6: WebGIS & Deployment</a></li>
+</ol>
 
-Aplikasi Streamlit di repository ini menyediakan tujuh halaman dashboard:
-**Ringkasan, Alur Data → Model, Peta Klasifikasi, Luas per Kelas, Evaluasi
-Model, Data & Unduhan,** dan **Metodologi**. Kode aplikasi ada di
-[`app.py`](https://github.com/Rafie110905/PSD/blob/main/PSD/gis_uts/app.py)
-dan algoritmanya di
-[`classifier.py`](https://github.com/Rafie110905/PSD/blob/main/PSD/gis_uts/classifier.py).
-Hasil eksperimen referensi dan gambar dapat dilihat di
-[repository sumber](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/tree/main/outputs).
+```{include} UTS_Jatim_Bab_01_Business_Understanding.inc
+```
 
-Enam kelas keluaran eksperimen referensi adalah **Sawah**,
-**Bangunan/Permukiman**, **Mangrove**, **Lahan hijau**, **Laut**, dan **Danau**.
-Labelnya berasal dari data sekunder Kementan, BIG, dan Natural Earth; bukan
-hasil survei lapangan baru. Peta bukan peta resmi tata ruang.
+```{include} UTS_Jatim_Bab_02_Data_Understanding.inc
+```
 
-Dashboard lokal memiliki alur input tersendiri dan masih memerlukan berkas
-raster agar bisa menghitung ulang skor. Untuk melihat kode dan hasil run yang
-tersimpan, lanjutkan dari Bab 1 sampai Bab 6 dan buka tautan artefak sumber.
+```{include} UTS_Jatim_Bab_03_Data_Preprocessing.inc
+```
+
+```{include} UTS_Jatim_Bab_04_Modeling.inc
+```
+
+```{include} UTS_Jatim_Bab_05_Evaluation.inc
+```
+
+```{include} UTS_Jatim_Bab_06_WebGIS_Deployment.inc
+```

@@ -27,13 +27,7 @@ try {
         "K-Means Clustering pada Data Polutan Udara Implementasi Python dan KNIME",
         "klasifikasi_sawah_sentinel2_bangkalan",
         "K-Means_Clustering_Polynomial_Proyek_Sains_Data",
-        "UTS_Analisis_Penutup_Lahan_Jawa_Timur",
-        "UTS_Jatim_Bab_01_Business_Understanding",
-        "UTS_Jatim_Bab_02_Data_Understanding",
-        "UTS_Jatim_Bab_03_Data_Preprocessing",
-        "UTS_Jatim_Bab_04_Modeling",
-        "UTS_Jatim_Bab_05_Evaluation",
-        "UTS_Jatim_Bab_06_WebGIS_Deployment"
+        "UTS_Analisis_Penutup_Lahan_Jawa_Timur"
     )
 
     foreach ($pageName in $pageNames) {
