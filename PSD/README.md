@@ -89,7 +89,15 @@ Perintah ini membuat folder `PSD` berisi skeleton dokumentasi (`_config.yml`, `_
 jupyter-book build PSD
 ```
 
-Hasil build tersedia di:
+Untuk memperbarui halaman yang disajikan langsung dari root repository:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\build-static-root.ps1
+```
+
+Script tersebut membangun Jupyter Book, lalu menyalin halaman yang diperlukan beserta asetnya ke root. Setelah selesai, jalankan Live Server dari root dan buka `intro.html`.
+
+Hasil build lengkap Jupyter Book tetap tersedia di:
 
 ```text
 PSD/_build/html/index.html
