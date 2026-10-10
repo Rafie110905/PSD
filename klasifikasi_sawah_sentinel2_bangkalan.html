@@ -425,7 +425,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alur">Alur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#komponen-utama">Komponen Utama</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alur-analisis">Alur Analisis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-pemuatan-batas-wilayah-kajian-aoi-kecamatan-bangkalan">Langkah 1: Pemuatan Batas Wilayah Kajian (AOI Kecamatan Bangkalan)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-petak-sampel-50-sawah-50-non-sawah">Langkah 2: Petak Sampel (50 Sawah &amp; 50 Non-Sawah)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-ekspor-petak-sampel-ke-geojson-shapefile-zip-qgis-ready">Langkah 3: Ekspor Petak Sampel ke GeoJSON &amp; Shapefile ZIP (QGIS Ready)</a></li>
@@ -434,7 +435,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-6-pelatihan-evaluasi-random-forest">Langkah 6: Pelatihan &amp; Evaluasi Random Forest</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-7-klasifikasi-seluruh-kecamatan-peta-berdampingan">Langkah 7: Klasifikasi Seluruh Kecamatan &amp; Peta Berdampingan</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-8-peta-interaktif-google-satellite-esri-openstreetmap">Langkah 8: Peta Interaktif (Google Satellite, Esri, OpenStreetMap)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-9-kesimpulan-panduan-buka-di-qgis">Langkah 9: Kesimpulan &amp; Panduan Buka di QGIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-9-kesimpulan-panduan-buka-di-qgis">Langkah 9: Kesimpulan &amp; Panduan Buka di QGIS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuka-hasil-di-qgis">Membuka hasil di QGIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#catatan-interpretasi">Catatan interpretasi</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -448,8 +453,20 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="klasifikasi-tutupan-lahan-sawah-menggunakan-citra-satelit-sentinel-2a-dan-algoritma-random-forest-kecamatan-bangkalan">
 <h1>Klasifikasi Tutupan Lahan Sawah Menggunakan Citra Satelit Sentinel-2A dan Algoritma Random Forest — Kecamatan Bangkalan<a class="headerlink" href="#klasifikasi-tutupan-lahan-sawah-menggunakan-citra-satelit-sentinel-2a-dan-algoritma-random-forest-kecamatan-bangkalan" title="Link to this heading">#</a></h1>
-<p>Klasifikasi 2 kelas (<strong>Sawah</strong> vs <strong>Non-Sawah</strong>) berbasis citra <strong>Sentinel-2A (GeoTIFF)</strong> dan <strong>Random Forest</strong>, dengan alur yang sama seperti notebook Kecamatan Sambeng.</p>
-<p><strong>Berkas yang dibutuhkan (satu folder dengan notebook ini):</strong></p>
+<p>Notebook ini mendokumentasikan klasifikasi tutupan lahan (<em>Land Use / Land Cover</em>) menjadi dua kelas (<strong>Sawah</strong> dan <strong>Bukan Sawah</strong>) menggunakan citra <strong>Sentinel-2A (GeoTIFF)</strong> dan algoritma <em>Random Forest</em>. Alur analisis mengikuti contoh notebook Kecamatan Sambeng, sementara batas wilayah, data, dan nama keluarannya disesuaikan untuk Kecamatan Bangkalan.</p>
+<section id="komponen-utama">
+<h2>Komponen Utama<a class="headerlink" href="#komponen-utama" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Batas wilayah kajian:</strong> AOI Kecamatan Bangkalan dari GeoJSON atau berkas vektor yang tersedia.</p></li>
+<li><p><strong>Petak sampel:</strong> 50 petak sawah dan 50 petak bukan sawah. Sampel dapat dimuat dari berkas vektor atau dibuat dari koordinat yang sudah diverifikasi.</p></li>
+<li><p><strong>Ekspor untuk QGIS:</strong> Sampel disimpan sebagai GeoJSON dan Shapefile ZIP dengan gaya <code class="docutils literal notranslate"><span class="pre">.qml</span></code>.</p></li>
+<li><p><strong>Citra Sentinel-2A:</strong> Enam band (B2, B3, B4, B8, B11, B12), indeks spektral, serta pemeriksaan kualitas band.</p></li>
+<li><p><strong>Ekstraksi fitur:</strong> Piksel valid di dalam tiap petak sampel digunakan sebagai data latih.</p></li>
+<li><p><strong>Random Forest:</strong> Pembagian latih/uji dilakukan per petak, dilengkapi validasi silang per petak.</p></li>
+<li><p><strong>Peta klasifikasi:</strong> Hasil disimpan sebagai GeoTIFF, dihitung estimasi luasnya, dan dibandingkan dengan komposit citra.</p></li>
+<li><p><strong>Peta interaktif:</strong> Petak sampel dan batas kecamatan ditampilkan bersama basemap Google Satellite, Esri, dan OpenStreetMap.</p></li>
+</ol>
+<p><strong>Berkas input (letakkan di folder kerja notebook):</strong></p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Berkas</p></th>
@@ -457,36 +474,37 @@ document.write(`
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Kecamatan_Bangkalan-KECAMATAN__1_.geojson</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Kecamatan_Bangkalan-KECAMATAN.geojson</span></code> atau <code class="docutils literal notranslate"><span class="pre">aoi_bangkalan.geojson</span></code></p></td>
 <td><p>Batas Kecamatan Bangkalan</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sentinel2_bangkalan.tif</span></code></p></td>
-<td><p>Sentinel-2A, band 1–6 = B2, B3, B4, B8, B11, B12 (reflektansi 0–1 atau DN 0–10000)</p></td>
+<td><p>GeoTIFF minimal 6 band: B2, B3, B4, B8, B11, B12</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sampel_sawah_bangkalan.zip</span></code> / <code class="docutils literal notranslate"><span class="pre">.geojson</span></code></p></td>
-<td><p>Petak sampel, kolom <code class="docutils literal notranslate"><span class="pre">kelas</span></code> (1 = sawah, 0 = non-sawah)</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sampel_sawah_bangkalan.zip</span></code> atau <code class="docutils literal notranslate"><span class="pre">.geojson</span></code></p></td>
+<td><p>Satu berkas sampel dengan kolom kelas (<code class="docutils literal notranslate"><span class="pre">class</span></code>, <code class="docutils literal notranslate"><span class="pre">kelas</span></code>, atau <code class="docutils literal notranslate"><span class="pre">label</span></code>)</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>atau</strong> <code class="docutils literal notranslate"><span class="pre">Sawah.zip</span></code> + <code class="docutils literal notranslate"><span class="pre">Non</span> <span class="pre">sawah.zip</span></code> (juga <code class="docutils literal notranslate"><span class="pre">Sawah50</span></code>/<code class="docutils literal notranslate"><span class="pre">Nonsawah50</span></code>)</p></td>
-<td><p>Dua berkas terpisah (tidak perlu kolom kelas; kelas diberikan otomatis)</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Sawah.zip</span></code> dan <code class="docutils literal notranslate"><span class="pre">Non</span> <span class="pre">sawah.zip</span></code></p></td>
+<td><p>Alternatif dua berkas terpisah; kelas diberikan otomatis</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>atau</strong></p></td>
-<td><p>Isi daftar koordinat langsung di Langkah 2</p></td>
+<tr class="row-even"><td><p>Daftar <code class="docutils literal notranslate"><span class="pre">sawah_coords</span></code> dan <code class="docutils literal notranslate"><span class="pre">nonsawah_coords</span></code></p></td>
+<td><p>Alternatif; gunakan koordinat yang sudah dicek pada citra satelit/QGIS</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<section id="alur">
-<h2>Alur<a class="headerlink" href="#alur" title="Link to this heading">#</a></h2>
+</section>
+<section id="alur-analisis">
+<h2>Alur Analisis<a class="headerlink" href="#alur-analisis" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Batas wilayah (AOI)</p></li>
-<li><p>50 petak sawah + 50 petak non-sawah (~50 m × 50 m)</p></li>
-<li><p>Ekspor sampel ke GeoJSON &amp; Shapefile ZIP (+ <code class="docutils literal notranslate"><span class="pre">.qml</span></code> untuk QGIS)</p></li>
-<li><p>Pemuatan citra Sentinel-2A + <strong>pemeriksaan kualitas band</strong></p></li>
-<li><p>Ekstraksi nilai spektral</p></li>
-<li><p>Pelatihan &amp; evaluasi Random Forest (80% latih / 20% uji, dipisah per petak)</p></li>
-<li><p>Klasifikasi seluruh kecamatan + luas + peta berdampingan</p></li>
-<li><p>Peta interaktif</p></li>
-<li><p>Kesimpulan</p></li>
+<li><p>Memuat batas wilayah kajian (AOI).</p></li>
+<li><p>Memuat atau membentuk petak sampel sawah dan bukan sawah.</p></li>
+<li><p>Mengekspor sampel ke GeoJSON dan Shapefile ZIP untuk QGIS.</p></li>
+<li><p>Memuat citra Sentinel-2A dan memeriksa kualitas band.</p></li>
+<li><p>Mengekstrak nilai spektral dari petak sampel.</p></li>
+<li><p>Melatih dan mengevaluasi model Random Forest.</p></li>
+<li><p>Mengklasifikasikan seluruh piksel valid di dalam kecamatan.</p></li>
+<li><p>Menampilkan petak pada peta interaktif.</p></li>
+<li><p>Menyimpan keluaran dan meninjau hasil di QGIS.</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -508,7 +526,7 @@ document.write(`
 <span class="n">BASE</span>        <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"/content"</span><span class="p">)</span> <span class="k">if</span> <span class="s2">"google.colab"</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span> <span class="k">else</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
 <span class="n">AOI_PATH</span>    <span class="o">=</span> <span class="n">BASE</span> <span class="o">/</span> <span class="s2">"Kecamatan_Bangkalan-KECAMATAN.geojson"</span>
 <span class="n">TIF_PATH</span>    <span class="o">=</span> <span class="n">BASE</span> <span class="o">/</span> <span class="s2">"sentinel2_bangkalan.tif"</span>
-<span class="n">SAMPLE_FILES</span> <span class="o">=</span> <span class="p">[</span><span class="n">BASE</span> <span class="o">/</span> <span class="s2">"Sawah.zip"</span><span class="p">,</span> <span class="n">BASE</span> <span class="o">/</span> <span class="s2">"sampel_sawah_bangkalan.geojson"</span><span class="p">]</span>
+<span class="n">SAMPLE_FILES</span> <span class="o">=</span> <span class="p">[</span><span class="n">BASE</span> <span class="o">/</span> <span class="s2">"sampel_sawah_bangkalan.zip"</span><span class="p">,</span> <span class="n">BASE</span> <span class="o">/</span> <span class="s2">"sampel_sawah_bangkalan.geojson"</span><span class="p">]</span>
 <span class="n">PATCH_M</span>     <span class="o">=</span> <span class="mi">50</span>      <span class="c1"># sisi petak sampel (m)</span>
 <span class="n">TEST_SIZE</span>   <span class="o">=</span> <span class="mf">0.20</span>    <span class="c1"># 80% latih / 20% uji (per petak)</span>
 <span class="n">N_TREES</span>     <span class="o">=</span> <span class="mi">100</span>
@@ -524,6 +542,7 @@ document.write(`
 <hr class="docutils" />
 <section id="langkah-1-pemuatan-batas-wilayah-kajian-aoi-kecamatan-bangkalan">
 <h2>Langkah 1: Pemuatan Batas Wilayah Kajian (AOI Kecamatan Bangkalan)<a class="headerlink" href="#langkah-1-pemuatan-batas-wilayah-kajian-aoi-kecamatan-bangkalan" title="Link to this heading">#</a></h2>
+<p>Notebook mencari batas kecamatan dari <code class="docutils literal notranslate"><span class="pre">Kecamatan_Bangkalan-KECAMATAN.geojson</span></code> terlebih dahulu, lalu mencoba berkas GeoJSON/vektor lain yang namanya menunjukkan AOI atau batas Bangkalan. Batas ini dipakai untuk memotong area citra dan menghitung piksel yang dianalisis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">cari_aoi</span><span class="p">():</span>
@@ -573,10 +592,10 @@ Lintang: -7.0683 s/d -6.9786
 <hr class="docutils" />
 <section id="langkah-2-petak-sampel-50-sawah-50-non-sawah">
 <h2>Langkah 2: Petak Sampel (50 Sawah &amp; 50 Non-Sawah)<a class="headerlink" href="#langkah-2-petak-sampel-50-sawah-50-non-sawah" title="Link to this heading">#</a></h2>
-<p>Sampel dibaca dari berkas hasil digitasi (<code class="docutils literal notranslate"><span class="pre">sampel_sawah_bangkalan.zip</span></code>/<code class="docutils literal notranslate"><span class="pre">.geojson</span></code>, kolom <code class="docutils literal notranslate"><span class="pre">kelas</span></code>). Bila berkas itu tidak ada, notebook memakai daftar koordinat <code class="docutils literal notranslate"><span class="pre">sawah_coords</span></code> dan <code class="docutils literal notranslate"><span class="pre">nonsawah_coords</span></code> di bawah (format <code class="docutils literal notranslate"><span class="pre">(lat,</span> <span class="pre">lon,</span> <span class="pre">'keterangan')</span></code>).</p>
-<p>Petak titik dibentuk menjadi persegi 50 m × 50 m <strong>dalam meter (UTM 49S)</strong>, lalu dikembalikan ke EPSG:4326.</p>
+<p>Gunakan 50 petak sawah (kelas 1) dan 50 petak bukan sawah (kelas 0), seperti pada contoh Sambeng. Sampel dibaca dari <code class="docutils literal notranslate"><span class="pre">sampel_sawah_bangkalan.zip</span></code>/<code class="docutils literal notranslate"><span class="pre">.geojson</span></code> (kolom <code class="docutils literal notranslate"><span class="pre">class</span></code>, <code class="docutils literal notranslate"><span class="pre">kelas</span></code>, atau <code class="docutils literal notranslate"><span class="pre">label</span></code>), dari pasangan berkas <code class="docutils literal notranslate"><span class="pre">Sawah.zip</span></code> + <code class="docutils literal notranslate"><span class="pre">Non</span> <span class="pre">sawah.zip</span></code>, atau dari daftar koordinat <code class="docutils literal notranslate"><span class="pre">sawah_coords</span></code> dan <code class="docutils literal notranslate"><span class="pre">nonsawah_coords</span></code> di bawah (format <code class="docutils literal notranslate"><span class="pre">(lat,</span> <span class="pre">lon,</span> <span class="pre">'keterangan')</span></code>).</p>
+<p>Titik koordinat dibentuk menjadi petak persegi 50 m × 50 m <strong>dalam meter (UTM 49S)</strong>, lalu dikembalikan ke EPSG:4326. Koordinat contoh Kecamatan Sambeng tidak boleh dipakai untuk wilayah Bangkalan.</p>
 <blockquote>
-<div><p><strong>Penting:</strong> koordinat/poligon harus diverifikasi visual di atas Google Satellite/QGIS. Sampel non-sawah sebaiknya mencakup pemukiman, air/tambak, <strong>tegalan/kebun/lahan bera</strong> (yang paling sering tertukar dengan sawah di Madura).</p>
+<div><p><strong>Penting:</strong> koordinat/poligon harus diverifikasi visual di atas Google Satellite/QGIS. Sampel bukan sawah sebaiknya mencakup pemukiman, air/tambak, serta <strong>tegalan, kebun, dan lahan bera</strong> yang sering tertukar dengan sawah di Madura.</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -859,6 +878,7 @@ Bukan Sawah    50
 <hr class="docutils" />
 <section id="langkah-3-ekspor-petak-sampel-ke-geojson-shapefile-zip-qgis-ready">
 <h2>Langkah 3: Ekspor Petak Sampel ke GeoJSON &amp; Shapefile ZIP (QGIS Ready)<a class="headerlink" href="#langkah-3-ekspor-petak-sampel-ke-geojson-shapefile-zip-qgis-ready" title="Link to this heading">#</a></h2>
+<p>Sampel diekspor ke folder <code class="docutils literal notranslate"><span class="pre">hasil_bangkalan/</span></code>. Paket Shapefile menyertakan <code class="docutils literal notranslate"><span class="pre">.qml</span></code> agar QGIS dapat menampilkan kelas Sawah dengan warna hijau dan Bukan Sawah dengan warna merah.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"id"</span><span class="p">,</span> <span class="s2">"class"</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">,</span> <span class="s2">"tipe"</span><span class="p">,</span> <span class="s2">"geometry"</span><span class="p">]</span>
@@ -905,8 +925,8 @@ ZIP     : /content/hasil_bangkalan/sampel_sawah_bangkalan.zip -&gt; ['sampel_saw
 <hr class="docutils" />
 <section id="langkah-4-pemuatan-citra-sentinel-2a-geotiff-dan-pemeriksaan-kualitas-band">
 <h2>Langkah 4: Pemuatan Citra Sentinel-2A GeoTIFF dan Pemeriksaan Kualitas Band<a class="headerlink" href="#langkah-4-pemuatan-citra-sentinel-2a-geotiff-dan-pemeriksaan-kualitas-band" title="Link to this heading">#</a></h2>
-<p>Band 1–6 = <strong>B2 (Blue), B3 (Green), B4 (Red), B8 (NIR), B11 (SWIR1), B12 (SWIR2)</strong>, resolusi 10 m.</p>
-<p>Sebelum dipakai, setiap band diperiksa: berapa persen piksel daratan di dalam kecamatan yang bernilai &gt; 0. Pada ekspor yang offset reflektansinya terpotong dua kali, B2/B3/B4 bisa hampir seluruhnya bernilai 0 sehingga <strong>NDVI/NDWI menjadi tidak valid</strong> (NDVI ≈ 1 di mana-mana). Bila itu terjadi, notebook otomatis beralih ke fitur berbasis <strong>B8, B11, B12</strong> dan memberi peringatan.</p>
+<p>Band 1–6 pada berkas yang digunakan di notebook ini harus berurutan sebagai <strong>B2 (Blue), B3 (Green), B4 (Red), B8 (NIR), B11 (SWIR1), dan B12 (SWIR2)</strong>. Band B11/B12 memiliki resolusi asli yang berbeda dari band 10 m; pastikan GeoTIFF sudah disejajarkan/resampling saat diekspor.</p>
+<p>Nilai DN hingga 10000 dikonversi ke reflektansi dengan membagi 10000. Sebelum analisis, notebook memeriksa persentase piksel bernilai lebih dari 0 pada tiap band. Jika B2/B3/B4 hampir seluruhnya 0 (misalnya akibat offset reflektansi terpotong dua kali), fitur indeks tampak tidak dapat dipercaya; notebook memberi peringatan dan beralih ke fitur SWIR/NIR bila mode otomatis digunakan.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">baca_tif</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
@@ -1053,7 +1073,7 @@ Mode fitur: SWIR/NIR saja (B8, B11, B12 + NDMI, NBR2). Ekspor ulang citra dari G
 <hr class="docutils" />
 <section id="langkah-5-ekstraksi-nilai-spektral-per-petak-extract">
 <h2>Langkah 5: Ekstraksi Nilai Spektral per Petak (<code class="docutils literal notranslate"><span class="pre">extract</span></code>)<a class="headerlink" href="#langkah-5-ekstraksi-nilai-spektral-per-petak-extract" title="Link to this heading">#</a></h2>
-<p>Seluruh piksel valid di dalam tiap petak 50 m dipakai (bukan hanya titik pusat), sehingga tiap petak menyumbang beberapa piksel. Tiap petak punya <code class="docutils literal notranslate"><span class="pre">id</span></code> unik agar pembagian latih/uji bisa dilakukan <strong>per petak</strong>.</p>
+<p>Mengikuti tujuan fungsi <code class="docutils literal notranslate"><span class="pre">extract()</span></code> pada alur contoh, fitur spektral diekstrak dari piksel valid di dalam tiap poligon sampel (bukan hanya satu titik pusat). Bergantung pada kualitas band, fitur mencakup band Blue/Green/Red/NIR/SWIR serta indeks NDVI, NDWI, NDMI, atau NBR2. Setiap petak memiliki <code class="docutils literal notranslate"><span class="pre">id</span></code> unik dan menjadi satu grup untuk pembagian data latih/uji.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sp</span> <span class="o">=</span> <span class="n">gdf_samples</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
@@ -1104,11 +1124,8 @@ nbr2              0.140  0.705
 <hr class="docutils" />
 <section id="langkah-6-pelatihan-evaluasi-random-forest">
 <h2>Langkah 6: Pelatihan &amp; Evaluasi Random Forest<a class="headerlink" href="#langkah-6-pelatihan-evaluasi-random-forest" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Data dibagi <strong>80% latih / 20% uji per petak</strong> (stratifikasi per kelas) supaya piksel bertetangga dalam satu petak tidak bocor ke data uji.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">class_weight=&quot;balanced&quot;</span></code> karena jumlah piksel per kelas tidak sama.</p></li>
-<li><p>Ditambah <strong>validasi silang 5-fold per petak</strong> agar akurasi tidak bergantung pada satu pembagian.</p></li>
-</ul>
+<p>Model Random Forest menggunakan fitur spektral hasil ekstraksi. Evaluasi mengikuti pembagian <strong>80% latih / 20% uji per petak</strong>; seluruh piksel dari petak yang sama hanya masuk ke salah satu bagian, sehingga mengurangi kebocoran data spasial.</p>
+<p>Hasil evaluasi mencakup <strong>Overall Accuracy</strong>, <strong>Cohen’s Kappa</strong>, <strong>Confusion Matrix</strong>, laporan presisi/recall/F1, dan <strong>Feature Importance</strong>. <code class="docutils literal notranslate"><span class="pre">class_weight=&quot;balanced&quot;</span></code> membantu menangani jumlah piksel yang tidak seimbang. Validasi silang per petak memberi gambaran tambahan selain satu pembagian latih/uji.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
@@ -1186,7 +1203,7 @@ band_swir1               0.0736
 <hr class="docutils" />
 <section id="langkah-7-klasifikasi-seluruh-kecamatan-peta-berdampingan">
 <h2>Langkah 7: Klasifikasi Seluruh Kecamatan &amp; Peta Berdampingan<a class="headerlink" href="#langkah-7-klasifikasi-seluruh-kecamatan-peta-berdampingan" title="Link to this heading">#</a></h2>
-<p>Model akhir dilatih ulang dengan <strong>seluruh</strong> petak, lalu diterapkan ke semua piksel valid (per bagian agar hemat memori). Piksel di luar kecamatan / tanpa data bernilai <strong>255</strong>.</p>
+<p>Model akhir dilatih ulang dengan <strong>seluruh</strong> data petak, lalu diterapkan bertahap ke piksel valid di dalam Kecamatan Bangkalan. Hasil disimpan sebagai <code class="docutils literal notranslate"><span class="pre">hasil_bangkalan/klasifikasi_sawah_bangkalan.tif</span></code> untuk dibuka di QGIS; nilai <strong>255</strong> menandai area di luar AOI atau piksel tanpa data. Peta hasil ditampilkan berdampingan dengan komposit citra, dan luas kelas dihitung dari ukuran piksel GeoTIFF.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rf_final</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="n">N_TREES</span><span class="p">,</span> <span class="n">class_weight</span><span class="o">=</span><span class="s2">"balanced"</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">SEED</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -1247,6 +1264,7 @@ Tanpa data di dalam kecamatan: 964.1 ha
 <hr class="docutils" />
 <section id="langkah-8-peta-interaktif-google-satellite-esri-openstreetmap">
 <h2>Langkah 8: Peta Interaktif (Google Satellite, Esri, OpenStreetMap)<a class="headerlink" href="#langkah-8-peta-interaktif-google-satellite-esri-openstreetmap" title="Link to this heading">#</a></h2>
+<p>Peta Folium menampilkan batas Kecamatan Bangkalan dan poligon sampel dengan popup kelas, tipe, serta koordinat. Gunakan kontrol lapisan untuk membandingkan Google Satellite Hybrid, Google Satellite, Esri World Imagery, dan OpenStreetMap. Berkas HTML mandiri disimpan di <code class="docutils literal notranslate"><span class="pre">hasil_bangkalan/peta_sampel_bangkalan.html</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
@@ -7637,14 +7655,23 @@ Tanpa data di dalam kecamatan: 964.1 ha
 <hr class="docutils" />
 <section id="langkah-9-kesimpulan-panduan-buka-di-qgis">
 <h2>Langkah 9: Kesimpulan &amp; Panduan Buka di QGIS<a class="headerlink" href="#langkah-9-kesimpulan-panduan-buka-di-qgis" title="Link to this heading">#</a></h2>
-<p><strong>Keluaran</strong> (folder <code class="docutils literal notranslate"><span class="pre">hasil_bangkalan/</span></code>): <code class="docutils literal notranslate"><span class="pre">klasifikasi_sawah_bangkalan.tif</span></code>, <code class="docutils literal notranslate"><span class="pre">sampel_sawah_bangkalan.zip</span></code> (+<code class="docutils literal notranslate"><span class="pre">.qml</span></code>), <code class="docutils literal notranslate"><span class="pre">sampel_sawah_bangkalan.geojson</span></code>, <code class="docutils literal notranslate"><span class="pre">peta_klasifikasi_bangkalan.png</span></code>, <code class="docutils literal notranslate"><span class="pre">peta_sampel_bangkalan.html</span></code>, <code class="docutils literal notranslate"><span class="pre">confusion_matrix_sawah.csv</span></code>.</p>
-<p><strong>Membuka di QGIS:</strong> ekstrak ZIP lalu seret <code class="docutils literal notranslate"><span class="pre">sampel_sawah_bangkalan.shp</span></code> (gaya hijau/merah + label otomatis dari <code class="docutils literal notranslate"><span class="pre">.qml</span></code>); tambahkan XYZ Tiles <code class="docutils literal notranslate"><span class="pre">https://mt1.google.com/vt/lyrs=y&amp;x={x}&amp;y={y}&amp;z={z}</span></code> sebagai basemap; seret <code class="docutils literal notranslate"><span class="pre">klasifikasi_sawah_bangkalan.tif</span></code> (0 = non-sawah merah, 1 = sawah hijau).</p>
-<p><strong>Catatan interpretasi</strong></p>
+<p><strong>Keluaran</strong> (folder <code class="docutils literal notranslate"><span class="pre">hasil_bangkalan/</span></code>): <code class="docutils literal notranslate"><span class="pre">klasifikasi_sawah_bangkalan.tif</span></code>, <code class="docutils literal notranslate"><span class="pre">sampel_sawah_bangkalan.zip</span></code> (+ <code class="docutils literal notranslate"><span class="pre">.qml</span></code>), <code class="docutils literal notranslate"><span class="pre">sampel_sawah_bangkalan.geojson</span></code>, <code class="docutils literal notranslate"><span class="pre">peta_klasifikasi_bangkalan.png</span></code>, <code class="docutils literal notranslate"><span class="pre">peta_sampel_bangkalan.html</span></code>, dan <code class="docutils literal notranslate"><span class="pre">confusion_matrix_sawah.csv</span></code>.</p>
+<section id="membuka-hasil-di-qgis">
+<h3>Membuka hasil di QGIS<a class="headerlink" href="#membuka-hasil-di-qgis" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Ekstrak <code class="docutils literal notranslate"><span class="pre">sampel_sawah_bangkalan.zip</span></code>, lalu tambahkan <code class="docutils literal notranslate"><span class="pre">sampel_sawah_bangkalan.shp</span></code>. Berkas <code class="docutils literal notranslate"><span class="pre">.qml</span></code> di dalam paket mengatur warna kelas secara otomatis.</p></li>
+<li><p>Tambahkan basemap melalui <strong>Browser → XYZ Tiles → New Connection</strong>, gunakan URL <code class="docutils literal notranslate"><span class="pre">https://mt1.google.com/vt/lyrs=y&amp;x={x}&amp;y={y}&amp;z={z}</span></code>, lalu letakkan basemap di bawah layer sampel.</p></li>
+<li><p>Tambahkan <code class="docutils literal notranslate"><span class="pre">klasifikasi_sawah_bangkalan.tif</span></code>: kelas 0 adalah bukan sawah (merah), kelas 1 adalah sawah (hijau), dan 255 adalah tanpa data.</p></li>
+</ol>
+</section>
+<section id="catatan-interpretasi">
+<h3>Catatan interpretasi<a class="headerlink" href="#catatan-interpretasi" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Akurasi hanya sebaik kualitas sampel. Pastikan sampel non-sawah ikut mencakup tegalan, kebun, lahan bera, dan tambak.</p></li>
-<li><p>Bila Langkah 4 menampilkan peringatan band B2/B3/B4, hasil memakai fitur SWIR/NIR saja dan sebaiknya citra diekspor ulang dari GEE (tanpa pengurangan offset ganda).</p></li>
-<li><p>Satu tanggal citra tidak menangkap fase tanam; komposit median multi-tanggal akan lebih stabil untuk sawah.</p></li>
+<li><p>Kualitas peta dan metrik evaluasi bergantung pada ketepatan label serta sebaran sampel. Pastikan kelas bukan sawah mencakup tegalan, kebun, lahan bera, dan tambak.</p></li>
+<li><p>Jika band B2/B3/B4 bermasalah, hasil menggunakan fitur SWIR/NIR saja. Periksa kembali ekspor citra dari GEE, terutama proses scaling/offset.</p></li>
+<li><p>Citra satu tanggal tidak menangkap seluruh fase tanam; komposit median multi-tanggal dapat memberi gambaran sawah yang lebih stabil.</p></li>
 </ul>
+</section>
 </section>
 </section>
 
@@ -7712,7 +7739,8 @@ Tanpa data di dalam kecamatan: 964.1 ha
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alur">Alur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#komponen-utama">Komponen Utama</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alur-analisis">Alur Analisis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-pemuatan-batas-wilayah-kajian-aoi-kecamatan-bangkalan">Langkah 1: Pemuatan Batas Wilayah Kajian (AOI Kecamatan Bangkalan)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-petak-sampel-50-sawah-50-non-sawah">Langkah 2: Petak Sampel (50 Sawah &amp; 50 Non-Sawah)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-ekspor-petak-sampel-ke-geojson-shapefile-zip-qgis-ready">Langkah 3: Ekspor Petak Sampel ke GeoJSON &amp; Shapefile ZIP (QGIS Ready)</a></li>
@@ -7721,7 +7749,11 @@ Tanpa data di dalam kecamatan: 964.1 ha
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-6-pelatihan-evaluasi-random-forest">Langkah 6: Pelatihan &amp; Evaluasi Random Forest</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-7-klasifikasi-seluruh-kecamatan-peta-berdampingan">Langkah 7: Klasifikasi Seluruh Kecamatan &amp; Peta Berdampingan</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-8-peta-interaktif-google-satellite-esri-openstreetmap">Langkah 8: Peta Interaktif (Google Satellite, Esri, OpenStreetMap)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-9-kesimpulan-panduan-buka-di-qgis">Langkah 9: Kesimpulan &amp; Panduan Buka di QGIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-9-kesimpulan-panduan-buka-di-qgis">Langkah 9: Kesimpulan &amp; Panduan Buka di QGIS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuka-hasil-di-qgis">Membuka hasil di QGIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#catatan-interpretasi">Catatan interpretasi</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
