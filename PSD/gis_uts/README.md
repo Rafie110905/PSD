@@ -1,9 +1,9 @@
 # SIG Jawa Timur — Klasifikasi Penutup Lahan
 
-Streamlit app untuk eksperimen enam kelas berbasis citra Sentinel-2A dan label
-proksi ESA WorldCover 2021. Aplikasi melakukan pembagian train/test berbasis
-blok spasial, membandingkan empat model, dan menampilkan prediksi pada peta
-Folium dengan basemap satelit.
+Streamlit dashboard tujuh halaman untuk eksperimen enam kelas berbasis citra
+Sentinel-2A dan label proksi ESA WorldCover 2021. Aplikasi melakukan pembagian
+train/test berbasis blok spasial, membandingkan empat model, menampilkan peta
+Folium, evaluasi, dan unduhan hasil pratinjau.
 
 ## Data proyek dan keterbatasan yang harus diketahui
 
@@ -57,11 +57,20 @@ python -m pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Unggah empat masukan di sidebar, atur batas maksimum sampel seimbang per kelas,
-lalu klik **Jalankan eksperimen**. Aplikasi menampilkan jumlah aktual training
-dan testing per kelas, confusion matrix, accuracy, balanced accuracy,
-Macro-F1, Cohen's kappa, perbandingan model, dan pratinjau klasifikasi.
-Holdout dibagi berdasarkan blok spasial 100 piksel pada raster pratinjau.
+Unggah empat masukan di sidebar, buka **Alur Data → Model**, atur batas sampel
+seimbang per kelas, lalu klik **Jalankan eksperimen**. Hasil tersimpan selama
+sesi dashboard agar dapat dibuka pada halaman lain tanpa melatih ulang.
+
+Halaman dashboard: **Ringkasan**, **Alur Data → Model**, **Peta Klasifikasi**,
+**Luas per Kelas**, **Evaluasi Model**, **Data & Unduhan**, dan **Metodologi**.
+Hasil mencakup jumlah aktual training/testing, confusion matrix, accuracy,
+balanced accuracy, Macro-F1, Cohen's kappa, perbandingan model, peta, dan
+unduhan GeoTIFF/CSV. Holdout dibagi berdasarkan blok spasial 100 piksel pada
+raster pratinjau.
+
+Susunan laporan mengikuti enam tahap CRISP-DM seperti repository referensi.
+Susunan bab tersebut tidak berarti data, angka, atau hasil model referensi
+dipakai kembali; semua hasil dashboard dihitung dari input eksperimen ini.
 
 ## Deploy Streamlit Community Cloud
 

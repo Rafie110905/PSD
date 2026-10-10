@@ -2,27 +2,27 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>🌐 Selamat Datang di Web Catatan Saya &#8212; Crawling &amp; Analisis Data Polutan Udara Kabupaten Bangkalan</title>
-  
-  
-  
+    <title>Bab 3 — Data Preprocessing &#8212; Crawling &amp; Analisis Data Polutan Udara Kabupaten Bangkalan</title>
+
+
+
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  
+
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 <link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 <link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-  
+
   <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
@@ -46,7 +46,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/styles/theme.css?v=a243ae73" />
     <link rel="stylesheet" type="text/css" href="_static/vendor/fontawesome/6.5.2/css/all.min.css?v=f4fbef65" />
-  
+
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
@@ -68,9 +68,7 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'UTS_Jatim_Bab_03_Data_Preprocessing';</script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/copybutton_funcs.js?v=776a791e"></script>
@@ -88,7 +86,8 @@
     <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?v=4e4fcec4"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Crawling &amp; Analisis Data Polutan Udara di Kabupaten Bangkalan" href="Crawling_Polutan_Bangkalan.html" />
+    <link rel="next" title="Bab 4 — Modeling" href="UTS_Jatim_Bab_04_Modeling.html" />
+    <link rel="prev" title="Bab 2 — Data Understanding" href="UTS_Jatim_Bab_02_Data_Understanding.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <style>
@@ -103,30 +102,30 @@ html[data-theme="dark"] .bd-content td {
 }
 </style>
 </head>
-  
-  
+
+
   <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-  
-  
+
+
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
+
   <div id="pst-scroll-pixel-helper"></div>
-  
+
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-  
+
   <input type="checkbox"
           class="sidebar-toggle"
           id="pst-primary-sidebar-checkbox"/>
   <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
+
   <input type="checkbox"
           class="sidebar-toggle"
           id="pst-secondary-sidebar-checkbox"/>
   <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
+
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
@@ -152,51 +151,49 @@ html[data-theme="dark"] .bd-content td {
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
-  
+
     <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
-  
+
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
-      
-        
-      
-      <div class="bd-sidebar-primary bd-sidebar">
-        
 
-  
+
+
+      <div class="bd-sidebar-primary bd-sidebar">
+
+
+
   <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
+
+
+
+
   </div>
-  
+
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
-  
 
-<a class="navbar-brand logo" href="#">
-  
-  
-  
-  
-  
-    
-    
-      
-    
-    
+
+
+
+<a class="navbar-brand logo" href="intro.html">
+
+
+
+
+
+
+
+
+
+
     <img src="_static/logo.png" class="logo__image only-light" alt="Crawling & Analisis Data Polutan Udara Kabupaten Bangkalan - Home"/>
     <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Crawling & Analisis Data Polutan Udara Kabupaten Bangkalan - Home"/>`);</script>
-  
-  
+
+
 </a></div>
         <div class="sidebar-primary-item">
 
@@ -211,15 +208,15 @@ html[data-theme="dark"] .bd-content td {
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
+
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     🌐 Selamat Datang di Web Catatan Saya
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Crawling_Polutan_Bangkalan.html">Crawling &amp; Analisis Data Polutan Udara di Kabupaten Bangkalan</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="Crawling_Analisis_Data_Polutan_Udara_di_Kecamatan_Bangkalan.html">Crawling &amp; Analisis Data Polutan Udara di Kecamatan Bangkalan</a></li>
@@ -236,7 +233,7 @@ html[data-theme="dark"] .bd-content td {
 <li class="toctree-l1"><a class="reference internal" href="UTS_Analisis_Penutup_Lahan_Jawa_Timur.html">UTS SIG: Analisis Spasial Penutup Lahan dan Kebijakan di Jawa Timur</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UTS_Jatim_Bab_01_Business_Understanding.html">UTS SIG — Bab 1: Business Understanding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UTS_Jatim_Bab_02_Data_Understanding.html">UTS SIG — Bab 2: Data Understanding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UTS_Jatim_Bab_03_Data_Preprocessing.html">UTS SIG — Bab 3: Data Preprocessing</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">UTS SIG — Bab 3: Data Preprocessing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UTS_Jatim_Bab_04_Modeling.html">UTS SIG — Bab 4: Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UTS_Jatim_Bab_05_Evaluation.html">UTS SIG — Bab 5: Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UTS_Jatim_Bab_06_WebGIS_Deployment.html">UTS SIG — Bab 6: WebGIS &amp; Deployment</a></li>
@@ -245,39 +242,39 @@ html[data-theme="dark"] .bd-content td {
     </div>
 </nav></div>
     </div>
-  
-  
+
+
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-  
+
   <div id="rtd-footer-container"></div>
 
 
       </div>
-      
+
       <main id="main-content" class="bd-main" role="main">
-        
-        
+
+
 
 <div class="sbt-scroll-pixel-helper"></div>
 
           <div class="bd-content">
             <div class="bd-article-container">
-              
+
               <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
-  
+
     <div class="header-article-items__start">
-      
+
         <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
 </button></div>
-      
+
     </div>
-  
-  
+
+
     <div class="header-article-items__end">
-      
+
         <div class="header-article-item">
 
 <div class="article-header-buttons">
@@ -291,15 +288,15 @@ html[data-theme="dark"] .bd-content td {
     <i class="fab fa-github"></i>
   </button>
   <ul class="dropdown-menu">
-      
-      
-      
+
+
+
       <li><a href="https://github.com/Rafie110905/PSD" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
-  
+
 
 <span class="btn__icon-container">
   <i class="fab fa-github"></i>
@@ -307,16 +304,16 @@ html[data-theme="dark"] .bd-content td {
 <span class="btn__text-container">Repository</span>
 </a>
 </li>
-      
-      
-      
-      
-      <li><a href="https://github.com/Rafie110905/PSD/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+
+
+
+
+      <li><a href="https://github.com/Rafie110905/PSD/issues/new?title=Issue%20on%20page%20%2F_sources/UTS_Jatim_Bab_03_Data_Preprocessing.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
-  
+
 
 <span class="btn__icon-container">
   <i class="fas fa-lightbulb"></i>
@@ -324,7 +321,7 @@ html[data-theme="dark"] .bd-content td {
 <span class="btn__text-container">Open issue</span>
 </a>
 </li>
-      
+
   </ul>
 </div>
 
@@ -338,15 +335,15 @@ html[data-theme="dark"] .bd-content td {
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="_sources/intro.md" target="_blank"
+
+
+
+      <li><a href="_sources/UTS_Jatim_Bab_03_Data_Preprocessing.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
-  
+
 
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
@@ -354,17 +351,17 @@ html[data-theme="dark"] .bd-content td {
 <span class="btn__text-container">.md</span>
 </a>
 </li>
-      
-      
-      
-      
+
+
+
+
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
   title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
-  
+
 
 <span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
@@ -372,7 +369,7 @@ html[data-theme="dark"] .bd-content td {
 <span class="btn__text-container">.pdf</span>
 </button>
 </li>
-      
+
   </ul>
 </div>
 
@@ -384,7 +381,7 @@ html[data-theme="dark"] .bd-content td {
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
-  
+
 
 <span class="btn__icon-container">
   <i class="fas fa-expand"></i>
@@ -416,97 +413,167 @@ document.write(`
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
-      
+
     </div>
-  
+
 </div>
 </div>
-              
-              
+
+
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>🌐 Selamat Datang di Web Catatan Saya</h1>
+    <h1>Bab 3 — Data Preprocessing</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
-            
+
             <div>
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profil-utama">👤 Profil Utama</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tentang-project">📌 Tentang Project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemeriksaan-dan-penyelarasan">3.1 Pemeriksaan dan penyelarasan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crosswalk-label">3.2 Crosswalk label</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitur-model">3.3 Fitur model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampel-dan-pembagian-spasial">3.4 Sampel dan pembagian spasial</a></li>
 </ul>
             </nav>
         </div>
     </div>
 </div>
 
-              
-                
+
+
 <div id="searchbox"></div>
                 <article class="bd-article">
-                  
-  <section class="tex2jax_ignore mathjax_ignore" id="selamat-datang-di-web-catatan-saya">
-<h1>🌐 Selamat Datang di Web Catatan Saya<a class="headerlink" href="#selamat-datang-di-web-catatan-saya" title="Link to this heading">#</a></h1>
-<p>Catatan ini disusun selama menempuh mata kuliah <strong>Pengantar Sains Data</strong> pada Program Studi Teknik Informatika, Universitas Trunojoyo Madura. Isinya mencakup proses <strong>crawling data polutan udara</strong> untuk wilayah Kabupaten Bangkalan menggunakan data satelit Sentinel-5P, mulai dari business understanding, penentuan wilayah kajian (AOI), crawling data, data understanding, hingga visualisasi time series.</p>
-<section id="profil-utama">
-<h2>👤 Profil Utama<a class="headerlink" href="#profil-utama" title="Link to this heading">#</a></h2>
+
+  <section class="tex2jax_ignore mathjax_ignore" id="bab-3-data-preprocessing">
+<h1>Bab 3 — Data Preprocessing<a class="headerlink" href="#bab-3-data-preprocessing" title="Link to this heading">#</a></h1>
+<section id="pemeriksaan-dan-penyelarasan">
+<h2>3.1 Pemeriksaan dan penyelarasan<a class="headerlink" href="#pemeriksaan-dan-penyelarasan" title="Link to this heading">#</a></h2>
+<p>Sebelum eksperimen, periksa jumlah band, CRS, transform, resolusi, rentang
+nilai, NoData, dan cakupan tumpang-susun. GeoTIFF Sentinel-2 wajib berisi
+minimal sepuluh band pada urutan B2, B3, B4, B5, B6, B7, B8, B8A, B11, B12
+dengan grid bersama. Nilai boleh berupa reflektansi 0–1 atau DN 0–10000.
+WorldCover diselaraskan ke grid citra memakai nearest-neighbour agar kode kelas
+tetap kategori, bukan nilai interpolasi.</p>
+<p>Batas AOI dan geometri danau diproyeksikan ke CRS raster sebelum dirasterisasi.
+Piksel di luar AOI dan piksel yang memiliki fitur tidak valid dikeluarkan dari
+eksperimen. Mask awan harus diterapkan pada proses penyediaan komposit citra.
+Raster pratinjau aplikasi dibatasi hingga 1.200 piksel pada sisi terpanjang;
+hasilnya tidak setara peta resolusi penuh.</p>
+</section>
+<section id="crosswalk-label">
+<h2>3.2 Crosswalk label<a class="headerlink" href="#crosswalk-label" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head text-left"><p>Informasi</p></th>
-<th class="head text-left"><p>Detail</p></th>
+<tr class="row-odd"><th class="head text-right"><p>Kode WorldCover</p></th>
+<th class="head"><p>Kelas studi</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p><strong>Nama</strong></p></td>
-<td class="text-left"><p>Moh Rafie Nazar J</p></td>
+<tr class="row-even"><td class="text-right"><p>40</p></td>
+<td><p>Sawah*</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><strong>NIM</strong></p></td>
-<td class="text-left"><p>240411100003</p></td>
+<tr class="row-odd"><td class="text-right"><p>50</p></td>
+<td><p>Bangunan</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><strong>Fakultas</strong></p></td>
-<td class="text-left"><p>Teknik</p></td>
+<tr class="row-even"><td class="text-right"><p>95</p></td>
+<td><p>Mangrove</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><strong>Prodi</strong></p></td>
-<td class="text-left"><p>Teknik Informatika</p></td>
+<tr class="row-odd"><td class="text-right"><p>10, 20, 30</p></td>
+<td><p>Lahan hijau</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><strong>Mata Kuliah</strong></p></td>
-<td class="text-left"><p>Pengantar Sains Data</p></td>
+<tr class="row-even"><td class="text-right"><p>80 di dalam poligon danau OSM</p></td>
+<td><p>Danau/Ranu*</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>80 di luar poligon danau OSM</p></td>
+<td><p>Perairan terbuka</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>Kelas proksi tidak diartikan sebagai label lapangan. Poligon OSM hanya
+memisahkan air yang beririsan secara spasial dengan poligon danau yang
+diunggah.</p>
 </section>
-<hr class="docutils" />
-<section id="tentang-project">
-<h2>📌 Tentang Project<a class="headerlink" href="#tentang-project" title="Link to this heading">#</a></h2>
-<p>Project ini berfokus pada crawling data polutan udara (CO, NO2, HCHO, O3, SO2, dan CH4) untuk wilayah <strong>Kabupaten Bangkalan</strong>, dengan wilayah kajian dibatasi menggunakan GeoJSON, data disimpan dalam format CSV, dan hasil akhirnya divisualisasikan dalam bentuk time series untuk mengetahui kondisi kualitas udara di wilayah tersebut.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Crawling_Polutan_Bangkalan.html">Crawling &amp; Analisis Data Polutan Udara di Kabupaten Bangkalan</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Crawling_Polutan_Bangkalan.html#penyimpanan-data-ke-postgresql-aiven-dan-penarikannya-ke-knime">Penyimpanan Data ke PostgreSQL (Aiven) dan Penarikannya ke KNIME</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Crawling_Analisis_Data_Polutan_Udara_di_Kecamatan_Bangkalan.html">Crawling &amp; Analisis Data Polutan Udara di Kecamatan Bangkalan</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Crawling_Analisis_Data_Polutan_Udara_di_Kecamatan_Bangkalan.html#penyimpanan-data-ke-postgresql-aiven-dan-penarikannya-ke-knime">Penyimpanan Data ke PostgreSQL (Aiven) dan Penarikannya ke KNIME</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Crawling_Analisis_Data_Polutan_Udara_di_Kecamatan_Bangkalan.html#ekstraksi-68-fitur-time-series-no2-menggunakan-library-tsfel">Ekstraksi 68 Fitur Time Series NO2 Menggunakan Library TSFEL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="K_Means_Clustering_Code.html">K-Means Clustering Polutan</a></li>
-<li class="toctree-l1"><a class="reference internal" href="K_Means_Clustering_Knime.html">2. Alur Kerja (Workflow) Clustering KNIME</a></li>
-<li class="toctree-l1"><a class="reference internal" href="K_Means_Clustering_Knime.html#interpretasi-hasil-clustering-scatter-plot-knime">3. Interpretasi Hasil Clustering (Scatter Plot KNIME)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Deskripsi_fitur_perhitungan_manual_MohRafie.html">Deskripsi Fitur &amp; Perhitungan Manual</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Ekstraksi_Fitur_TSFEL_Data_Polutan_Udara_Kecamatan_Bangkalan.html">Ekstraksi Fitur TSFEL dan Perhitungan Manual pada Data Polutan Udara</a></li>
-<li class="toctree-l1"><a class="reference internal" href="K-Means%20Clustering%20pada%20Data%20Polutan%20Udara%20Implementasi%20Python%20dan%20KNIME.html">K-Means Clustering pada Data Polutan Udara: Implementasi Python dan KNIME</a></li>
-<li class="toctree-l1"><a class="reference internal" href="klasifikasi_sawah_sentinel2_bangkalan.html">Klasifikasi Tutupan Lahan Sawah Menggunakan Citra Satelit Sentinel-2A dan Algoritma Random Forest — Kecamatan Bangkalan</a></li>
-<li class="toctree-l1"><a class="reference internal" href="K-Means_Clustering_Polynomial_Proyek_Sains_Data.html">K-Means Clustering (Polynomial)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UTS_Analisis_Penutup_Lahan_Jawa_Timur.html">UTS SIG: Analisis Spasial Penutup Lahan dan Kebijakan di Jawa Timur</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UTS_Jatim_Bab_01_Business_Understanding.html">UTS SIG — Bab 1: Business Understanding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UTS_Jatim_Bab_02_Data_Understanding.html">UTS SIG — Bab 2: Data Understanding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UTS_Jatim_Bab_03_Data_Preprocessing.html">UTS SIG — Bab 3: Data Preprocessing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UTS_Jatim_Bab_04_Modeling.html">UTS SIG — Bab 4: Modeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UTS_Jatim_Bab_05_Evaluation.html">UTS SIG — Bab 5: Evaluation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UTS_Jatim_Bab_06_WebGIS_Deployment.html">UTS SIG — Bab 6: WebGIS &amp; Deployment</a></li>
-</ul>
+<section id="fitur-model">
+<h2>3.3 Fitur model<a class="headerlink" href="#fitur-model" title="Link to this heading">#</a></h2>
+<p>Sepuluh fitur pertama adalah reflektansi band. Delapan indeks dihitung per
+piksel. Pembagian dengan penyebut mendekati nol dihindari agar tidak
+menghasilkan nilai tak terhingga.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Fitur</p></th>
+<th class="head"><p>Rumus</p></th>
+<th class="head"><p>Kegunaan umum</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">B2_blue</span></code>, <code class="docutils literal notranslate"><span class="pre">B3_green</span></code>, <code class="docutils literal notranslate"><span class="pre">B4_red</span></code></p></td>
+<td><p>Reflektansi band</p></td>
+<td><p>Warna tampak, air, vegetasi</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">B5_rededge1</span></code>, <code class="docutils literal notranslate"><span class="pre">B6_rededge2</span></code>, <code class="docutils literal notranslate"><span class="pre">B7_rededge3</span></code></p></td>
+<td><p>Reflektansi band</p></td>
+<td><p>Respons red-edge/vegetasi</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">B8_nir</span></code>, <code class="docutils literal notranslate"><span class="pre">B8A_rededge4</span></code></p></td>
+<td><p>Reflektansi band</p></td>
+<td><p>Vegetasi sehat, pemisahan air</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">B11_swir1</span></code>, <code class="docutils literal notranslate"><span class="pre">B12_swir2</span></code></p></td>
+<td><p>Reflektansi band</p></td>
+<td><p>Kelembapan, tanah, permukaan terbangun</p></td>
+</tr>
+<tr class="row-even"><td><p>NDVI</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(B8</span> <span class="pre">-</span> <span class="pre">B4)</span> <span class="pre">/</span> <span class="pre">(B8</span> <span class="pre">+</span> <span class="pre">B4)</span></code></p></td>
+<td><p>Kehijauan vegetasi</p></td>
+</tr>
+<tr class="row-odd"><td><p>NDWI</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(B3</span> <span class="pre">-</span> <span class="pre">B8)</span> <span class="pre">/</span> <span class="pre">(B3</span> <span class="pre">+</span> <span class="pre">B8)</span></code></p></td>
+<td><p>Indeks air Green–NIR</p></td>
+</tr>
+<tr class="row-even"><td><p>MNDWI</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(B3</span> <span class="pre">-</span> <span class="pre">B11)</span> <span class="pre">/</span> <span class="pre">(B3</span> <span class="pre">+</span> <span class="pre">B11)</span></code></p></td>
+<td><p>Air dibanding sebagian permukaan terbangun</p></td>
+</tr>
+<tr class="row-odd"><td><p>NDMI</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(B8</span> <span class="pre">-</span> <span class="pre">B11)</span> <span class="pre">/</span> <span class="pre">(B8</span> <span class="pre">+</span> <span class="pre">B11)</span></code></p></td>
+<td><p>Kelembapan vegetasi</p></td>
+</tr>
+<tr class="row-even"><td><p>NDBI</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(B11</span> <span class="pre">-</span> <span class="pre">B8)</span> <span class="pre">/</span> <span class="pre">(B11</span> <span class="pre">+</span> <span class="pre">B8)</span></code></p></td>
+<td><p>Respons lahan terbangun</p></td>
+</tr>
+<tr class="row-odd"><td><p>NDRE</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(B8A</span> <span class="pre">-</span> <span class="pre">B5)</span> <span class="pre">/</span> <span class="pre">(B8A</span> <span class="pre">+</span> <span class="pre">B5)</span></code></p></td>
+<td><p>Respons vegetasi red-edge</p></td>
+</tr>
+<tr class="row-even"><td><p>SAVI</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.5</span> <span class="pre">×</span> <span class="pre">(B8</span> <span class="pre">-</span> <span class="pre">B4)</span> <span class="pre">/</span> <span class="pre">(B8</span> <span class="pre">+</span> <span class="pre">B4</span> <span class="pre">+</span> <span class="pre">0.5)</span></code></p></td>
+<td><p>Vegetasi dengan koreksi tanah</p></td>
+</tr>
+<tr class="row-odd"><td><p>BSI</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">((B11</span> <span class="pre">+</span> <span class="pre">B4)</span> <span class="pre">-</span> <span class="pre">(B8</span> <span class="pre">+</span> <span class="pre">B2))</span> <span class="pre">/</span> <span class="pre">((B11</span> <span class="pre">+</span> <span class="pre">B4)</span> <span class="pre">+</span> <span class="pre">(B8</span> <span class="pre">+</span> <span class="pre">B2))</span></code></p></td>
+<td><p>Tanah terbuka/permukaan cerah</p></td>
+</tr>
+</tbody>
+</table>
 </div>
+<p>Delapan belas fitur tersebut merupakan rancangan UTS ini. Jumlah dan rumus
+fitur tidak disalin dari eksperimen referensi.</p>
+</section>
+<section id="sampel-dan-pembagian-spasial">
+<h2>3.4 Sampel dan pembagian spasial<a class="headerlink" href="#sampel-dan-pembagian-spasial" title="Link to this heading">#</a></h2>
+<p>Aplikasi mengambil sampel berimbang per kelas sampai batas maksimum yang
+dipilih pengguna. Sampel dikelompokkan dalam blok 100 piksel pada raster
+pratinjau; satu pembagian holdout berbasis grup digunakan bersama oleh seluruh
+model untuk mengurangi kebocoran antarpiksel bertetangga.</p>
+<p><strong>Jumlah aktual belum tersedia</strong> sampai GeoTIFF dan vektor AOI/OSM dimasukkan.
+Jumlah yang dipilih di kontrol aplikasi adalah batas, bukan jaminan jumlah
+sampel valid. Kelas yang tidak memiliki cakupan valid membuat eksperimen
+berhenti dengan pesan kesalahan, bukan menghapus kelas secara diam-diam.</p>
 </section>
 </section>
 
@@ -523,7 +590,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./."
+            path: "./_sources"
         },
         predefinedOutput: true
     }
@@ -531,31 +598,40 @@ document.write(`
     <script>kernelName = 'python3'</script>
 
                 </article>
-              
 
-              
-              
-              
-              
+
+
+
+
+
                 <footer class="prev-next-footer d-print-none">
-                  
+
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="UTS_Jatim_Bab_02_Data_Understanding.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Bab 2 — Data Understanding</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="Crawling_Polutan_Bangkalan.html"
+       href="UTS_Jatim_Bab_04_Modeling.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Crawling &amp; Analisis Data Polutan Udara di Kabupaten Bangkalan</p>
+        <p class="prev-next-title">Bab 4 — Modeling</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
-              
+
             </div>
-            
-            
-              
+
+
+
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
@@ -565,55 +641,57 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profil-utama">👤 Profil Utama</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tentang-project">📌 Tentang Project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemeriksaan-dan-penyelarasan">3.1 Pemeriksaan dan penyelarasan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crosswalk-label">3.2 Crosswalk label</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitur-model">3.3 Fitur model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampel-dan-pembagian-spasial">3.4 Sampel dan pembagian spasial</a></li>
 </ul>
   </nav></div>
 
 </div></div>
-              
-            
+
+
           </div>
           <footer class="bd-footer-content">
-            
+
 <div class="bd-footer-content__inner container">
-  
+
   <div class="footer-item">
-    
+
 <p class="component-author">
 By Moh Rafie Nazar J (240411100003)
 </p>
 
   </div>
-  
+
   <div class="footer-item">
-    
+
 
   <p class="copyright">
-    
+
       © Copyright 2023.
       <br/>
-    
+
   </p>
 
   </div>
-  
+
   <div class="footer-item">
-    
+
   </div>
-  
+
   <div class="footer-item">
-    
+
   </div>
-  
+
 </div>
           </footer>
-        
+
 
       </main>
     </div>
   </div>
-  
+
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
 <script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>

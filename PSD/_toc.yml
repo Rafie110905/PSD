@@ -14,3 +14,15 @@ chapters:
 - file: _sources/klasifikasi_sawah_sentinel2_bangkalan
 - file: _sources/K-Means_Clustering_Polynomial_Proyek_Sains_Data
 - file: _sources/UTS_Analisis_Penutup_Lahan_Jawa_Timur
+- file: _sources/UTS_Jatim_Bab_01_Business_Understanding
+  title: "UTS SIG — Bab 1: Business Understanding"
+- file: _sources/UTS_Jatim_Bab_02_Data_Understanding
+  title: "UTS SIG — Bab 2: Data Understanding"
+- file: _sources/UTS_Jatim_Bab_03_Data_Preprocessing
+  title: "UTS SIG — Bab 3: Data Preprocessing"
+- file: _sources/UTS_Jatim_Bab_04_Modeling
+  title: "UTS SIG — Bab 4: Modeling"
+- file: _sources/UTS_Jatim_Bab_05_Evaluation
+  title: "UTS SIG — Bab 5: Evaluation"
+- file: _sources/UTS_Jatim_Bab_06_WebGIS_Deployment
+  title: "UTS SIG — Bab 6: WebGIS & Deployment"
