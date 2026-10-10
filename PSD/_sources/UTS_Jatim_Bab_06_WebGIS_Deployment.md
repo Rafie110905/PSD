@@ -1,5 +1,7 @@
 # Bab 6 — WebGIS & Deployment
 
+![Luas hasil klasifikasi per kelas](../_static/uts-class-areas.svg)
+
 ## 6.1 Tampilan WebGIS
 
 Dashboard Streamlit menyediakan tujuh halaman:
@@ -21,6 +23,12 @@ dipakai untuk eksplorasi visual; atribusi dan ketentuan layanan penyedia
 basemap harus dipatuhi. Hasil GeoTIFF aplikasi diturunkan skalanya untuk
 pratinjau, bukan produk klasifikasi resolusi penuh.
 
+Peta overlay di atas adalah hasil inferensi run referensi. Peta interaktif
+Folium, raster GeoTIFF 44 MB, tabel luas, dan grafik evaluasi tersedia di
+[folder `outputs` proyek sumber](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/tree/main/outputs).
+Halaman statis menampilkan hasil yang sudah tersimpan; halaman ini tidak
+menjalankan ulang model saat dibuka.
+
 ## 6.2 Menjalankan aplikasi
 
 Source aplikasi dan petunjuk terbaru:
@@ -37,10 +45,11 @@ python -m pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Unggah empat input melalui sidebar: GeoTIFF 10-band Sentinel-2A, GeoTIFF
-WorldCover yang mencakup AOI, GeoJSON batas provinsi, dan GeoJSON danau/ranu.
-Pastikan CRS ada dan sama/tidak ambigu; bila raster sangat luas, siapkan
-komposit regional yang ukurannya sesuai sumber daya aplikasi.
+Dashboard UTS saat ini menerima GeoTIFF Sentinel-2 10-band, GeoTIFF WorldCover,
+GeoJSON batas provinsi, dan GeoJSON danau/ranu. Pipeline ini berbeda dari
+eksperimen referensi (enam band dan poligon Kementan/BIG/Natural Earth).
+Keluaran dashboard baru dihitung setelah inputnya tersedia; gambar dan skor
+statis di bab ini tetap diberi label sebagai hasil run referensi.
 
 ## 6.3 Deployment dan web statis
 
@@ -60,7 +69,15 @@ nasional sebelum menyatakan pemetaan sesuai standar.
    — Bagian 1: Skala kecil dan menengah.** Verifikasi status/edisi pada katalog
    BSN sebelum penggunaan normatif.
 2. [Sentinel-2 Level-2A, band dan resolusi (Microsoft Planetary Computer)](https://planetarycomputer.microsoft.com/api/stac/v1/collections/sentinel-2-l2a).
-3. [ESA WorldCover data access](https://esa-worldcover.org/en/data-access).
-4. [ESA WorldCover 2021 v200 documentation](https://github.com/ESA-WorldCover/esa-worldcover-datasets);
-   DOI [10.5281/zenodo.7254221](https://doi.org/10.5281/zenodo.7254221).
-5. [OpenStreetMap copyright and attribution](https://www.openstreetmap.org/copyright).
+3. [Kementerian Pertanian — sumber sampel sawah yang dicatat pada metadata proyek referensi](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/tree/main/data).
+4. [Repository sumber, notebook, output tabel dan gambar](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan).
+
+### Gambar hasil dan peta interaktif
+
+Lihat [komposit RGB dan peta klasifikasi](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/rgb_vs_klasifikasi.png)
+serta [overlay klasifikasi](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/klasifikasi_overlay.png)
+di halaman output proyek sumber.
+
+- [Peta Folium interaktif (HTML)](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/folium_polygon_map.html)
+- [Raster klasifikasi GeoTIFF](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/raster/klasifikasi_jawa_timur.tif)
+- [Dashboard kode sumber](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/app.py)

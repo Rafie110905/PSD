@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="570" viewBox="0 0 1000 570" role="img" aria-labelledby="title desc">
+  <title id="title">Perbandingan CV Macro-F1 sepuluh model</title>
+  <desc id="desc">Grafik batang skor CV Macro-F1 untuk lima model pada representasi pixel dan mean.</desc>
+  <rect width="1000" height="570" rx="18" fill="#fff"/>
+  <text x="500" y="42" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="24" font-weight="700" fill="#17324d">CV Macro-F1 — hasil run referensi</text>
+  <text x="500" y="68" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#60758a">Validasi berkelompok berdasarkan poligon (FID)</text>
+  <g font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#334b62">
+    <text x="40" y="123">Pixel · SVM RBF</text><text x="40" y="165">Pixel · LightGBM</text><text x="40" y="207">Pixel · Extra Trees</text><text x="40" y="249">Pixel · Random Forest</text><text x="40" y="291">Pixel · Logistic Regression</text>
+    <text x="40" y="355">Mean · Logistic Regression</text><text x="40" y="397">Mean · Extra Trees</text><text x="40" y="439">Mean · Random Forest</text><text x="40" y="481">Mean · LightGBM</text><text x="40" y="523">Mean · SVM RBF</text>
+  </g>
+  <g fill="#e9eef3">
+    <rect x="265" y="103" width="600" height="22" rx="5"/><rect x="265" y="145" width="600" height="22" rx="5"/><rect x="265" y="187" width="600" height="22" rx="5"/><rect x="265" y="229" width="600" height="22" rx="5"/><rect x="265" y="271" width="600" height="22" rx="5"/>
+    <rect x="265" y="335" width="600" height="22" rx="5"/><rect x="265" y="377" width="600" height="22" rx="5"/><rect x="265" y="419" width="600" height="22" rx="5"/><rect x="265" y="461" width="600" height="22" rx="5"/><rect x="265" y="503" width="600" height="22" rx="5"/>
+  </g>
+  <g>
+    <rect x="265" y="103" width="568.4" height="22" rx="5" fill="#e58a22"/><rect x="265" y="145" width="564" height="22" rx="5" fill="#4287c7"/><rect x="265" y="187" width="550.9" height="22" rx="5" fill="#4287c7"/><rect x="265" y="229" width="546.5" height="22" rx="5" fill="#4287c7"/><rect x="265" y="271" width="361.1" height="22" rx="5" fill="#4287c7"/>
+    <rect x="265" y="335" width="460.4" height="22" rx="5" fill="#43a37b"/><rect x="265" y="377" width="480" height="22" rx="5" fill="#43a37b"/><rect x="265" y="419" width="476.7" height="22" rx="5" fill="#43a37b"/><rect x="265" y="461" width="456" height="22" rx="5" fill="#43a37b"/><rect x="265" y="503" width="453.8" height="22" rx="5" fill="#43a37b"/>
+  </g>
+  <g font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#17324d">
+    <text x="844" y="120">0.521</text><text x="839" y="162">0.517</text><text x="826" y="204">0.505</text><text x="822" y="246">0.501</text><text x="636" y="288">0.331</text>
+    <text x="735" y="352">0.422</text><text x="755" y="394">0.440</text><text x="751" y="436">0.437</text><text x="731" y="478">0.418</text><text x="728" y="520">0.416</text>
+  </g>
+  <g stroke="#aab8c5" stroke-width="1">
+    <path d="M265 90 V535"/><path d="M374 90 V535"/><path d="M483 90 V535"/><path d="M592 90 V535"/><path d="M701 90 V535"/><path d="M810 90 V535"/><path d="M865 90 V535"/>
+  </g>
+  <g font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#60758a" text-anchor="middle">
+    <text x="265" y="554">0.0</text><text x="374" y="554">0.1</text><text x="483" y="554">0.2</text><text x="592" y="554">0.3</text><text x="701" y="554">0.4</text><text x="810" y="554">0.5</text><text x="865" y="554">0.55</text>
+  </g>
+</svg>

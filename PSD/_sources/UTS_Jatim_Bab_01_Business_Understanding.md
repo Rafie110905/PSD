@@ -1,5 +1,7 @@
 # Bab 1 — Business Understanding
 
+![Alur eksperimen klasifikasi enam kelas](../_static/uts-workflow.svg)
+
 ## 1.1 Latar belakang
 
 Informasi penutup lahan membantu memahami distribusi fisik permukaan, seperti
@@ -8,12 +10,11 @@ pengamatan multispektral yang dapat digunakan untuk membuat klasifikasi awal
 secara konsisten pada wilayah luas. Peta hasil klasifikasi perlu dibaca bersama
 konteks skala, kualitas data, waktu akuisisi, dan ketidakpastian label.
 
-Dalam UTS ini, cakupan analisis adalah **Provinsi Jawa Timur** dengan enam
-kelas target: sawah, bangunan, mangrove, lahan hijau, perairan terbuka, serta
-danau/ranu. Karena sampel lapangan enam kelas belum tersedia, data label awal
-menggunakan crosswalk ESA WorldCover 2021 dan poligon danau OpenStreetMap (OSM).
-Dengan demikian, produk saat ini dirancang sebagai eksperimen dan demonstrasi
-SIG, bukan peta tematik resmi.
+Dalam eksperimen referensi, cakupan analisis adalah **Provinsi Jawa Timur**
+dengan enam kelas target: sawah, bangunan/permukiman, mangrove, lahan hijau,
+laut, serta danau. Data sampelnya berasal dari sumber sekunder Kementan, BIG,
+dan Natural Earth. Hasil merupakan eksperimen berdasarkan label sekunder,
+bukan peta tematik resmi atau validasi lapangan.
 
 ## 1.2 Tujuan dan pertanyaan analisis
 
@@ -26,9 +27,9 @@ SIG, bukan peta tematik resmi.
 5. Menyediakan bahan eksplorasi untuk membahas kawasan terbangun, pertanian,
    mangrove pesisir, vegetasi, dan badan air dalam konteks kebijakan tata ruang.
 
-**Pertanyaan:** seberapa konsisten model membedakan enam label proksi dari
-fitur Sentinel-2A pada wilayah yang tidak digunakan untuk training, dan model
-mana yang memberi Macro-F1 tertinggi pada pembagian spasial yang sama?
+**Pertanyaan:** seberapa baik model membedakan enam kelas pada poligon yang
+tidak digunakan untuk training, dan model/representasi fitur mana yang memberi
+Macro-F1 tertinggi pada validasi silang berbasis poligon?
 
 ## 1.3 Penggunaan hasil dan batas kebijakan
 
@@ -42,14 +43,29 @@ ruang harus merujuk pada dokumen berwenang yang berlaku.
 
 | Kelas | Makna operasional dalam eksperimen |
 |---|---|
-| Sawah* | WorldCover 40 (cropland), yang juga dapat mencakup kebun dan pertanian lain |
-| Bangunan | WorldCover 50 (built-up) |
-| Mangrove | WorldCover 95 (mangroves) |
-| Lahan hijau | Gabungan WorldCover 10, 20, dan 30 |
-| Perairan terbuka | WorldCover 80 di luar poligon danau/ranu OSM |
-| Danau/Ranu* | WorldCover 80 yang bertumpang-susun dengan poligon danau/ranu OSM |
+| Sawah | Sampel poligon Kementan |
+| Bangunan/Permukiman | Kelas permukiman dari sampel BIG |
+| Mangrove | Kelas mangrove dari sampel BIG |
+| Lahan hijau | Gabungan kelas vegetasi/tutupan hijau dari sampel BIG |
+| Laut | Poligon laut Natural Earth |
+| Danau | Waduk/danau dari sampel BIG |
 
-`*` berarti proksi, bukan label lapangan yang diverifikasi satu per satu.
+Label merupakan sampel referensi sekunder, bukan validasi lapangan baru.
 Terminologi penutup lahan nasional mengacu pada SNI 7645-1:2014 sebagai
-referensi konseptual; crosswalk enam kelas ini disederhanakan untuk tujuan
+referensi konseptual; penggabungan kelas disederhanakan untuk tujuan
 eksperimen dan tidak menyatakan kepatuhan penuh terhadap legenda nasional.
+
+## 1.5 Keluaran eksperimen yang menjadi acuan
+
+Repository referensi menyediakan 2.823 poligon sumber dan memilih 256 poligon
+untuk eksperimen (50 untuk masing-masing lima kelas pertama dan 6 poligon laut).
+Pembagian yang tersimpan menggunakan 204 poligon training dan 52 testing.
+Angka ini merujuk pada data dan hasil eksperimen
+[PSD-Klasifikasi-Lahan](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan),
+bukan jumlah dari input yang diunggah ke dashboard UTS ini.
+
+![Luas hasil klasifikasi per kelas](../_static/uts-class-areas.svg)
+
+Lihat [peta batas kabupaten/kota](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/boundary_jatim_kabkota.png)
+dan [grafik sebaran sampel](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/sebaran_per_kelas.png)
+di repository sumber.

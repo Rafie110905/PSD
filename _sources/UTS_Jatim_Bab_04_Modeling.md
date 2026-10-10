@@ -1,47 +1,72 @@
 # Bab 4 — Modeling
 
+![Perbandingan CV Macro-F1 sepuluh kombinasi model](../_static/uts-model-scores.svg)
+
 ## 4.1 Target dan rancangan model
 
-Target terdiri atas enam label proksi: Sawah*, Bangunan, Mangrove, Lahan hijau,
-Perairan terbuka, dan Danau/Ranu*. Setiap sampel memiliki sepuluh reflektansi
-Sentinel-2A dan delapan indeks spektral dari Bab 3. Seluruh estimator menerima
-sampel training yang sama dan dievaluasi pada holdout blok spasial yang sama.
+Target terdiri atas enam kelas: Sawah, Bangunan/Permukiman, Mangrove, Lahan
+hijau, Laut, dan Danau. Setiap sampel memiliki sembilan fitur Sentinel-2 dari
+Bab 3. Eksperimen membandingkan dua representasi (fitur per-pixel dan
+rata-rata fitur per-poligon); seluruh model pada representasi yang sama
+menggunakan split yang sama.
 
-Empat model dibandingkan:
+Pada eksperimen referensi, dua representasi fitur (*pixel* dan rata-rata
+poligon/`mean`) dibandingkan dengan lima model: Random Forest, Extra Trees,
+LightGBM, SVM RBF, dan Logistic Regression. Total ada sepuluh kombinasi.
 
-1. **Random Forest** — ansambel pohon bagging untuk pola nonlinier dan interaksi.
-2. **Extra Trees** — ansambel pohon dengan pemilihan split lebih acak.
-3. **HistGradientBoosting** — boosting pohon dengan binning fitur histogram.
-4. **SVM RBF** — pemisah berbasis kernel radial; fitur distandardisasi terlebih
-   dahulu.
+Contoh kode CV berkelompok berdasarkan FID:
 
-Model dipilih berdasarkan Macro-F1 tertinggi. Jika nilainya sama, balanced
-accuracy menjadi pemecah seri. Pemilihan dilakukan dari evaluasi yang sama
-untuk semua model; hasil bukan angka yang di-hardcode.
+```python
+from sklearn.model_selection import StratifiedGroupKFold, cross_val_score
+
+cv = StratifiedGroupKFold(n_splits=5, shuffle=True, random_state=42)
+scores = cross_val_score(
+    estimator,
+    X_train,
+    y_train,
+    groups=fid_train,
+    cv=cv,
+    scoring="f1_macro",
+    n_jobs=-1,
+)
+print(scores.mean(), scores.std())
+```
+
+```text
+Pixel SVM: CV Macro-F1 = 0.521 (rerata fold; tabel test lengkap ada di Bab 5)
+```
+
+Satu group FID diperlakukan sebagai satu poligon saat validasi agar piksel dari
+poligon yang sama tidak tersebar ke fold training dan validasi.
+
+Variabel `estimator`, `X_train`, `y_train`, dan `fid_train` diisi dari tahap
+preprocessing notebook. Kode tersebut menghasilkan skor per fold; nilai
+ringkas eksperimen tersimpan pada tabel Bab 5.
 
 ## 4.2 Training dan inferensi
 
-1. Bentuk matriks fitur dari piksel referensi yang lolos AOI dan pemeriksaan
-   validitas.
-2. Ambil jumlah sampel seimbang per kelas sampai maksimum yang ditentukan.
-3. Bagi data menjadi training dan testing dengan group blok spasial.
-4. Latih empat model pada indeks training.
-5. Hitung prediksi testing dan metrik tanpa mengganti split di antara model.
-6. Gunakan estimator terpilih untuk mengklasifikasikan piksel valid pada
-   pratinjau citra.
+1. Bentuk fitur pixel dan ringkasan rata-rata fitur per poligon.
+2. Pilih 256 poligon dengan distribusi kelas yang dicatat di Bab 2.
+3. Pisahkan 204 poligon training dan 52 testing berdasarkan FID.
+4. Bandingkan lima estimator pada dua representasi fitur.
+5. Pilih SVM pixel berdasarkan CV Macro-F1; ukur juga performa pada test.
+6. Jalankan Random Forest pixel untuk membuat raster seluruh wilayah karena
+   inferensinya lebih cepat.
 
-SVM memakai `StandardScaler` dalam pipeline agar skala tiap fitur
-distandardisasi tanpa menghitung parameter dari data uji. Model lain
-menggunakan konfigurasi yang ditetapkan di source aplikasi.
+SVM dan Logistic Regression memerlukan standardisasi fitur. Seluruh langkah
+preprocessing model harus di-fit pada data training saja.
 
 ## 4.3 Batas klaim
 
-Pembagian berdasarkan blok spasial dirancang mengurangi kebocoran dari
-ketetanggaan piksel, tetapi tidak menjadikan label sumber independen dari
-WorldCover. Model yang menang pada eksperimen ini adalah yang paling sesuai
-dengan label proksi pada split tersebut; hasil tidak otomatis berlaku untuk
-seluruh variasi musim, tahun, atau kondisi lapangan.
+Split berdasarkan FID mengurangi kebocoran antar piksel dalam poligon yang
+sama, tetapi tidak menjadikan sumber label independen atau menggantikan
+validasi lapangan. Model yang menang adalah yang paling sesuai pada data dan
+protokol eksperimen tersebut; hasil tidak otomatis berlaku pada musim/tahun
+lain atau seluruh kondisi lapangan.
 
-Jumlah model berbeda dari repository referensi. UTS ini membandingkan empat
-estimator yang terpasang pada pipeline sumbernya sendiri; tidak memakai
-perbandingan pixel-vs-mean-poligon ataupun skor model dari proyek tersebut.
+Dashboard UTS di repository ini masih membandingkan empat model pada fitur
+berbeda dan split blok piksel. Tabel pada Bab 5 berasal dari hasil run
+referensi; jangan menyebutnya sebagai metrik dashboard UTS.
+
+Grafik validasi silang dan pentingnya fitur lengkap tersedia pada [hasil CV](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/cv_f1_bars.png)
+dan [grafik feature importance](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/feat_importance.png).

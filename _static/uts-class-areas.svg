@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420" role="img" aria-labelledby="title desc">
+  <title id="title">Luas tiap kelas hasil klasifikasi referensi</title>
+  <desc id="desc">Grafik horizontal luas hektare dan proporsi untuk enam kelas hasil klasifikasi.</desc>
+  <rect width="1000" height="420" rx="18" fill="#fff"/>
+  <text x="500" y="42" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="24" font-weight="700" fill="#17324d">Luas klasifikasi — hasil run referensi</text>
+  <text x="500" y="68" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#60758a">Hasil inferensi raster; bukan estimasi baru dari dashboard lokal</text>
+  <g font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#334b62">
+    <text x="50" y="128">Sawah</text><text x="50" y="178">Lahan hijau</text><text x="50" y="228">Bangunan/Permukiman</text><text x="50" y="278">Mangrove</text><text x="50" y="328">Danau</text><text x="50" y="378">Laut</text>
+  </g>
+  <g fill="#e9eef3">
+    <rect x="270" y="108" width="560" height="25" rx="6"/><rect x="270" y="158" width="560" height="25" rx="6"/><rect x="270" y="208" width="560" height="25" rx="6"/><rect x="270" y="258" width="560" height="25" rx="6"/><rect x="270" y="308" width="560" height="25" rx="6"/><rect x="270" y="358" width="560" height="25" rx="6"/>
+  </g>
+  <g>
+    <rect x="270" y="108" width="560" height="25" rx="6" fill="#e4b835"/><rect x="270" y="158" width="504" height="25" rx="6" fill="#47a56f"/><rect x="270" y="208" width="274" height="25" rx="6" fill="#c95c58"/><rect x="270" y="258" width="143" height="25" rx="6" fill="#269b8b"/><rect x="270" y="308" width="29" height="25" rx="6" fill="#6a7b91"/><rect x="270" y="358" width="15" height="25" rx="6" fill="#4b99c5"/>
+  </g>
+  <g font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#17324d">
+    <text x="845" y="127">526.207,7 ha · 36,72%</text><text x="789" y="177">473.514,6 ha · 33,05%</text><text x="559" y="227">257.855,1 ha · 18,00%</text><text x="428" y="277">134.223,7 ha · 9,37%</text><text x="314" y="327">26.823,5 ha · 1,87%</text><text x="300" y="377">14.256,4 ha · 0,99%</text>
+  </g>
+</svg>

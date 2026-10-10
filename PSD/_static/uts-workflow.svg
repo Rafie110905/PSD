@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="290" viewBox="0 0 1100 290" role="img" aria-labelledby="title desc">
+  <title id="title">Alur klasifikasi tutupan lahan</title>
+  <desc id="desc">Diagram alur dari citra dan sampel poligon ke fitur, validasi model, peta, dan evaluasi.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#52708f"/>
+    </marker>
+  </defs>
+  <rect width="1100" height="290" rx="18" fill="#f5f8fc"/>
+  <text x="550" y="42" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="23" font-weight="700" fill="#17324d">Alur eksperimen klasifikasi enam kelas</text>
+  <g font-family="Segoe UI,Arial,sans-serif" text-anchor="middle">
+    <rect x="35" y="100" width="160" height="105" rx="14" fill="#dceeff" stroke="#78aee0" stroke-width="2"/>
+    <text x="115" y="139" font-size="17" font-weight="700" fill="#17324d">Data masukan</text>
+    <text x="115" y="166" font-size="14" fill="#35536f">Sentinel-2 + poligon</text>
+    <text x="115" y="187" font-size="14" fill="#35536f">label sekunder</text>
+    <rect x="235" y="100" width="160" height="105" rx="14" fill="#e7f4e8" stroke="#84bd8a" stroke-width="2"/>
+    <text x="315" y="139" font-size="17" font-weight="700" fill="#17324d">Pra-pemrosesan</text>
+    <text x="315" y="166" font-size="14" fill="#35536f">grid, CRS, NoData</text>
+    <text x="315" y="187" font-size="14" fill="#35536f">AOI dan fitur</text>
+    <rect x="435" y="100" width="160" height="105" rx="14" fill="#fff0d9" stroke="#e5b86e" stroke-width="2"/>
+    <text x="515" y="139" font-size="17" font-weight="700" fill="#17324d">9 fitur</text>
+    <text x="515" y="166" font-size="14" fill="#35536f">6 reflektansi</text>
+    <text x="515" y="187" font-size="14" fill="#35536f">+ NDVI, NDWI, NDBI</text>
+    <rect x="635" y="100" width="160" height="105" rx="14" fill="#f1e7fb" stroke="#b399d0" stroke-width="2"/>
+    <text x="715" y="139" font-size="17" font-weight="700" fill="#17324d">Training &amp; CV</text>
+    <text x="715" y="166" font-size="14" fill="#35536f">204 train / 52 test</text>
+    <text x="715" y="187" font-size="14" fill="#35536f">group berdasarkan FID</text>
+    <rect x="835" y="100" width="220" height="105" rx="14" fill="#fde7e6" stroke="#df9791" stroke-width="2"/>
+    <text x="945" y="139" font-size="17" font-weight="700" fill="#17324d">Evaluasi &amp; WebGIS</text>
+    <text x="945" y="166" font-size="14" fill="#35536f">10 kombinasi model</text>
+    <text x="945" y="187" font-size="14" fill="#35536f">metrik, peta, dan luas</text>
+  </g>
+  <g stroke="#52708f" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M198 152 H225"/><path d="M398 152 H425"/><path d="M598 152 H625"/><path d="M798 152 H825"/>
+  </g>
+  <text x="550" y="253" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#526b83">Visualisasi alur disusun untuk laporan ini; metrik dan jumlah sampel merujuk pada keluaran proyek referensi.</text>
+</svg>

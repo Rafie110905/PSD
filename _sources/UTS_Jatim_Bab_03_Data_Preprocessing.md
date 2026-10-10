@@ -1,67 +1,102 @@
 # Bab 3 — Data Preprocessing
 
+![Alur pra-pemrosesan dan pembentukan fitur](../_static/uts-workflow.svg)
+
 ## 3.1 Pemeriksaan dan penyelarasan
 
 Sebelum eksperimen, periksa jumlah band, CRS, transform, resolusi, rentang
-nilai, NoData, dan cakupan tumpang-susun. GeoTIFF Sentinel-2 wajib berisi
-minimal sepuluh band pada urutan B2, B3, B4, B5, B6, B7, B8, B8A, B11, B12
-dengan grid bersama. Nilai boleh berupa reflektansi 0–1 atau DN 0–10000.
-WorldCover diselaraskan ke grid citra memakai nearest-neighbour agar kode kelas
-tetap kategori, bukan nilai interpolasi.
-
-Batas AOI dan geometri danau diproyeksikan ke CRS raster sebelum dirasterisasi.
-Piksel di luar AOI dan piksel yang memiliki fitur tidak valid dikeluarkan dari
-eksperimen. Mask awan harus diterapkan pada proses penyediaan komposit citra.
-Raster pratinjau aplikasi dibatasi hingga 1.200 piksel pada sisi terpanjang;
-hasilnya tidak setara peta resolusi penuh.
+nilai, NoData, dan cakupan tumpang-susun. GeoTIFF referensi berisi enam band
+yang digunakan pada grid 10 m EPSG:32749. Batas wilayah dan sampel poligon
+diselaraskan dengan CRS raster; komposit citra sudah difilter awan sebelum
+ekspor. Profil raster sumber mencatat 59.412 × 41.323 piksel. Raster inferensi
+tersedia sebagai GeoTIFF 44 MB pada folder output referensi.
 
 ## 3.2 Crosswalk label
 
-| Kode WorldCover | Kelas studi |
-|---:|---|
-| 40 | Sawah* |
-| 50 | Bangunan |
-| 95 | Mangrove |
-| 10, 20, 30 | Lahan hijau |
-| 80 di dalam poligon danau OSM | Danau/Ranu* |
-| 80 di luar poligon danau OSM | Perairan terbuka |
-
-Kelas proksi tidak diartikan sebagai label lapangan. Poligon OSM hanya
-memisahkan air yang beririsan secara spasial dengan poligon danau yang
-diunggah.
+Label sampel diseragamkan menjadi enam ID kelas: 1 Sawah, 2
+Bangunan/Permukiman, 3 Mangrove, 4 Lahan hijau, 5 Laut, dan 6 Danau. Kelas
+asal dipertahankan pada atribut sumber; misalnya Sawah berasal dari Kementan,
+vegetasi dan permukiman dari BIG, dan Laut dari Natural Earth.
 
 ## 3.3 Fitur model
 
-Sepuluh fitur pertama adalah reflektansi band. Delapan indeks dihitung per
-piksel. Pembagian dengan penyebut mendekati nol dihindari agar tidak
-menghasilkan nilai tak terhingga.
+Eksperimen referensi memakai enam band reflektansi dan tiga indeks, total
+sembilan fitur. Berikut deskripsi fitur yang cocok dengan metadata eksperimen:
 
 | Fitur | Rumus | Kegunaan umum |
 |---|---|---|
-| `B2_blue`, `B3_green`, `B4_red` | Reflektansi band | Warna tampak, air, vegetasi |
-| `B5_rededge1`, `B6_rededge2`, `B7_rededge3` | Reflektansi band | Respons red-edge/vegetasi |
-| `B8_nir`, `B8A_rededge4` | Reflektansi band | Vegetasi sehat, pemisahan air |
-| `B11_swir1`, `B12_swir2` | Reflektansi band | Kelembapan, tanah, permukaan terbangun |
+| B02 | Reflektansi biru | Warna tampak/pesisir |
+| B03 | Reflektansi hijau | Warna tampak dan air |
+| B04 | Reflektansi merah | Serapan klorofil |
+| B08 | Reflektansi NIR | Vegetasi sehat dan air |
+| B11 | Reflektansi SWIR-1 | Kelembapan/permukaan terbangun |
+| B12 | Reflektansi SWIR-2 | Kelembapan/tanah |
 | NDVI | `(B8 - B4) / (B8 + B4)` | Kehijauan vegetasi |
 | NDWI | `(B3 - B8) / (B3 + B8)` | Indeks air Green–NIR |
-| MNDWI | `(B3 - B11) / (B3 + B11)` | Air dibanding sebagian permukaan terbangun |
-| NDMI | `(B8 - B11) / (B8 + B11)` | Kelembapan vegetasi |
 | NDBI | `(B11 - B8) / (B11 + B8)` | Respons lahan terbangun |
-| NDRE | `(B8A - B5) / (B8A + B5)` | Respons vegetasi red-edge |
-| SAVI | `1.5 × (B8 - B4) / (B8 + B4 + 0.5)` | Vegetasi dengan koreksi tanah |
-| BSI | `((B11 + B4) - (B8 + B2)) / ((B11 + B4) + (B8 + B2))` | Tanah terbuka/permukaan cerah |
 
-Delapan belas fitur tersebut merupakan rancangan UTS ini. Jumlah dan rumus
-fitur tidak disalin dari eksperimen referensi.
+Contoh perhitungan indeks pada array NumPy:
+
+```python
+import numpy as np
+
+# Urutan input: B02, B03, B04, B08, B11, B12
+B02, B03, B04, B08, B11, B12 = bands
+
+def normalized_difference(a, b, eps=1e-6):
+    denominator = a + b
+    return np.divide(
+        a - b,
+        denominator,
+        out=np.zeros_like(a, dtype=np.float32),
+        where=np.abs(denominator) > eps,
+    )
+
+features = np.stack([
+    B02, B03, B04, B08, B11, B12,
+    normalized_difference(B08, B04),  # NDVI
+    normalized_difference(B03, B08),  # NDWI
+    normalized_difference(B11, B08),  # NDBI
+])
+print(features.shape)
+```
+
+```text
+(9, tinggi_raster, lebar_raster)
+```
+
+Eksperimen referensi memakai sembilan fitur tersebut. Dashboard interaktif
+terpisah di repository UTS saat ini memiliki pipeline 18 fitur; skor di Bab 5
+adalah hasil notebook referensi, bukan output dashboard tersebut.
 
 ## 3.4 Sampel dan pembagian spasial
 
-Aplikasi mengambil sampel berimbang per kelas sampai batas maksimum yang
-dipilih pengguna. Sampel dikelompokkan dalam blok 100 piksel pada raster
-pratinjau; satu pembagian holdout berbasis grup digunakan bersama oleh seluruh
-model untuk mengurangi kebocoran antarpiksel bertetangga.
+Split referensi yang tersimpan berisi 204 poligon training dan 52 testing dari
+256 poligon. Pembagian dilakukan per poligon/FID, distratifikasi dengan ID
+kelas, sehingga FID tidak muncul pada kedua subset:
 
-**Jumlah aktual belum tersedia** sampai GeoTIFF dan vektor AOI/OSM dimasukkan.
-Jumlah yang dipilih di kontrol aplikasi adalah batas, bukan jaminan jumlah
-sampel valid. Kelas yang tidak memiliki cakupan valid membuat eksperimen
-berhenti dengan pesan kesalahan, bukan menghapus kelas secara diam-diam.
+```python
+from sklearn.model_selection import train_test_split
+
+train_polygons, test_polygons = train_test_split(
+    polygons,
+    test_size=0.20,
+    random_state=42,
+    stratify=polygons["class_id"],
+)
+assert set(train_polygons["FID"]).isdisjoint(test_polygons["FID"])
+print(len(train_polygons), len(test_polygons))
+```
+
+```text
+204 52
+```
+
+Contoh di atas menjelaskan pemisahan berdasarkan poligon; file split aktual dapat dilihat di
+[`polygon_split.csv`](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/tables/polygon_split.csv).
+Dashboard UTS sendiri memakai sampling dan pembagian spasial yang berbeda;
+hasilnya tidak sama dengan split referensi.
+
+Histogram distribusi piksel dan profil spektral dari run referensi dapat dilihat
+pada [histogram](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/hist_distribusi_pixel.png)
+dan [profil spektral](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/profil_spektral.png).

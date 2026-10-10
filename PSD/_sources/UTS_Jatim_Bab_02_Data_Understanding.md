@@ -1,34 +1,69 @@
 # Bab 2 — Data Understanding
 
+![Alur data dan pemrosesan](../_static/uts-workflow.svg)
+
 ## 2.1 Inventaris dan status data
 
-| Dataset | Fungsi | Status repository |
+| Dataset | Fungsi | Data eksperimen referensi |
 |---|---|---|
-| Sentinel-2A Level-2A | Fitur reflektansi | GeoTIFF seluruh Jawa Timur belum tersedia |
-| ESA WorldCover 2021 v200 | Label awal kelas penutup lahan | Tile/mosaik AOI belum tersedia |
-| Batas Provinsi Jawa Timur | AOI dan masking | GeoJSON perlu disediakan |
-| Poligon danau/ranu OSM | Memisahkan sebagian kelas air | GeoJSON perlu disediakan dan ditinjau |
-| Sawah/bukan-sawah Bangkalan | Contoh sampel lokal | Tersedia untuk dua kelas saja; tidak mewakili enam kelas provinsi |
+| Sentinel-2 L2A | Fitur spektral | Metadata mencatat 6 band, 10 m, EPSG:32749; raster mentah tidak ada di folder `data` |
+| Batas Jawa Timur | AOI | `boundary_jatim.geojson` |
+| Sampel label enam kelas | Training/testing | GeoJSON dan GPKG tersedia di `data` |
+| Data tematik sekunder | Label kelas | Kementan (sawah), BIG (bangunan, mangrove, lahan hijau, danau), Natural Earth (laut) |
 
-Karena input tersebut belum lengkap, jumlah sampel aktual dan hasil uji belum
-dapat dihitung. Jangan mengisi tabel eksperimen dengan angka contoh atau angka
-dari proyek lain.
+Proyek referensi menyediakan 2.823 poligon sumber. Pemilihan data modeling
+menggunakan 256 poligon: 50 per kelas Sawah, Bangunan, Mangrove, Lahan hijau,
+dan Danau, serta 6 poligon Laut.
+
+| Kelas | Poligon sumber |
+|---|---:|
+| Sawah | 500 |
+| Bangunan/Permukiman | 500 |
+| Mangrove | 500 |
+| Lahan hijau | 500 |
+| Laut | 500 |
+| Danau | 323 |
+| **Total** | **2.823** |
+
+Jumlah poligon sumber bukan jumlah training/testing; hanya sampel terpilih
+yang masuk ke eksperimen.
 
 ## 2.2 Pengumpulan data
 
 Gunakan produk Sentinel-2 Level-2A (*Bottom-of-Atmosphere surface reflectance*)
 dengan tanggal komposit yang dicatat. Komposit multi-temporal yang telah
 dimask awan dan bayangan awan lebih sesuai daripada satu citra berawan.
-WorldCover 2021 v200 menyediakan referensi kelas 10 m; pertahankan kode kelas
-aslinya sebelum crosswalk. Unduh batas provinsi resmi dan poligon danau/ranu
-OSM, lalu catat sumber, tanggal pengambilan, dan CRS.
+Sampel poligon enam kelas pada proyek acuan dikumpulkan dari data sekunder
+Kementan, BIG, dan Natural Earth. Catat sumber, tanggal pengambilan, dan CRS.
 
-### Contoh ekspor Google Earth Engine
+### Metadata citra dan cuplikan pemeriksaan
 
-Unggah batas Jawa Timur ke Earth Engine Assets dan ganti asset path berikut.
-Ekspor Sentinel-2 dan WorldCover secara terpisah pada satu grid 100 m untuk
-contoh regional dan batas ukuran upload. Skala 100 m tidak mewakili produk
-rinci 10 m.
+Metadata run referensi mencatat koleksi Sentinel-2 L2A, komposit median
+1–2 September 2025, enam band, maksimum tutupan awan 20%, grid 10 m, dan
+proyeksi EPSG:32749. Profil raster yang tersimpan menunjukkan ukuran
+59.412 × 41.323 piksel. Raster citra sumber sendiri tidak disertakan di folder
+`data`.
+
+Contoh pemeriksaan metadata/output yang tersimpan:
+
+```python
+import json
+from pathlib import Path
+
+profile = json.loads(
+    Path("outputs/tables/s2_profile.json").read_text(encoding="utf-8")
+)
+print(profile["bands"], profile["crs"], profile["res"])
+print(profile["width"], profile["height"], profile["total_pixel"])
+```
+
+```text
+['B02', 'B03', 'B04', 'B08', 'B11', 'B12'] EPSG:32749 [10.0, 10.0]
+59412 41323 2455082076
+```
+
+Berikut contoh kode Earth Engine untuk mengambil komposit yang dapat
+direproduksi; ganti asset path AOI sesuai akun yang digunakan.
 
 ```javascript
 var roi = ee.FeatureCollection(
@@ -42,10 +77,10 @@ function maskClouds(image) {
   return image.updateMask(clear);
 }
 
-var bands = ['B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B8A', 'B11', 'B12'];
+var bands = ['B2', 'B3', 'B4', 'B8', 'B11', 'B12'];
 var s2 = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
   .filterBounds(roi)
-  .filterDate('2021-01-01', '2022-01-01')
+  .filterDate('2025-09-01', '2025-09-03')
   .filter(ee.Filter.lte('CLOUDY_PIXEL_PERCENTAGE', 70))
   .map(maskClouds)
   .select(bands)
@@ -53,28 +88,18 @@ var s2 = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
   .clip(roi)
   .toInt16();
 
-var wc100 = ee.ImageCollection('ESA/WorldCover/v200').first()
-  .select('Map')
-  .reduceResolution({reducer: ee.Reducer.mode(), maxPixels: 1024})
-  .reproject({crs: 'EPSG:6933', scale: 100})
-  .clip(roi);
-
 Export.image.toDrive({
-  image: s2, description: 'JawaTimur_Sentinel2_2021_100m',
-  region: roi, crs: 'EPSG:6933', scale: 100, maxPixels: 1e13
-});
-Export.image.toDrive({
-  image: wc100, description: 'JawaTimur_WorldCover_2021_100m',
-  region: roi, crs: 'EPSG:6933', scale: 100, maxPixels: 1e13
+  image: s2, description: 'JawaTimur_Sentinel2_2025',
+  region: roi, crs: 'EPSG:32749', scale: 10, maxPixels: 1e13
 });
 ```
 
 ## 2.3 Band Sentinel-2A
 
 Instrumen MSI Sentinel-2 mengukur 13 band pada resolusi asli 10 m, 20 m, atau
-60 m. Aplikasi memakai sepuluh band untuk fitur, semuanya diregistrasikan ke
-satu grid. Resampling band 20 m menyamakan grid, tetapi tidak menambah
-informasi spasial.
+60 m. Eksperimen referensi memakai B02, B03, B04, B08, B11, dan B12. Dashboard
+Streamlit terpisah di repository UTS menerima sepuluh band. Resampling band
+20 m menyamakan grid, tetapi tidak menambah informasi spasial.
 
 | Band | Nama | Panjang gelombang tengah (µm) | Resolusi | Kegunaan umum |
 |---|---|---:|---:|---|
@@ -94,8 +119,16 @@ informasi spasial.
 
 ## 2.4 Kualitas dan keterbatasan referensi
 
-WorldCover 40 berarti *cropland*, bukan sawah secara eksklusif. WorldCover 80
-adalah badan air permanen, bukan kelas laut murni. Pemisahan Danau/Ranu memakai
-OSM sehingga bergantung pada kelengkapan geometri; air lain dapat tercampur
-dalam kelas Perairan terbuka. Beda tahun citra dan label, piksel campuran,
-awan, dan perubahan tutupan lahan juga dapat memengaruhi kesesuaian.
+Label berasal dari beberapa sumber sekunder dengan skema berbeda, sehingga
+definisi kelas perlu dibaca bersama atribut sumbernya. Piksel campuran,
+awan/bayangan, beda waktu citra dan sumber poligon, serta ketidakseimbangan
+jumlah poligon dapat memengaruhi evaluasi.
+
+### Profil spektral hasil run referensi
+
+Lihat [profil spektral per kelas](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/profil_spektral.png)
+dan [batas Jawa Timur](https://github.com/Rahardian-Ananta/PSD-Klasifikasi-Lahan/blob/main/outputs/figures/boundary_jatim.png)
+di repository sumber.
+
+Gambar dan jumlah poligon pada bab ini bersumber dari keluaran eksperimen
+referensi, bukan dari eksperimen input dashboard UTS ini.
