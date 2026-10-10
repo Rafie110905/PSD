@@ -26,7 +26,8 @@ try {
         "Ekstraksi_Fitur_TSFEL_Data_Polutan_Udara_Kecamatan_Bangkalan",
         "K-Means Clustering pada Data Polutan Udara Implementasi Python dan KNIME",
         "klasifikasi_sawah_sentinel2_bangkalan",
-        "K-Means_Clustering_Polynomial_Proyek_Sains_Data"
+        "K-Means_Clustering_Polynomial_Proyek_Sains_Data",
+        "UTS_Analisis_Penutup_Lahan_Jawa_Timur"
     )
 
     foreach ($pageName in $pageNames) {
@@ -45,6 +46,15 @@ try {
             "DOCUMENTATION_OPTIONS.pagename = '$pageName';"
         )
         [System.IO.File]::WriteAllText((Join-Path $siteRoot "$pageName.html"), $content, $utf8)
+
+        $sourceMarkdown = Join-Path (Join-Path (Join-Path $build "_sources") "_sources") "$pageName.md"
+        if (Test-Path $sourceMarkdown) {
+            $sourceDirectory = Join-Path $siteRoot "_sources"
+            if (-not (Test-Path $sourceDirectory)) {
+                New-Item -ItemType Directory -Path $sourceDirectory | Out-Null
+            }
+            Copy-Item $sourceMarkdown -Destination (Join-Path $sourceDirectory "$pageName.md") -Force
+        }
     }
 
     foreach ($directory in @("_static", "_images", "_sphinx_design_static")) {
