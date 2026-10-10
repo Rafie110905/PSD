@@ -88,7 +88,18 @@
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  </head>
+  <style>
+html[data-theme="dark"] {
+  --bs-body-bg: var(--pst-color-background);
+  --bs-body-color: var(--pst-color-text-base);
+}
+html[data-theme="dark"] .bd-content table,
+html[data-theme="dark"] .bd-content th,
+html[data-theme="dark"] .bd-content td {
+  color: var(--pst-color-text-base);
+}
+</style>
+</head>
   
   
   <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
@@ -215,6 +226,10 @@
 <li class="toctree-l1"><a class="reference internal" href="K_Means_Clustering_Knime.html">2. Alur Kerja (Workflow) Clustering KNIME</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="Deskripsi_fitur_perhitungan_manual_MohRafie.html">Deskripsi Fitur &amp; Perhitungan Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ekstraksi_Fitur_TSFEL_Data_Polutan_Udara_Kecamatan_Bangkalan.html">Ekstraksi Fitur TSFEL dan Perhitungan Manual pada Data Polutan Udara</a></li>
+<li class="toctree-l1"><a class="reference internal" href="K-Means%20Clustering%20pada%20Data%20Polutan%20Udara%20Implementasi%20Python%20dan%20KNIME.html">K-Means Clustering pada Data Polutan Udara: Implementasi Python dan KNIME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="klasifikasi_sawah_sentinel2_bangkalan.html">Klasifikasi Tutupan Lahan Sawah Menggunakan Citra Satelit Sentinel-2A dan Algoritma Random Forest — Kecamatan Bangkalan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="K-Means_Clustering_Polynomial_Proyek_Sains_Data.html">K-Means Clustering (Polynomial)</a></li>
 </ul>
 
     </div>
@@ -544,7 +559,12 @@ document.write(`
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter-book<span class="w"> </span>build<span class="w"> </span>PSD
 </pre></div>
 </div>
-<p>Hasil build tersedia di:</p>
+<p>Untuk memperbarui halaman yang disajikan langsung dari root repository:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">powershell</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="o">-File</span> <span class="p">.\</span><span class="n">build-static-root</span><span class="p">.</span><span class="n">ps1</span>
+</pre></div>
+</div>
+<p>Script tersebut membangun Jupyter Book, lalu menyalin halaman yang diperlukan beserta asetnya ke root. Setelah selesai, jalankan Live Server dari root dan buka <code class="docutils literal notranslate"><span class="pre">intro.html</span></code>.</p>
+<p>Hasil build lengkap Jupyter Book tetap tersedia di:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>PSD/_build/html/index.html
 </pre></div>
 </div>

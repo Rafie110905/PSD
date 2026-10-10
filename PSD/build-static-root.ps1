@@ -1,10 +1,11 @@
 $ErrorActionPreference = "Stop"
 
-$root = $PSScriptRoot
-$build = Join-Path $root "_build\html"
+$sourceRoot = $PSScriptRoot
+$siteRoot = Split-Path -Path $sourceRoot -Parent
+$build = Join-Path $sourceRoot "_build\html"
 $utf8 = [System.Text.UTF8Encoding]::new($false)
 
-Push-Location $root
+Push-Location $sourceRoot
 try {
     & jupyter-book build . --all
     if ($LASTEXITCODE -ne 0) {
@@ -16,10 +17,10 @@ try {
     }
 
     foreach ($name in @("intro.html", "index.html", "genindex.html", "search.html", "searchindex.js")) {
-        Copy-Item (Join-Path $build $name) -Destination $root -Force
+        Copy-Item (Join-Path $build $name) -Destination $siteRoot -Force
     }
     Get-ChildItem $build -File -Filter "*.html" |
-        Copy-Item -Destination $root -Force
+        Copy-Item -Destination $siteRoot -Force
 
     $pageNames = @(
         "Ekstraksi_Fitur_TSFEL_Data_Polutan_Udara_Kecamatan_Bangkalan",
@@ -34,12 +35,6 @@ try {
             throw "Expected built page was not found: $sourcePage"
         }
 
-        $nestedPages = Join-Path $root "_sources"
-        if (-not (Test-Path $nestedPages)) {
-            New-Item -ItemType Directory -Path $nestedPages | Out-Null
-        }
-        Copy-Item $sourcePage -Destination $nestedPages -Force
-
         $content = [System.IO.File]::ReadAllText($sourcePage, $utf8)
         $content = $content.Replace("../_static/", "_static/")
         $content = $content.Replace("../_images/", "_images/")
@@ -49,14 +44,24 @@ try {
             "DOCUMENTATION_OPTIONS.pagename = '_sources/$pageName';",
             "DOCUMENTATION_OPTIONS.pagename = '$pageName';"
         )
-        [System.IO.File]::WriteAllText((Join-Path $root "$pageName.html"), $content, $utf8)
+        [System.IO.File]::WriteAllText((Join-Path $siteRoot "$pageName.html"), $content, $utf8)
     }
 
-    foreach ($directory in @("_static", "_images")) {
+    foreach ($directory in @("_static", "_images", "_sphinx_design_static")) {
         $sourceDirectory = Join-Path $build $directory
-        $destinationDirectory = Join-Path $root $directory
+        $destinationDirectory = Join-Path $siteRoot $directory
         if (Test-Path $sourceDirectory) {
+            if (-not (Test-Path $destinationDirectory)) {
+                New-Item -ItemType Directory -Path $destinationDirectory | Out-Null
+            }
             Copy-Item (Join-Path $sourceDirectory "*") -Destination $destinationDirectory -Recurse -Force
+        }
+    }
+
+    foreach ($name in @(".buildinfo", "objects.inv")) {
+        $sourceFile = Join-Path $build $name
+        if (Test-Path $sourceFile) {
+            Copy-Item $sourceFile -Destination $siteRoot -Force
         }
     }
 
@@ -76,7 +81,7 @@ html[data-theme="dark"] .bd-content td {
     $rootPages = @(Get-ChildItem $build -File -Filter "*.html" | Select-Object -ExpandProperty Name) +
         ($pageNames | ForEach-Object { "$_.html" })
     foreach ($rootPage in $rootPages) {
-        $pagePath = Join-Path $root $rootPage
+        $pagePath = Join-Path $siteRoot $rootPage
         if (Test-Path $pagePath) {
             $content = [System.IO.File]::ReadAllText($pagePath, $utf8)
             foreach ($pageName in $pageNames) {
