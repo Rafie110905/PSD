@@ -18,9 +18,11 @@ dirujuk secara terbuka ke sumbernya.
 
 ## Hasil eksperimen singkat
 
-Eksperimen referensi memilih **SVM RBF berbasis fitur per piksel** berdasarkan
-CV Macro-F1 (0,521); Macro-F1 test poligonnya 0,474. Raster seluruh wilayah
-dibuat dengan Random Forest karena lebih cepat untuk inferensi.
+Eksperimen referensi memilih **SVM RBF berbasis fitur per piksel**. Tabel
+ringkasan CV mencatat Macro-F1 0,521, sedangkan hasil pencarian parameter pada
+notebook modeling mencatat skor terbaik 0,537 ± 0,072; Macro-F1 test poligonnya
+0,474. Raster seluruh wilayah dibuat dengan Random Forest karena lebih cepat
+untuk inferensi.
 
 | Kelas | Luas referensi (ha) | Proporsi |
 |---|---:|---:|
