@@ -1,0 +1,4 @@
+/* Menyembunyikan search bar di header atas */
+.bd-header {
+    display: none !important;
+}
